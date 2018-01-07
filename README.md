@@ -1,5 +1,4 @@
 # Pokemon Saturn
----------------
 ![alt text](https://github.com/aap007freak/Pokemon-Saturn/blob/master/android/assets/PkmStrn.png)
 
 A Pokemon HG/SS clone using Java and the LibGDX game engine.
