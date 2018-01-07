@@ -8,7 +8,7 @@ A Pokemon HG/SS clone using Java and the LibGDX game engine.
 build using gradle:
 
 ```
-gradlew run:desktop
+gradlew desktop:run
 ```
 
 ## How to contribute
