@@ -1,0 +1,17 @@
+for myself, so I remember them xD
+
+it doesnt matter how many tileLayers you use, because the layer detection is name based
+
+Object Layers:
+	
+	regular CollisionLayer: must be named "colObs"
+		all objects will be collidable (no need for extra propertie or something)
+			
+	SpecialTilesLayer: must be named "specTiles"
+		add property "action" to specify function of the tile, current functions are:
+			action-change : changes the map
+			changemap-"mapname" : will specify the map to change
+			changetile-"0,0" : will specify wich tile the player spawns on
+			action-trigger : will trigger something ingame
+			
+			
