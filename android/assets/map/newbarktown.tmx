@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" nextobjectid="31">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" nextobjectid="36">
  <tileset firstgid="1" name="fewBuildingsandGrass" tilewidth="16" tileheight="16" tilecount="494" columns="26">
-  <image source="../map/tilesets/fewBuildingsandGrass.png" width="425" height="315"/>
+  <image source="tilesets/fewBuildingsandGrass.png" width="425" height="315"/>
  </tileset>
  <layer name="bg" width="50" height="40">
   <data encoding="base64" compression="zlib">
@@ -49,5 +49,14 @@
   <object id="28" x="240" y="272" width="32" height="16"/>
   <object id="29" x="240" y="288" width="16" height="32"/>
   <object id="30" x="160" y="304" width="80" height="16"/>
+ </objectgroup>
+ <objectgroup name="specTiles">
+  <object id="32" name="door" x="224" y="416" width="16" height="16">
+   <properties>
+    <property name="action" value="door"/>
+    <property name="changemap" value="route1"/>
+    <property name="changetile" value="5,5"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

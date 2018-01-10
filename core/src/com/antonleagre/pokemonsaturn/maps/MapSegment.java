@@ -1,8 +1,11 @@
 package com.antonleagre.pokemonsaturn.maps;
 
+import com.antonleagre.pokemonsaturn.Main;
 import com.antonleagre.pokemonsaturn.Util;
 import com.antonleagre.pokemonsaturn.controllers.MapSegmentController;
 import com.antonleagre.pokemonsaturn.maps.tiles.SpecialTile;
+import com.antonleagre.pokemonsaturn.maps.tiles.TrainerTile;
+import com.antonleagre.pokemonsaturn.models.AITrainer;
 import com.antonleagre.pokemonsaturn.models.Player;
 import com.antonleagre.pokemonsaturn.models.collision.Collidable;
 import com.antonleagre.pokemonsaturn.screens.PlayScreen;
@@ -57,10 +60,19 @@ public class MapSegment {
             specialTiles = com.antonleagre.pokemonsaturn.Util.parseSpecialTilesLayer(map.getLayers().get("specTiles"), controller);
         }
 
+        //parse the trainer tiles
+        for(SpecialTile tile : specialTiles){
+            if (tile instanceof TrainerTile){
+                AITrainer trainer = new AITrainer(tile.getPosition().cpy().scl(1/ Main.TILE_SIZE), )
+            }
+        }
+
         //add the collision obs and the special tiles to the collision checker (we want to check special tiles for collision as well so that we can detect when a player hits a special tile)
         ArrayList<Collidable> allCollidableObjects = new ArrayList<>();
         allCollidableObjects.addAll(collidables);
         allCollidableObjects.addAll(specialTiles);
+
+
         player.getMovementController().setObstacles(allCollidableObjects);
 
     }

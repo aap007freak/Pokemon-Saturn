@@ -1,7 +1,7 @@
 package com.antonleagre.pokemonsaturn;
 
 import com.antonleagre.pokemonsaturn.controllers.MapSegmentController;
-import com.antonleagre.pokemonsaturn.maps.tiles.ChangeMapTile;
+import com.antonleagre.pokemonsaturn.maps.tiles.DoorTile;
 import com.antonleagre.pokemonsaturn.maps.tiles.SpecialTile;
 import com.antonleagre.pokemonsaturn.maps.tiles.TriggerTile;
 import com.antonleagre.pokemonsaturn.models.Person;
@@ -83,12 +83,12 @@ public class Util {
                 SpecialTile tile;
 
                 switch (action){
-                    case "change" :
+                    case "door" :
                         //get the map to change to
-                        String mapToChangeTo = object.getProperties().get("mapchange", String.class);
+                        String mapToChangeTo = object.getProperties().get("changemap", String.class);
                         int xToChangeTo = Integer.parseInt(object.getProperties().get("changetile", String.class).split(",")[0]);
                         int yToChangeTo = Integer.parseInt(object.getProperties().get("changetile", String.class).split(",")[1]);
-                        tile = new ChangeMapTile(pos, controller, mapToChangeTo, new Vector2(xToChangeTo, yToChangeTo));
+                        tile = new DoorTile(pos, controller, mapToChangeTo, new Vector2(xToChangeTo, yToChangeTo));
                         tiles.add(tile);
                         break;
                     case "trigger" :
@@ -107,8 +107,10 @@ public class Util {
         return tiles;
     }
 
+
     /*
                TEXTURE UTILS
+
      */
 
     public static HashMap<String, Array<TextureRegion>> parseCharacterTextureRegions(Texture texture){

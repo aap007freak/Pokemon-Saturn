@@ -4,14 +4,15 @@ import com.antonleagre.pokemonsaturn.controllers.MapSegmentController;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
-public class ChangeMapTile extends SpecialTile{
+public class DoorTile extends SpecialTile{
 
+    //todo sprite animation for the door
     private MapSegmentController controller;
 
     private String mapToChangeTo;
     private Vector2 positionToChangeTo;
 
-    public ChangeMapTile(Rectangle rectangle, MapSegmentController controller, String mapToChangeTo, Vector2 positionToChangeTo) {
+    public DoorTile(Rectangle rectangle, MapSegmentController controller, String mapToChangeTo, Vector2 positionToChangeTo) {
         super(rectangle);
         this.controller = controller;
         this.mapToChangeTo = mapToChangeTo;
