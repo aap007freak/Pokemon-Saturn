@@ -62,8 +62,8 @@ public class MapSegmentController {
     }
 
 
-    public void update(){
-        currentMap.update();
+    public void update(float dt){
+        currentMap.update(dt);
     }
 
     public void render(ShapeRenderer srr, SpriteBatch sb){

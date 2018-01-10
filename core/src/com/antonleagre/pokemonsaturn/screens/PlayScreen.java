@@ -51,7 +51,7 @@ public class PlayScreen  implements Screen{
 
     private void update(float delta) {
         player.update(delta);
-        mapSegmentController.update();
+        mapSegmentController.update(delta);
         Util.lockToTarget(camera, player);
     }
     @Override
@@ -65,9 +65,10 @@ public class PlayScreen  implements Screen{
         debugRenderer.setProjectionMatrix(camera.combined);
 
         debugRenderer.begin(ShapeRenderer.ShapeType.Line);
-        mapSegmentController.render(debugRenderer, main.batch);
+
 
         main.batch.begin();
+        mapSegmentController.render(debugRenderer, main.batch);
         player.render(debugRenderer, main.batch);
 
         debugRenderer.end();

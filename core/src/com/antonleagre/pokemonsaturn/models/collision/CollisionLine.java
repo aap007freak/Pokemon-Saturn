@@ -1,5 +1,6 @@
 package com.antonleagre.pokemonsaturn.models.collision;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -35,9 +36,9 @@ public class CollisionLine implements Collidable {
     @Override
     public boolean collides(Rectangle newCollisionRectangle, Rectangle Rectangle) {
         // TODO: 12/30/2017 work this funtion out, how do we check if a player collides with a line?
-        System.out.println(newCollisionRectangle.getX() + ", " + newCollisionRectangle.getY());
         if((startX <= newCollisionRectangle.getX() && newCollisionRectangle.getX() <= endX) && (startY <= newCollisionRectangle.getY() && newCollisionRectangle.getY() <= endY)){
             System.out.println("Aw, we collided");
+            //if(orientation == orientations.VERTICAL && newCollisionRectangle.getY() != Rectangle.getY()) return true; if(orientation == orientations.HORIZONTAL && newCollisionRectangle.getY() != Rectangle.getX())
         }
         return false;
     }

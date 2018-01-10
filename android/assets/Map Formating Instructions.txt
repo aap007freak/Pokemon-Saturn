@@ -9,9 +9,13 @@ Object Layers:
 			
 	SpecialTilesLayer: must be named "specTiles"
 		add property "action" to specify function of the tile, current functions are:
-			action-change : changes the map
-			changemap-"mapname" : will specify the map to change
-			changetile-"0,0" : will specify wich tile the player spawns on
+			action-door : changes the map
+				changemap-"mapname" : will specify the map to change
+				changetile-"0,0" : will specify wich tile the player spawns on
 			action-trigger : will trigger something ingame
+			
+	TrainerLayer: must be named trainerTiles
+		each object is a spot a trainer will spawn, you need to add a custom property to specify the trainer you want
+		texture-"trainername" : set's the trainer's texture to the texture specified
 			
 			
