@@ -4,6 +4,7 @@ import com.antonleagre.pokemonsaturn.controllers.MapSegmentController;
 import com.antonleagre.pokemonsaturn.maps.tiles.DoorTile;
 import com.antonleagre.pokemonsaturn.maps.tiles.SpecialTile;
 import com.antonleagre.pokemonsaturn.maps.tiles.TriggerTile;
+import com.antonleagre.pokemonsaturn.models.AITrainer;
 import com.antonleagre.pokemonsaturn.models.Person;
 import com.antonleagre.pokemonsaturn.models.collision.Collidable;
 import com.antonleagre.pokemonsaturn.models.collision.CollisionLine;
@@ -15,6 +16,7 @@ import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.PolylineMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
@@ -24,9 +26,9 @@ import java.util.HashMap;
 
 public class Util {
      /*
+
             CAMERA UTILS
      */
-
     public static void lockToTarget(Camera camera, Person person) {
         Vector3 newCamPosition = new Vector3();
         if(person.getState() == Person.states.WALKING){
@@ -43,6 +45,8 @@ public class Util {
             MAP UTILS
      */
 
+    // TODO: 1/10/2018 change all these arraylist to faster badlogic Array<>'s.
+    // TODO: 1/10/2018 check for nullpointers when a certain type of tile just doesnt exist in that map
     public static ArrayList<Collidable> parseCollisionLayer(MapLayer collisionObjectLayer) {
         ArrayList<Collidable> collidables = new ArrayList<>();
 
@@ -95,6 +99,7 @@ public class Util {
                         tile = new TriggerTile(pos);
                         tiles.add(tile);
                         break;
+
                     default:
                         System.out.println("COULDNT PARSE AN SPECIAL OBJECT TILE AT COORDINATES:" + pos.getX() + ", " + pos.getY() + ", IT MAY HAVE BEEN WRONGLY DEFINED IN TILED");
 
@@ -105,6 +110,17 @@ public class Util {
         }
         System.out.println("PARSED A SPECIAL TILE LAYER WITH: " + tiles.size() + " SPECIAL TILES");
         return tiles;
+    }
+
+    public static ArrayList<AITrainer> parseTrainerLayer(MapLayer layer){
+        ArrayList<AITrainer> trainers = new ArrayList<>();
+        for(MapObject object : layer.getObjects()){
+            Rectangle pos = ((RectangleMapObject) object).getRectangle();
+            AITrainer trainer = new AITrainer(new Vector2(pos.x, pos.y).cpy().scl(1/Main.TILE_SIZE), object.getProperties().get("texture", String.class));
+            trainers.add(trainer);
+        }
+
+        return trainers;
     }
 
 

@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 public class PlayScreen  implements Screen{
@@ -35,7 +36,7 @@ public class PlayScreen  implements Screen{
         viewPort = new StretchViewport(Main.V_WIDTH / 2, Main.V_HEIGHT / 2, camera);
         camera.setToOrtho(false, viewPort.getWorldWidth(), viewPort.getWorldHeight());
 
-        playerTexture = new Texture("prof.png");
+        playerTexture = new Texture("rival.png");
         player = new Player(new Vector2(1,1), playerTexture);
 
         mapSegmentController = new MapSegmentController(player, camera);
@@ -65,12 +66,13 @@ public class PlayScreen  implements Screen{
         debugRenderer.setProjectionMatrix(camera.combined);
 
         debugRenderer.begin(ShapeRenderer.ShapeType.Line);
-
-
         main.batch.begin();
+
+
         mapSegmentController.render(debugRenderer, main.batch);
         player.render(debugRenderer, main.batch);
-
+        Vector3 testpos = camera.unproject(new Vector3(250f,250f, 0f));
+        main.batch.draw(new Texture("badlogic.jpg"), testpos.x, testpos.y);
         debugRenderer.end();
         main.batch.end();
     }

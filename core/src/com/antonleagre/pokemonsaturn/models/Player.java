@@ -2,6 +2,8 @@ package com.antonleagre.pokemonsaturn.models;
 
 import com.antonleagre.pokemonsaturn.controllers.MovementController;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
 public class Player extends Person{
@@ -17,6 +19,12 @@ public class Player extends Person{
     public void update(float dt) {
         super.update(dt);
         movementController.update();
+    }
+
+    @Override
+    public void render(ShapeRenderer srr, SpriteBatch sb) {
+        super.render(srr, sb);
+
     }
 
     public MovementController getMovementController() {

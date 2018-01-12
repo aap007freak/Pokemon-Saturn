@@ -56,7 +56,7 @@ public class Person {
         WALKING,
     }
 
-    private Person.facing facing;
+    private facing facing;
     private states state;
 
     public Person(Vector2 position, Texture texture) {
