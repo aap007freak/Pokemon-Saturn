@@ -1,5 +1,6 @@
 package com.antonleagre.pokemonsaturn;
 
+import com.antonleagre.pokemonsaturn.screens.BattleScreen;
 import com.antonleagre.pokemonsaturn.screens.MenuScreen;
 import com.antonleagre.pokemonsaturn.screens.PlayScreen;
 import com.badlogic.gdx.Game;
@@ -15,12 +16,14 @@ public class Main extends Game {
 
 	public MenuScreen menuScreen;
 	public PlayScreen playScreen;
+	public BattleScreen battleScreen;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		menuScreen = new MenuScreen(this);
 		playScreen = new PlayScreen(this);
+		battleScreen = new BattleScreen(this);
 
 		setScreen(menuScreen);
 	}
@@ -33,6 +36,9 @@ public class Main extends Game {
 	@Override
 	public void dispose() {
 		super.dispose();
+		menuScreen.dispose();
+		playScreen.dispose();
+		battleScreen.dispose();
 		batch.dispose();
 	}
 }

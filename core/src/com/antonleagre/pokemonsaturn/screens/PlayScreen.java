@@ -5,6 +5,7 @@ import com.antonleagre.pokemonsaturn.Util;
 import com.antonleagre.pokemonsaturn.controllers.MapSegmentController;
 import com.antonleagre.pokemonsaturn.models.Player;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -36,7 +37,7 @@ public class PlayScreen  implements Screen{
         viewPort = new StretchViewport(Main.V_WIDTH / 2, Main.V_HEIGHT / 2, camera);
         camera.setToOrtho(false, viewPort.getWorldWidth(), viewPort.getWorldHeight());
 
-        playerTexture = new Texture("rival.png");
+        playerTexture = new Texture("prof.png");
         player = new Player(new Vector2(1,1), playerTexture);
 
         mapSegmentController = new MapSegmentController(player, camera);
@@ -51,6 +52,10 @@ public class PlayScreen  implements Screen{
     }
 
     private void update(float delta) {
+        //temp
+        if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+            main.setScreen(main.battleScreen);
+        }
         player.update(delta);
         mapSegmentController.update(delta);
         Util.lockToTarget(camera, player);

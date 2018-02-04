@@ -3,7 +3,7 @@ package com.antonleagre.pokemonsaturn.models.maps;
 import com.antonleagre.pokemonsaturn.Util;
 import com.antonleagre.pokemonsaturn.controllers.MapSegmentController;
 import com.antonleagre.pokemonsaturn.models.maps.tiles.SpecialTile;
-import com.antonleagre.pokemonsaturn.models.objects.Player;
+import com.antonleagre.pokemonsaturn.models.Player;
 import com.antonleagre.pokemonsaturn.models.collision.Collidable;
 import com.antonleagre.pokemonsaturn.screens.PlayScreen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -54,7 +54,7 @@ public class MapSegment {
         //parse the special tiles
         if(map.getLayers().get("specTiles") != null){
 
-            specialTiles = com.antonleagre.pokemonsaturn.Util.parseSpecialTilesLayer(map.getLayers().get("specTiles"), controller);
+            specialTiles = Util.parseSpecialTilesLayer(map.getLayers().get("specTiles"), controller);
         }
 
 

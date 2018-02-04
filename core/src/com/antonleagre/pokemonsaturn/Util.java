@@ -1,9 +1,8 @@
 package com.antonleagre.pokemonsaturn;
 
 import com.antonleagre.pokemonsaturn.controllers.MapSegmentController;
-import com.antonleagre.pokemonsaturn.maps.tiles.DoorTile;
-import com.antonleagre.pokemonsaturn.maps.tiles.SpecialTile;
-import com.antonleagre.pokemonsaturn.maps.tiles.TriggerTile;
+import com.antonleagre.pokemonsaturn.models.maps.tiles.SpecialTile;
+import com.antonleagre.pokemonsaturn.models.maps.tiles.TriggerTile;
 import com.antonleagre.pokemonsaturn.models.AITrainer;
 import com.antonleagre.pokemonsaturn.models.Person;
 import com.antonleagre.pokemonsaturn.models.collision.Collidable;
@@ -89,11 +88,14 @@ public class Util {
                 switch (action){
                     case "door" :
                         //get the map to change to
-                        String mapToChangeTo = object.getProperties().get("changemap", String.class);
-                        int xToChangeTo = Integer.parseInt(object.getProperties().get("changetile", String.class).split(",")[0]);
-                        int yToChangeTo = Integer.parseInt(object.getProperties().get("changetile", String.class).split(",")[1]);
-                        tile = new DoorTile(pos, controller, mapToChangeTo, new Vector2(xToChangeTo, yToChangeTo));
-                        tiles.add(tile);
+                        /**
+                         *  String mapToChangeTo = object.getProperties().get("changemap", String.class);
+                         int xToChangeTo = Integer.parseInt(object.getProperties().get("changetile", String.class).split(",")[0]);
+                         int yToChangeTo = Integer.parseInt(object.getProperties().get("changetile", String.class).split(",")[1]);
+                         tile = new DoorTile(pos, controller, mapToChangeTo, new Vector2(xToChangeTo, yToChangeTo));
+                         tiles.add(tile);
+                         */
+
                         break;
                     case "trigger" :
                         tile = new TriggerTile(pos);

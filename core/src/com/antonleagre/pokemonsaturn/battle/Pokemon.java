@@ -1,9 +1,31 @@
-package com.antonleagre.pokemonsaturn.batlle;
+package com.antonleagre.pokemonsaturn.battle;
 
 public class Pokemon {
 
+    public enum Type {
+        NORMAL,
+        FIGHTING,
+        FLYING,
+        POISON,
+        GROUND,
+        ROCK,
+        BUG,
+        GHOST,
+        STEEL,
+        FIRE,
+        WATER,
+        GRASS,
+        ELECTRIC,
+        PSYCHIC,
+        ICE,
+        DRAGON,
+        DARK,
+        FAIRY
+    }
+
     private String DisplayName;
 
+    private Type type;
     private float hp;
     private float level;
     private float attack;
@@ -12,12 +34,12 @@ public class Pokemon {
     private float spdefense;
     private float speed;
 
-    private Move move1;
-    private Move move2;
-    private Move move3;
-    private Move move4;
+    private Moves move1;
+    private Moves move2;
+    private Moves move3;
+    private Moves move4;
 
-    public Pokemon(String displayName, float hp, float attack, float defense, float spattack, float spdefense, float speed) {
+    public Pokemon(String displayName, Type type, float hp, float attack, float defense, float spattack, float spdefense, float speed) {
         DisplayName = displayName;
         this.hp = hp;
         this.attack = attack;

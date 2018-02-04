@@ -1,4 +1,4 @@
-package com.antonleagre.pokemonsaturn.batlle;
+package com.antonleagre.pokemonsaturn.battle;
 
 public class DamageCalculator {
     /**
@@ -28,6 +28,9 @@ public class DamageCalculator {
                 Burn is 0.5 (from Generation III onward) if the attacker is burned, its Ability is not Guts, and the used move is a physical move (other than Facade from Generation VI onward), and 1 otherwise.
                  other is 1 in most cases, and a different multiplier when specific interactions of moves, Abilities or items take effect:
      */
+
+
+
     /**
      * Calculates damage for damaging moves
      * @param attackingPokemon
@@ -35,12 +38,17 @@ public class DamageCalculator {
      * @param attackingMove
      * @return
      */
-    public static float calculate(Pokemon attackingPokemon, Pokemon defendingPokemon, Move attackingMove){
+    public static float calculate(Pokemon attackingPokemon, Pokemon defendingPokemon, Moves attackingMove){
        switch (attackingMove.getCategory()){
-           case PHYSICAL: return  (((((2 * attackingPokemon.getLevel()) / 5) + 2) * attackingMove.getPower() * (attackingPokemon.getAttack() / defendingPokemon.getDefense()) / 50) + 2) * modifier(attacking);
-                    break;
+
+           case PHYSICAL: return  (((((2 * attackingPokemon.getLevel()) / 5) + 2) * attackingMove.getPower() * (attackingPokemon.getAttack() / defendingPokemon.getDefense()) / 50) + 2) * modifier();
            case SPECIAL:
        }
+        return 0f;
 
+    }
+
+    private static float modifier(){
+        return 1;
     }
 }

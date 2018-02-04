@@ -1,6 +1,6 @@
 package com.antonleagre.pokemonsaturn.controllers;
 
-import com.antonleagre.pokemonsaturn.maps.MapSegment;
+import com.antonleagre.pokemonsaturn.models.maps.MapSegment;
 import com.antonleagre.pokemonsaturn.models.Player;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
