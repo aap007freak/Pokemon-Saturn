@@ -75,7 +75,17 @@ public class MapSegment {
 
     public void render(ShapeRenderer srr, SpriteBatch sb){
         renderer.render();
+    }
 
+    public void dispose(){
+        map.dispose();
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void postRender(ShapeRenderer srr, SpriteBatch sb) {
         if(PlayScreen.debug){
 
             for(Collidable r : collidables){
@@ -85,13 +95,5 @@ public class MapSegment {
                 t.render(srr, sb);
             }
         }
-    }
-
-    public void dispose(){
-        map.dispose();
-    }
-
-    public String getLocation() {
-        return location;
     }
 }

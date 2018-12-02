@@ -69,6 +69,9 @@ public class MapSegmentController {
     public void render(ShapeRenderer srr, SpriteBatch sb){
         currentMap.render(srr, sb);
     }
+    public void postRender(ShapeRenderer srr, SpriteBatch sb){
+        currentMap.postRender(srr, sb);
+    }
 
     public void dispose(){
         currentMap.dispose();
@@ -79,6 +82,8 @@ public class MapSegmentController {
      * util function to scan the specified map directory for all the files, and return them in one big hashmap
      * @return
      */
+
+
     private HashMap<String, MapSegment> scanMaps(){
         HashMap<String, MapSegment> maps = new HashMap<String, MapSegment>();
         File[] mapFiles = new File(MAP_DIR).listFiles();
@@ -96,4 +101,6 @@ public class MapSegmentController {
         }
         return maps;
     }
+
+
 }

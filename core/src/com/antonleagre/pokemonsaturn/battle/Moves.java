@@ -4,8 +4,7 @@ public enum Moves {
 
     POUND("Pound", Category.PHYSICAL, 40, 1f, Pokemon.Type.NORMAL),
     DOUBLE_SLAP("Double Slap", Category.PHYSICAL, 15, 0.85f, Pokemon.Type.NORMAL),
-    KARATE_CHOP("Karate Chop",Category.PHYSICAL, 25, 1f,Pokemon.Type.FIGHTING),
-
+    KARATE_CHOP("Karate Chop",Category.PHYSICAL, 25, 1f,Pokemon.Type.FIGHTING);
 
 
     public enum Category{
@@ -18,7 +17,7 @@ public enum Moves {
     private float accuracy;
     private Pokemon.Type type;
 
-    Moves(String displayName, Category category, int power, float accuracy, Pokemon.Type type) {
+     Moves(String displayName, Category category, int power, float accuracy, Pokemon.Type type) {
         this.displayName = displayName;
         this.category = category;
         this.power = power;

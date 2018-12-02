@@ -30,6 +30,8 @@ public class PlayScreen  implements Screen{
 
     private ShapeRenderer debugRenderer;
 
+    private Texture testTexture;
+
     public PlayScreen(Main main){
         this.main = main;
 
@@ -40,6 +42,7 @@ public class PlayScreen  implements Screen{
         playerTexture = new Texture("prof.png");
         player = new Player(new Vector2(1,1), playerTexture);
 
+        testTexture = new Texture("rival.png");
         mapSegmentController = new MapSegmentController(player, camera);
 
         debugRenderer = new ShapeRenderer();
@@ -70,19 +73,16 @@ public class PlayScreen  implements Screen{
         main.batch.setProjectionMatrix(camera.combined);
         debugRenderer.setProjectionMatrix(camera.combined);
 
-        debugRenderer.begin(ShapeRenderer.ShapeType.Line);
         main.batch.begin();
-
-
         mapSegmentController.render(debugRenderer, main.batch);
         player.render(debugRenderer, main.batch);
-        Vector3 testpos = camera.unproject(new Vector3(250f,250f, 0f));
-        main.batch.draw(new Texture("badlogic.jpg"), testpos.x, testpos.y);
-        debugRenderer.end();
         main.batch.end();
+
+        debugRenderer.begin(ShapeRenderer.ShapeType.Line);
+        mapSegmentController.postRender(debugRenderer, main.batch);
+        player.postRender(debugRenderer, main.batch);
+        debugRenderer.end();
     }
-
-
 
     @Override
     public void resize(int width, int height) {

@@ -92,8 +92,9 @@ public class Person {
         }
     }
 
+
     public void render(ShapeRenderer srr, SpriteBatch sb){
-        if (state == STANDING){
+         if (state == STANDING){
             switch (facing){
                 case UP:
                     sb.draw(standing.get(0), position.cpy().scl(Main.TILE_SIZE).x - Main.TILE_SIZE / 2, position.cpy().scl(Main.TILE_SIZE).y);
@@ -126,11 +127,18 @@ public class Person {
             }
         }
 
-
-        if(PlayScreen.debug) rectangle.render(srr, sb);
+        sb.draw(standing.get(0), position.cpy().scl(Main.TILE_SIZE).x - Main.TILE_SIZE / 2, position.cpy().scl(Main.TILE_SIZE).y);
 
     }
 
+    /**
+     * Post rendering tasks
+     * @param srr
+     * @param sb
+     */
+    public void postRender(ShapeRenderer srr, SpriteBatch sb){
+        if(PlayScreen.debug) rectangle.render(srr, sb);
+    }
 
 
     public void dispose(){

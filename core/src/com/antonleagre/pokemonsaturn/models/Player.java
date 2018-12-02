@@ -21,12 +21,6 @@ public class Player extends Person{
         movementController.update();
     }
 
-    @Override
-    public void render(ShapeRenderer srr, SpriteBatch sb) {
-        super.render(srr, sb);
-
-    }
-
     public MovementController getMovementController() {
         return movementController;
     }
