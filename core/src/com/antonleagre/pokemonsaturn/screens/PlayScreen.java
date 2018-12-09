@@ -30,8 +30,6 @@ public class PlayScreen  implements Screen{
 
     private ShapeRenderer debugRenderer;
 
-    private Texture testTexture;
-
     public PlayScreen(Main main){
         this.main = main;
 
@@ -42,8 +40,7 @@ public class PlayScreen  implements Screen{
         playerTexture = new Texture("prof.png");
         player = new Player(new Vector2(1,1), playerTexture);
 
-        testTexture = new Texture("rival.png");
-        mapSegmentController = new MapSegmentController(player, camera);
+        mapSegmentController = new MapSegmentController(player, main);
 
         debugRenderer = new ShapeRenderer();
     }
@@ -52,6 +49,7 @@ public class PlayScreen  implements Screen{
     public void show() {
         System.out.println("NOW IN PLAYSCREEN");
         mapSegmentController.changeMap("newbarktown");
+
     }
 
     private void update(float delta) {
@@ -72,10 +70,11 @@ public class PlayScreen  implements Screen{
 
         main.batch.setProjectionMatrix(camera.combined);
         debugRenderer.setProjectionMatrix(camera.combined);
-
-        main.batch.begin();
+        //batch doesnt have to open for a map render call
         mapSegmentController.render(debugRenderer, main.batch);
-        player.render(debugRenderer, main.batch);
+
+         main.batch.begin();
+       player.render(debugRenderer, main.batch);
         main.batch.end();
 
         debugRenderer.begin(ShapeRenderer.ShapeType.Line);

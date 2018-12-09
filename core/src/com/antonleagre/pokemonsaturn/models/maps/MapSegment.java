@@ -21,7 +21,6 @@ public class MapSegment {
     private MapSegmentController controller;
 
     private String location;
-    private OrthographicCamera camera;
     private Player player;
 
     private TiledMap map;
@@ -31,10 +30,9 @@ public class MapSegment {
     private ArrayList<SpecialTile> specialTiles;
 
 
-    public MapSegment(MapSegmentController controller, String tmxLcation, OrthographicCamera camera, Player player){
+    public MapSegment(MapSegmentController controller, String tmxLcation, Player player){
         this.controller = controller;
         this.location = tmxLcation;
-        this.camera = camera;
         this.player = player;
         collidables = new ArrayList<>();
         specialTiles = new ArrayList<>();
@@ -45,7 +43,6 @@ public class MapSegment {
         //load the map
         map = new TmxMapLoader().load(location);
         renderer = new OrthogonalTiledMapRenderer(map);
-
         //parse the collision obs
         if(map.getLayers().get("colObs") != null){
             collidables = Util.parseCollisionLayer(map.getLayers().get("colObs"));
@@ -69,12 +66,10 @@ public class MapSegment {
     }
 
     public void update(){
-        //setting the view
-        renderer.setView(camera);
-    }
 
+    }
     public void render(ShapeRenderer srr, SpriteBatch sb){
-        renderer.render();
+
     }
 
     public void dispose(){
@@ -86,14 +81,18 @@ public class MapSegment {
     }
 
     public void postRender(ShapeRenderer srr, SpriteBatch sb) {
-        if(PlayScreen.debug){
 
-            for(Collidable r : collidables){
-                r.render(srr, sb);
-            }
-            for(SpecialTile t : specialTiles){
-                t.render(srr, sb);
-            }
-        }
+    }
+
+    public ArrayList<Collidable> getCollidables() {
+        return collidables;
+    }
+
+    public ArrayList<SpecialTile> getSpecialTiles() {
+        return specialTiles;
+    }
+
+    public TiledMap getMap() {
+        return map;
     }
 }

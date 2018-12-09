@@ -1,21 +1,28 @@
-package com.antonleagre.pokemonsaturn.battle;
+package com.antonleagre.pokemonsaturn.battle.moves;
+
+import com.antonleagre.pokemonsaturn.battle.Battle;
+import com.antonleagre.pokemonsaturn.battle.Pokemon;
 
 public enum Moves {
 
     POUND("Pound", Category.PHYSICAL, 40, 1f, Pokemon.Type.NORMAL),
     DOUBLE_SLAP("Double Slap", Category.PHYSICAL, 15, 0.85f, Pokemon.Type.NORMAL),
-    KARATE_CHOP("Karate Chop",Category.PHYSICAL, 25, 1f,Pokemon.Type.FIGHTING);
+    KARATE_CHOP("Karate Chop",Category.PHYSICAL, 25, 1f,Pokemon.Type.FIGHTING),
+    TESTING_MOVE("TEST", Category.PHYSICAL, 25, 1f, Pokemon.Type.FIGHTING);
 
 
     public enum Category{
         PHYSICAL,
         SPECIAL
     }
+
+
     private String displayName;
     private Category category;
     private int power;
     private float accuracy;
     private Pokemon.Type type;
+    private MoveType moveType;
 
      Moves(String displayName, Category category, int power, float accuracy, Pokemon.Type type) {
         this.displayName = displayName;
@@ -23,6 +30,15 @@ public enum Moves {
         this.power = power;
         this.accuracy = accuracy;
         this.type = type;
+        this.moveType = new StandardMoveType();
+    }
+    Moves(String displayName, Category category, int power, float accuracy, Pokemon.Type type, MoveType specialMove) {
+        this.displayName = displayName;
+        this.category = category;
+        this.power = power;
+        this.accuracy = accuracy;
+        this.type = type;
+        this.moveType = specialMove;
     }
 
     public String getDisplayName() {

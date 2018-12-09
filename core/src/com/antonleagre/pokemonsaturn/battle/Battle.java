@@ -1,5 +1,7 @@
 package com.antonleagre.pokemonsaturn.battle;
 
+import com.antonleagre.pokemonsaturn.battle.moves.Moves;
+
 public class Battle {
 
     public enum Weathers{

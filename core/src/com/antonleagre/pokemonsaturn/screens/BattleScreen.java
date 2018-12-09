@@ -2,7 +2,7 @@ package com.antonleagre.pokemonsaturn.screens;
 
 import com.antonleagre.pokemonsaturn.Main;
 import com.antonleagre.pokemonsaturn.battle.Battle;
-import com.antonleagre.pokemonsaturn.battle.Moves;
+import com.antonleagre.pokemonsaturn.battle.moves.Moves;
 import com.antonleagre.pokemonsaturn.battle.Pokemon;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;

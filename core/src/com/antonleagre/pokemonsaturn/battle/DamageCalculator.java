@@ -1,5 +1,7 @@
 package com.antonleagre.pokemonsaturn.battle;
 
+import com.antonleagre.pokemonsaturn.battle.moves.Moves;
+
 public class DamageCalculator {
     /**
      * (got this of Bulbapedia)
@@ -40,7 +42,6 @@ public class DamageCalculator {
      */
     public static float calculate(Pokemon attackingPokemon, Pokemon defendingPokemon, Moves attackingMove){
        switch (attackingMove.getCategory()){
-
            case PHYSICAL: return  (((((2 * attackingPokemon.getLevel()) / 5) + 2) * attackingMove.getPower() * (attackingPokemon.getAttack() / defendingPokemon.getDefense()) / 50) + 2) * modifier();
            case SPECIAL:
        }

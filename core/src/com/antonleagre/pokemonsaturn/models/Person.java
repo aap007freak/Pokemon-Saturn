@@ -127,8 +127,6 @@ public class Person {
             }
         }
 
-        sb.draw(standing.get(0), position.cpy().scl(Main.TILE_SIZE).x - Main.TILE_SIZE / 2, position.cpy().scl(Main.TILE_SIZE).y);
-
     }
 
     /**
