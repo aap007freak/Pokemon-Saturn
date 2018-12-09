@@ -17,31 +17,56 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class manages and renders the map segments accordingly
+ */
 public class MapSegmentController {
 
-    private Main main;
-    private static final String MAP_DIR = "map/";
-
-    //the hashmap is specified as this: "string: the name of the map, without tmx and map/ ; the mapsegment
-    private HashMap<String, MapSegment> allMaps;
-
-    private MapSegment currentMap;
-    private MapSegment oldMap;
-
     private Player player;
-
 
     //renderer
     private OrthographicCamera mapCam;
     private OrthogonalTiledMapRenderer renderer;
 
+
+    //map vars
+    private static final String MAP_DIR = "map/";
+    //the hashmap is specified as this: "string: the name of the map, without tmx and map/ ; the mapsegment
+    private HashMap<String, MapSegment> allMaps;
+    private MapSegment currentMap;
+    private MapSegment oldMap;
+
     public MapSegmentController(Player player, Main main){
-        this.main =  main;
         this.player = player;
         mapCam = new OrthographicCamera();
         mapCam.setToOrtho(false, 640, 640); // TODO: 12/9/2018 clean this camera code up (why does it have to 640)
         renderer = new OrthogonalTiledMapRenderer(null,   main.batch);
         allMaps = scanMaps();
+    }
+
+    public void update(float dt){
+        renderer.setView(mapCam);
+        currentMap.update();
+
+    }
+
+    public void render(ShapeRenderer srr, SpriteBatch sb){
+        renderer.render();
+    }
+    public void postRender(ShapeRenderer srr, SpriteBatch sb){
+        if(PlayScreen.debug){
+            for(Collidable r : currentMap.getCollidables()){
+                r.render(srr, sb);
+            }
+            for(SpecialTile t : currentMap.getSpecialTiles()){
+                t.render(srr, sb);
+            }
+        }
+    }
+
+    public void dispose(){
+        currentMap.dispose();
+        //dispose all maps;
     }
 
     /**
@@ -76,33 +101,6 @@ public class MapSegmentController {
             oldMap.dispose(); //when the first map there isnt an old map to dispose yet
         }
     }
-
-
-    public void update(float dt){
-        renderer.setView(mapCam);
-        currentMap.update();
-
-    }
-
-    public void render(ShapeRenderer srr, SpriteBatch sb){
-        renderer.render();
-    }
-    public void postRender(ShapeRenderer srr, SpriteBatch sb){
-        if(PlayScreen.debug){
-            for(Collidable r : currentMap.getCollidables()){
-                r.render(srr, sb);
-            }
-            for(SpecialTile t : currentMap.getSpecialTiles()){
-                t.render(srr, sb);
-            }
-        }
-    }
-
-    public void dispose(){
-        currentMap.dispose();
-        //dispose all maps;
-    }
-
     /**
      * util function to scan the specified map directory for all the files, and return them in one big hashmap
      * @return
