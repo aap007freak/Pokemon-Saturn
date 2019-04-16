@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="25" tilewidth="16" tileheight="16" nextobjectid="48">
+ <tileset firstgid="1" name="outside1" tilewidth="16" tileheight="16" tilecount="512" columns="8">
+  <image source="tilesets/ts_outside_1.png" width="128" height="1024"/>
+ </tileset>
+ <layer name="Tile Layer 2" width="15" height="25">
+  <data encoding="base64" compression="zlib">
+   eJwrYmRgKBrFo3iY43iGgXfDYMWkAHL1IeslB1BqJ0wvKeZg8ysh/xMTvoTEybEDGwYAlDyFWA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="15" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztkLEOQDAURdtPxIQJExJEEwyCT3c7vHhp2ooOFl5yltuepu8K8c8/35pIChGDRD53UzgZyC1uh6wHg+PdAnkJKsv5hGwGS8CfNjg7OAJcPaO84N1QxveizPQ0vBvK+F7mfQ7vhjK+l899mxo0DlrWja2j1fOu8nR7h7J4J9u5OVA=
+  </data>
+ </layer>
+ <objectgroup name="colObs">
+  <object id="2" name="test" x="16" y="224" width="48" height="48"/>
+  <object id="5" name="yes" x="144" y="192" width="48" height="48"/>
+  <object id="6" name="b" x="80" y="272" width="48" height="48"/>
+  <object id="8" name="b" x="160" y="272" width="48" height="48"/>
+  <object id="28" x="64" y="352">
+   <polyline points="0,0 96,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="specTiles">
+  <object id="42" x="96" y="192" width="16" height="16">
+   <properties>
+    <property name="action" value="change"/>
+    <property name="changetile" value="1,2"/>
+    <property name="mapchange" value="route2"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

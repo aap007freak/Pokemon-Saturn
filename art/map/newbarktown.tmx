@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="2018.11.29" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="46">
+<map version="1.2" tiledversion="2018.11.29" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="38">
  <tileset firstgid="1" name="fewBuildingsandGrass" tilewidth="16" tileheight="16" tilecount="494" columns="26">
   <image source="tilesets/fewBuildingsandGrass.png" width="425" height="315"/>
  </tileset>
@@ -15,22 +15,10 @@
  </layer>
  <layer id="10" name="houses" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt0dkNgmAQReGhFVsS1CbcKEIRacK1CUVtwrUajwmJz8YHmJ97ku99bsZMKaWUUqo9dSOzGAl66GMQ1X3V7w25eYQxJpgidbhjzs0ZFsixROFwx4qb19hgix32DnccuPmIEieccXG448rNN9zxwBOvBu3oYFbxXIy84rlQdmT23VHUfMu/hfCPT6HsUEoppZRSSqm29QYAeR2d
+   eJzt0rlKA1EYhuGTW7EQ78e4IAGNS6lGu7ilM+MYRDAuhU3cOtfCxpjYadTCxrVzLbwK3+CIwyCIOjhn4HvhKU4T/o+JMUoppZT6TZ0JY7qQRjd60Iu+RNSX/aws945gFGMYxwRyMdsxx71FzGMBi1jCcmBHM+8kWtCKNrRbtHWTW7awjR3sYg/7gRv7eQ9gEBkMYdiiHcfccoIaTnGGc1wEbszzdjAFF9MoWLTjnlse8IgnPOMFr/X/mXlXr8R7BatYwzo2LNrxXUXPATeXcYgKqjiKyQ7/97jk5itc4wa3uLNoRwMmPV/18T1sLwnXE+fC2tGIpoD/zDGfOwp/+J0OpHyiKIzvoR12NYNZH6WUUkoppZSyuTeby0SH
   </data>
  </layer>
- <objectgroup id="6" name="colObs">
-  <object id="38" x="416" y="176" width="80" height="96"/>
-  <object id="39" x="480" y="112"/>
-  <object id="43" x="336" y="336">
-   <polyline points="0,0 -96,0"/>
-  </object>
-  <object id="44" x="288" y="256">
-   <polyline points="0,0 -128,0"/>
-  </object>
-  <object id="45" x="112" y="304">
-   <polyline points="0,0 0,112"/>
-  </object>
- </objectgroup>
+ <objectgroup id="6" name="colObs"/>
  <objectgroup id="7" name="specTiles">
   <object id="32" name="door" x="224" y="416" width="16" height="16">
    <properties>

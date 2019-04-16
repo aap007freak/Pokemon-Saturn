@@ -40,6 +40,7 @@ public class DamageCalculator {
      * @param attackingMove
      * @return
      */
+    /*
     public static float calculate(Pokemon attackingPokemon, Pokemon defendingPokemon, Moves attackingMove){
        switch (attackingMove.getCategory()){
            case PHYSICAL: return  (((((2 * attackingPokemon.getLevel()) / 5) + 2) * attackingMove.getPower() * (attackingPokemon.getAttack() / defendingPokemon.getDefense()) / 50) + 2) * modifier();
@@ -48,6 +49,8 @@ public class DamageCalculator {
         return 0f;
 
     }
+     */
+
 
     private static float modifier(){
         return 1;

@@ -5,12 +5,7 @@ import com.antonleagre.pokemonsaturn.controllers.MapSegmentController;
 import com.antonleagre.pokemonsaturn.models.maps.tiles.SpecialTile;
 import com.antonleagre.pokemonsaturn.models.Player;
 import com.antonleagre.pokemonsaturn.models.collision.Collidable;
-import com.antonleagre.pokemonsaturn.screens.PlayScreen;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
@@ -24,8 +19,7 @@ public class MapSegment {
     private Player player;
 
     private TiledMap map;
-    private TiledMapRenderer renderer;
-
+    
     private ArrayList<Collidable> collidables;
     private ArrayList<SpecialTile> specialTiles;
 
@@ -42,7 +36,6 @@ public class MapSegment {
     public void load(){
         //load the map
         map = new TmxMapLoader().load(location);
-        renderer = new OrthogonalTiledMapRenderer(map);
         //parse the collision obs
         if(map.getLayers().get("colObs") != null){
             collidables = Util.parseCollisionLayer(map.getLayers().get("colObs"));
@@ -65,25 +58,10 @@ public class MapSegment {
 
     }
 
-    public void update(){
-
-    }
-    public void render(ShapeRenderer srr, SpriteBatch sb){
-
-    }
-
     public void dispose(){
         map.dispose();
     }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void postRender(ShapeRenderer srr, SpriteBatch sb) {
-
-    }
-
+    
     public ArrayList<Collidable> getCollidables() {
         return collidables;
     }
@@ -94,5 +72,9 @@ public class MapSegment {
 
     public TiledMap getMap() {
         return map;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }

@@ -46,8 +46,6 @@ public class MapSegmentController {
 
     public void update(float dt){
         renderer.setView(mapCam);
-        currentMap.update();
-
     }
 
     public void render(ShapeRenderer srr, SpriteBatch sb){

@@ -28,8 +28,14 @@ public class Battle {
     }
 
     public void move(Moves move){
-        System.out.println(DamageCalculator.calculate(yourPokemon, enemyPokemon, move));
+//        System.out.println(DamageCalculator.calculate(yourPokemon, enemyPokemon, move));
     }
 
+    public void setWeather(Weathers weather) {
+        this.weather = weather;
+    }
 
+    public Weathers getWeather() {
+        return weather;
+    }
 }

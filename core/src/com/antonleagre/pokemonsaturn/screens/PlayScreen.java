@@ -12,7 +12,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 public class PlayScreen  implements Screen{
@@ -48,6 +47,7 @@ public class PlayScreen  implements Screen{
     @Override
     public void show() {
         System.out.println("NOW IN PLAYSCREEN");
+
         mapSegmentController.changeMap("newbarktown");
 
     }
