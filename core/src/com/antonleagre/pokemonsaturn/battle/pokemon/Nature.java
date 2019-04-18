@@ -1,7 +1,10 @@
 package com.antonleagre.pokemonsaturn.battle.pokemon;
 
+import java.util.Random;
+
 /**
- * todo: document how natures work in the javadoc
+ * Each Pokemon has an assigned nature on generation that boosts a stat by 10% and decreases a stat by 10%
+ * todo further documentation
  */
 public enum Nature{
 
@@ -92,5 +95,9 @@ public enum Nature{
         }else{
             return 1.0f;
         }
+    }
+
+    public static Nature generateNature(){
+        return Nature.values()[new Random().nextInt(24)];
     }
 }
