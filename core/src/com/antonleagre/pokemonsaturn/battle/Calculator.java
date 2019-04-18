@@ -1,6 +1,7 @@
 package com.antonleagre.pokemonsaturn.battle;
 
 import com.antonleagre.pokemonsaturn.battle.moves.Moves;
+import com.antonleagre.pokemonsaturn.battle.pokemon.Nature;
 
 public class DamageCalculator {
     /**
@@ -51,7 +52,20 @@ public class DamageCalculator {
     }
      */
 
+    /**
+     * TThe stat is rounded down if the result is a decimal. The stat is also rounded down before the Nature multiplier, if any, is applied.
+     * @return
+     */
+    public static float calculateStatOtherThanHP(float baseValue, float IV, float EV, int level, Nature nature){
+        float im1 = 2 * baseValue;
+        float im2 = (EV / 4) * level;
+        float im3 = im1 + im2 + IV;
+        float im4 = (im3 / 100) + 5;
+        int roundDown = (int) im4;
 
+        
+
+    }
     private static float modifier(){
         return 1;
     }
