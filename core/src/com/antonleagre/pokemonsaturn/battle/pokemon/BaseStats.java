@@ -41,8 +41,5 @@ public enum BaseStats {
         this.speed = speed;
     }
 
-
-
-
 }
 

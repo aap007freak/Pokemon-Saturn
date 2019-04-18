@@ -10,6 +10,8 @@ import java.util.Random;
  */
 public class IndividualValues {
 
+    //todo: IV's determine Hidden Power move
+
     private int hpIV;
     private int attackIV;
     private int defenseIV;

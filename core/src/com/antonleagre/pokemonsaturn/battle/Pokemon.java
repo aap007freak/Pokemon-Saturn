@@ -2,6 +2,7 @@ package com.antonleagre.pokemonsaturn.battle;
 
 import com.antonleagre.pokemonsaturn.battle.moves.Moves;
 import com.antonleagre.pokemonsaturn.battle.pokemon.BaseStats;
+import com.antonleagre.pokemonsaturn.battle.pokemon.EffortValues;
 import com.antonleagre.pokemonsaturn.battle.pokemon.IndividualValues;
 import com.antonleagre.pokemonsaturn.battle.pokemon.Nature;
 
@@ -31,12 +32,8 @@ public class Pokemon {
         FAIRY
     }
 
-
-
-
-
     //the base stats of that kind of pokemon
-    private BaseStats baseStats;
+    private  BaseStats baseStats;
 
     //pokemon specific things
     private static Type type;
@@ -46,7 +43,8 @@ public class Pokemon {
     private String name;
     private String nickName;
 
-    //stats; these need to be set by the constructor
+    //stats
+    private EffortValues eVs;
     private float hp;
     private float level;
     private float attack;
@@ -62,7 +60,7 @@ public class Pokemon {
 
 
     public Pokemon(){
-
+        eVs = EffortValues.generateEffortValues(EffortValues.EVYieldByPokemon.MARILL);
     }
 
     public String getName() {
@@ -73,7 +71,9 @@ public class Pokemon {
         }
     }
 
-
+    public static void main(String[] args) {
+        System.out.println(new Pokemon().eVs);
+    }
 
 
     @Override
@@ -84,6 +84,8 @@ public class Pokemon {
         builder.append("Nature: ").append(nature);
         builder.append("\n");
         builder.append("IV's: ").append(iVs);
+        builder.append("\n");
+        builder.append("EV's: ").append(eVs);
         builder.append("\n");
         builder.append("Stats: HP: ").append(hp);
         builder.append("\n");
