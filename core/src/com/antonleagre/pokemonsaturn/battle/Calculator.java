@@ -1,9 +1,6 @@
 package com.antonleagre.pokemonsaturn.battle;
 
-import com.antonleagre.pokemonsaturn.battle.moves.Moves;
-import com.antonleagre.pokemonsaturn.battle.pokemon.Nature;
-
-public class DamageCalculator {
+public class Calculator {
     /**
      * (got this of Bulbapedia)
      *
@@ -53,20 +50,82 @@ public class DamageCalculator {
      */
 
     /**
-     * TThe stat is rounded down if the result is a decimal. The stat is also rounded down before the Nature multiplier, if any, is applied.
+     * Calculates the stat of a Pokemon (other than hp) according to its level.
+     * The formula is from Bulbapedia
+     * The stat is rounded down if the result is a decimal. The stat is also rounded down before the Nature multiplier, if any, is applied.
      * @return
      */
-    public static float calculateStatOtherThanHP(float baseValue, float IV, float EV, int level, Nature nature){
-        float im1 = 2 * baseValue;
-        float im2 = (EV / 4) * level;
-        float im3 = im1 + im2 + IV;
-        float im4 = (im3 / 100) + 5;
-        int roundDown = (int) im4;
-
-        
-
+    private static float calculateStatOtherThanHP(float baseValue, float IV, float EV, int level, float natureModifier){
+        int im = (int)((2 * baseValue + IV + (int)(EV/4) * level) / 100);
+       // return (int)( (im + 5) * natureModifier);
+        return roundDown(
+                (roundDown(((2 * baseValue + IV + roundDown(EV / 4) )* 78) / 100) + 5)* natureModifier
+        );
     }
-    private static float modifier(){
-        return 1;
+
+    public static float calculateAttackStat(Pokemon pokemon){
+        float baseValue = pokemon.getBaseStats().getAttack();
+        float IV = pokemon.getiVs().getAttackIV();
+        float EV = pokemon.geteVs().getAttackEV();
+        int level = pokemon.getLevel();
+
+        return calculateStatOtherThanHP(baseValue, IV, EV, level, pokemon.getNature().getAttackModifier());
+    }
+
+    public static float calculateSpecialAttackStat(Pokemon pokemon){
+        float baseValue = pokemon.getBaseStats().getSpattack();
+        float IV = pokemon.getiVs().getSpecialAttackIV();
+        float EV = pokemon.geteVs().getSpecialAttackEV();
+        int level = pokemon.getLevel();
+
+        return calculateStatOtherThanHP(baseValue, IV, EV, level, pokemon.getNature().getSpecialAttackModifier());
+    }
+    public static float calculateDefenseStat(Pokemon pokemon){
+        float baseValue = pokemon.getBaseStats().getDefense();
+        float IV = pokemon.getiVs().getDefenseIV();
+        float EV = pokemon.geteVs().getDefenseEV();
+        int level = pokemon.getLevel();
+
+        return calculateStatOtherThanHP(baseValue, IV, EV, level, pokemon.getNature().getDefenseModifier());
+    }
+
+    public static float calculateSpecialDefenseStat(Pokemon pokemon){
+        float baseValue = pokemon.getBaseStats().getSpDefense();
+        float IV = pokemon.getiVs().getSpecialDefenseIV();
+        float EV = pokemon.geteVs().getSpecialDefenseEV();
+        int level = pokemon.getLevel();
+
+        return calculateStatOtherThanHP(baseValue, IV, EV, level, pokemon.getNature().getSpecialDefenseModifier());
+    }
+
+    public static float calculateSpeedStat(Pokemon pokemon){
+        float baseValue = pokemon.getBaseStats().getSpeed();
+        float IV = pokemon.getiVs().getSpeedIV();
+        float EV = pokemon.geteVs().getSpeedEV();
+        int level = pokemon.getLevel();
+
+        return calculateStatOtherThanHP(baseValue, IV, EV, level, pokemon.getNature().getSpeedModifier());
+    }
+    /**
+     * Calculates the HP stat of a Pokemon according to its level.
+     * The formula is from Bulbapedia
+     * The stat is rounded down if the result is a decimal. The stat is also rounded down before the Nature multiplier, if any, is applied.
+     * @return
+     */
+
+    public static float calculateHPStat(Pokemon pokemon){
+        float baseValue = pokemon.getBaseStats().getHp();
+        float IV = pokemon.getiVs().getHpIV();
+        float EV = pokemon.geteVs().getHpEV();
+        int level = pokemon.getLevel();
+
+        return roundDown(
+                (((2 * baseValue + IV + roundDown(EV / 4) )* 78) / 100) + level + 10
+        );
+    }
+
+
+    private static int roundDown(float value){
+        return (int) Math.floor(value * 100) / 100;
     }
 }

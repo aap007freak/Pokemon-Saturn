@@ -6,6 +6,7 @@ import com.antonleagre.pokemonsaturn.battle.pokemon.EffortValues;
 import com.antonleagre.pokemonsaturn.battle.pokemon.IndividualValues;
 import com.antonleagre.pokemonsaturn.battle.pokemon.Nature;
 
+
 /*
        This class is enum paradise but hey
  */
@@ -33,20 +34,20 @@ public class Pokemon {
     }
 
     //the base stats of that kind of pokemon
-    private  BaseStats baseStats;
+    private BaseStats baseStats;
 
     //pokemon specific things
-    private static Type type;
     private Nature nature;
     private IndividualValues iVs;
 
-    private String name;
-    private String nickName;
+    private final String name;
+    private String nickName = "";
 
     //stats
     private EffortValues eVs;
+    private int level;
+
     private float hp;
-    private float level;
     private float attack;
     private float defense;
     private float spAttack;
@@ -58,23 +59,83 @@ public class Pokemon {
     private Moves move3;
     private Moves move4;
 
+    public Pokemon(int startingLevel, BaseStats base){
+        this.baseStats = base;
+        this.level = startingLevel;
 
-    public Pokemon(){
-        eVs = EffortValues.generateEffortValues(EffortValues.EVYieldByPokemon.MARILL);
+        //capitalize basestats name
+        this.name = baseStats.name().substring(0,1) + baseStats.name().substring(1).toLowerCase();
+
+        this.nature = Nature.generateNature();
+        this.iVs = IndividualValues.generateIVs();
+        this.eVs = EffortValues.generateEffortValues(EffortValues.EVYieldByPokemon.valueOf(baseStats.name())); //todo check errors
+
+        this.hp = Calculator.calculateHPStat(this);
+        this.attack = Calculator.calculateAttackStat(this);
+        this.defense = Calculator.calculateDefenseStat(this);
+        this.spAttack = Calculator.calculateSpecialAttackStat(this);
+        this.spDefense = Calculator.calculateSpecialDefenseStat(this);
+        this.speed = Calculator.calculateSpeedStat(this);
+
+
+
+    }
+
+    public BaseStats getBaseStats() {
+        return baseStats;
+    }
+
+    public Nature getNature() {
+        return nature;
+    }
+
+    public IndividualValues getiVs() {
+        return iVs;
+    }
+
+    public EffortValues geteVs() {
+        return eVs;
+    }
+
+    public float getHp() {
+        return hp;
+    }
+
+    public int getLevel() {
+        return level;
     }
 
     public String getName() {
-        if(nickName.equals(null)){
+        if(nickName.equals("")){
             return name;
         }else{
             return nickName;
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println(new Pokemon().eVs);
+    public float getAttack() {
+        return attack;
     }
 
+    public float getDefense() {
+        return defense;
+    }
+
+    public float getSpAttack() {
+        return spAttack;
+    }
+
+    public float getSpDefense() {
+        return spDefense;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Pokemon(5, BaseStats.BULBASAUR));
+    }
 
     @Override
     public String toString() {

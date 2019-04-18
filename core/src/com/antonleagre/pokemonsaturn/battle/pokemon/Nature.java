@@ -3,39 +3,39 @@ package com.antonleagre.pokemonsaturn.battle.pokemon;
 import java.util.Random;
 
 /**
- * Each Pokemon has an assigned nature on generation that boosts a stat by 10% and decreases a stat by 10%
- * todo further documentation
+ * Each Pokemon has an assigned nature on generation that boosts one stat by 10% and decreases a stat by 10%
+ * The nature of a Pokemon doesn't change when evolving.
  */
 public enum Nature{
 
     HARDY,
-    LONELY(StatModifier.ATTACK, StatModifier.Defense),
+    LONELY(StatModifier.ATTACK, StatModifier.DEFENSE),
     BRAVE(StatModifier.ATTACK, StatModifier.SPEED),
     ADAMANT(StatModifier.ATTACK, StatModifier.SPECIAL_ATTACK),
-    NAUGHTY(StatModifier.ATTACK, StatModifier.SPECIAL_DEfense),
-    BOLD(StatModifier.Defense, StatModifier.ATTACK),
+    NAUGHTY(StatModifier.ATTACK, StatModifier.SPECIAL_DEFENSE),
+    BOLD(StatModifier.DEFENSE, StatModifier.ATTACK),
     DOCILE,
-    RELAXED(StatModifier.Defense, StatModifier.SPEED),
-    IMPISH(StatModifier.Defense, StatModifier.SPECIAL_ATTACK),
-    LAX(StatModifier.Defense, StatModifier.SPECIAL_DEfense),
+    RELAXED(StatModifier.DEFENSE, StatModifier.SPEED),
+    IMPISH(StatModifier.DEFENSE, StatModifier.SPECIAL_ATTACK),
+    LAX(StatModifier.DEFENSE, StatModifier.SPECIAL_DEFENSE),
     TIMID(StatModifier.SPEED, StatModifier.ATTACK),
-    HASTY(StatModifier.SPEED, StatModifier.SPECIAL_DEfense),
+    HASTY(StatModifier.SPEED, StatModifier.SPECIAL_DEFENSE),
     SERIOUS,
     JOLLY(StatModifier.SPEED, StatModifier.SPECIAL_ATTACK),
-    NAIVE(StatModifier.SPEED, StatModifier.SPECIAL_DEfense),
+    NAIVE(StatModifier.SPEED, StatModifier.SPECIAL_DEFENSE),
     MODEST(StatModifier.SPECIAL_ATTACK, StatModifier.ATTACK),
-    MILD(StatModifier.SPECIAL_ATTACK, StatModifier.Defense),
+    MILD(StatModifier.SPECIAL_ATTACK, StatModifier.DEFENSE),
     QUIET(StatModifier.SPECIAL_ATTACK, StatModifier.SPEED),
     BASHFUL,
-    RASH(StatModifier.SPECIAL_ATTACK, StatModifier.SPECIAL_DEfense),
-    CALM(StatModifier.SPECIAL_DEfense, StatModifier.ATTACK),
-    GENTLE(StatModifier.SPECIAL_DEfense, StatModifier.Defense),
-    SASSY(StatModifier.SPECIAL_DEfense, StatModifier.SPEED),
-    CAREFUL(StatModifier.SPECIAL_DEfense, StatModifier.SPECIAL_ATTACK),
+    RASH(StatModifier.SPECIAL_ATTACK, StatModifier.SPECIAL_DEFENSE),
+    CALM(StatModifier.SPECIAL_DEFENSE, StatModifier.ATTACK),
+    GENTLE(StatModifier.SPECIAL_DEFENSE, StatModifier.DEFENSE),
+    SASSY(StatModifier.SPECIAL_DEFENSE, StatModifier.SPEED),
+    CAREFUL(StatModifier.SPECIAL_DEFENSE, StatModifier.SPECIAL_ATTACK),
     QUIRKY;
 
     public enum StatModifier{
-        ATTACK, Defense, SPECIAL_ATTACK, SPECIAL_DEfense, SPEED, NONE
+        ATTACK, DEFENSE, SPECIAL_ATTACK, SPECIAL_DEFENSE, SPEED, NONE
     }
 
     private StatModifier boostedStat;
@@ -70,18 +70,18 @@ public enum Nature{
         }
     }
     public float getDefenseModifier(){
-        if (boostedStat == StatModifier.Defense){
+        if (boostedStat == StatModifier.DEFENSE){
             return 1.1f;
-        }else if (decreasedStat == StatModifier.Defense){
+        }else if (decreasedStat == StatModifier.DEFENSE){
             return 0.9f;
         }else{
             return 1.0f;
         }
     }
     public float getSpecialDefenseModifier(){
-        if (boostedStat == StatModifier.SPECIAL_DEfense){
+        if (boostedStat == StatModifier.SPECIAL_DEFENSE){
             return 1.1f;
-        }else if (decreasedStat == StatModifier.SPECIAL_DEfense){
+        }else if (decreasedStat == StatModifier.SPECIAL_DEFENSE){
             return 0.9f;
         }else{
             return 1.0f;

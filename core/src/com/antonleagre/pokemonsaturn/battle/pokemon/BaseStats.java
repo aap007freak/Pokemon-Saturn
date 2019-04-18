@@ -8,7 +8,8 @@ public enum BaseStats {
     BULBASAUR(Pokemon.Type.GRASS, Pokemon.Type.POISON, 45f, 49f, 49f, 65f, 65f, 45f),
     CHARMANDER(Pokemon.Type.FIRE, 39f, 52f, 43f, 60f, 50f, 65f),
     SQUIRTLE(Pokemon.Type.WATER, 44f, 48f, 65f, 50f, 64f, 43f),
-    MARILL(Pokemon.Type.WATER, Pokemon.Type.FAIRY, 70f, 20f, 50f, 20f, 50f, 40f);
+    MARILL(Pokemon.Type.WATER, Pokemon.Type.FAIRY, 70f, 20f, 50f, 20f, 50f, 40f),
+    GARCHOMP(Pokemon.Type.DRAGON, Pokemon.Type.GROUND, 108f, 130f, 95f, 80f, 85f, 102f);
 
     private final Pokemon.Type type1;
     private final Pokemon.Type type2;
@@ -41,5 +42,36 @@ public enum BaseStats {
         this.speed = speed;
     }
 
+    public Pokemon.Type getType1() {
+        return type1;
+    }
+
+    public Pokemon.Type getType2() {
+        return type2;
+    }
+
+    public float getHp() {
+        return hp;
+    }
+
+    public float getAttack() {
+        return attack;
+    }
+
+    public float getDefense() {
+        return defense;
+    }
+
+    public float getSpattack() {
+        return spattack;
+    }
+
+    public float getSpDefense() {
+        return spDefense;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
 }
 

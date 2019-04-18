@@ -20,7 +20,8 @@ public class EffortValues {
     private EVYieldByPokemon eVYield;
 
     public enum EVYieldByPokemon{
-        MARILL(2,0,0,0,0,0);
+        MARILL(2,0,0,0,0,0),
+        BULBASAUR(0,0,0,1,0,0);
 
         private int hpEVYield;
         private int attackEVYield;
@@ -47,7 +48,30 @@ public class EffortValues {
         this.specialDefenseEV = startingSpecialDefenseEV;
         this.speedEV = startingSpeedEV;
         this.eVYield = pokemon;
+    }
 
+    public int getHpEV() {
+        return hpEV;
+    }
+
+    public int getAttackEV() {
+        return attackEV;
+    }
+
+    public int getDefenseEV() {
+        return defenseEV;
+    }
+
+    public int getSpecialAttackEV() {
+        return specialAttackEV;
+    }
+
+    public int getSpecialDefenseEV() {
+        return specialDefenseEV;
+    }
+
+    public int getSpeedEV() {
+        return speedEV;
     }
 
     @Override
