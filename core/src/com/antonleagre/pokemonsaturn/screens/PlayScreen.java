@@ -2,6 +2,7 @@ package com.antonleagre.pokemonsaturn.screens;
 
 import com.antonleagre.pokemonsaturn.Main;
 import com.antonleagre.pokemonsaturn.Util;
+import com.antonleagre.pokemonsaturn.battle.Battle;
 import com.antonleagre.pokemonsaturn.controllers.MapSegmentController;
 import com.antonleagre.pokemonsaturn.models.Player;
 import com.badlogic.gdx.Gdx;
@@ -29,6 +30,8 @@ public class PlayScreen  implements Screen{
 
     private ShapeRenderer debugRenderer;
 
+    private Battle testBattle;
+
     public PlayScreen(Main main){
         this.main = main;
 
@@ -42,6 +45,8 @@ public class PlayScreen  implements Screen{
         mapSegmentController = new MapSegmentController(player, main);
 
         debugRenderer = new ShapeRenderer();
+
+        testBattle = new Battle();
     }
 
     @Override
@@ -60,6 +65,10 @@ public class PlayScreen  implements Screen{
         player.update(delta);
         mapSegmentController.update(delta);
         Util.lockToTarget(camera, player);
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.M)){
+            testBattle.move();
+        }
     }
     @Override
     public void render(float delta) {

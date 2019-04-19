@@ -70,15 +70,23 @@ public class Pokemon {
         this.iVs = IndividualValues.generateIVs();
         this.eVs = EffortValues.generateEffortValues(EffortValues.EVYieldByPokemon.valueOf(baseStats.name())); //todo check errors
 
+        setStats();
+    }
+
+
+
+    public void levelUp(){
+        level++;
+        setStats();
+    }
+
+    private void setStats(){
         this.hp = Calculator.calculateHPStat(this);
         this.attack = Calculator.calculateAttackStat(this);
         this.defense = Calculator.calculateDefenseStat(this);
         this.spAttack = Calculator.calculateSpecialAttackStat(this);
         this.spDefense = Calculator.calculateSpecialDefenseStat(this);
         this.speed = Calculator.calculateSpeedStat(this);
-
-
-
     }
 
     public BaseStats getBaseStats() {
@@ -134,7 +142,7 @@ public class Pokemon {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Pokemon(5, BaseStats.BULBASAUR));
+        System.out.println(new Pokemon(20, BaseStats.GARCHOMP));
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.antonleagre.pokemonsaturn.battle.moves;
 
-import com.antonleagre.pokemonsaturn.battle.Battle;
 import com.antonleagre.pokemonsaturn.battle.Pokemon;
 
 public enum Moves {
@@ -9,7 +8,6 @@ public enum Moves {
     DOUBLE_SLAP("Double Slap", Category.PHYSICAL, 15, 0.85f, Pokemon.Type.NORMAL),
     KARATE_CHOP("Karate Chop",Category.PHYSICAL, 25, 1f,Pokemon.Type.FIGHTING),
     TESTING_MOVE("TEST", Category.PHYSICAL, 25, 1f, Pokemon.Type.FIGHTING);
-
 
     public enum Category{
         PHYSICAL,
@@ -30,7 +28,7 @@ public enum Moves {
         this.power = power;
         this.accuracy = accuracy;
         this.type = type;
-        this.moveType = new StandardMoveType();
+        this.moveType = null;
     }
     Moves(String displayName, Category category, int power, float accuracy, Pokemon.Type type, MoveType specialMove) {
         this.displayName = displayName;
@@ -38,6 +36,9 @@ public enum Moves {
         this.power = power;
         this.accuracy = accuracy;
         this.type = type;
+        this.moveType = specialMove;
+    }
+    Moves(String name, MoveType specialMove) {
         this.moveType = specialMove;
     }
 

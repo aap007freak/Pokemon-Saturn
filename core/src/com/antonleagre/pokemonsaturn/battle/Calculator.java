@@ -110,7 +110,7 @@ public class Calculator {
      * Calculates the HP stat of a Pokemon according to its level.
      * The formula is from Bulbapedia
      * The stat is rounded down if the result is a decimal. The stat is also rounded down before the Nature multiplier, if any, is applied.
-     * @return
+     * @return the Actual HP stat that the pokemon has (according to Level, EV...)
      */
 
     public static float calculateHPStat(Pokemon pokemon){
