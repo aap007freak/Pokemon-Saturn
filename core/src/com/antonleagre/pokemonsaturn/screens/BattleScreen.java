@@ -2,18 +2,13 @@ package com.antonleagre.pokemonsaturn.screens;
 
 import com.antonleagre.pokemonsaturn.Main;
 import com.antonleagre.pokemonsaturn.battle.Battle;
-import com.antonleagre.pokemonsaturn.battle.moves.Moves;
-import com.antonleagre.pokemonsaturn.battle.Pokemon;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class BattleScreen implements Screen {

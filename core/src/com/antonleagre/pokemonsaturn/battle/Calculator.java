@@ -39,9 +39,9 @@ public class Calculator {
      * @return
      */
     /*
-    public static float calculate(Pokemon attackingPokemon, Pokemon defendingPokemon, Moves attackingMove){
+    public static float calculate(Pokemon attackingPokemon, Pokemon defendingPokemon, BaseMoves attackingMove){
        switch (attackingMove.getCategory()){
-           case PHYSICAL: return  (((((2 * attackingPokemon.getLevel()) / 5) + 2) * attackingMove.getPower() * (attackingPokemon.getAttack() / defendingPokemon.getDefense()) / 50) + 2) * modifier();
+           case PHYSICAL: return  (((((2 * attackingPokemon.getLevel()) / 5) + 2) * attackingMove.getMaxPP() * (attackingPokemon.getAttack() / defendingPokemon.getDefense()) / 50) + 2) * modifier();
            case SPECIAL:
        }
         return 0f;

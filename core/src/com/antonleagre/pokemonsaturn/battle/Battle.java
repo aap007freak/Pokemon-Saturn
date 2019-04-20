@@ -1,7 +1,7 @@
 package com.antonleagre.pokemonsaturn.battle;
 
 import com.antonleagre.pokemonsaturn.battle.moves.Move;
-import com.antonleagre.pokemonsaturn.battle.moves.StatusWeatherMove;
+import com.antonleagre.pokemonsaturn.battle.moves.StatusWeatherMovePattern;
 import com.antonleagre.pokemonsaturn.battle.pokemon.Nature;
 
 public class Battle {
@@ -16,31 +16,40 @@ public class Battle {
     private Move moveToBeUsed;
 
     //battlefield modifiers
-    private StatusWeatherMove.Weather weather;
+    private StatusWeatherMovePattern.Weather weather;
 
 
     public Battle(){
-        moveToBeUsed = new StatusWeatherMove(Pokemon.Type.ICE, "Hail", StatusWeatherMove.Weather.HAIL, 5, 15);
+
     }
 
     public void move(){
         System.out.println("STARTING MOVE:"  + numOfTurns);
-        moveToBeUsed.trigger(this);
         System.out.println("ENDING MOVE:"  + numOfTurns);
         numOfTurns++;
 
     }
 
 
-    public void addWeather(StatusWeatherMove.Weather weather) {
+    public void addWeather(StatusWeatherMovePattern.Weather weather) {
         System.out.println("weather hail added");
     }
 
-    public void removeWeather(StatusWeatherMove.Weather weather) {
+    public void removeWeather(StatusWeatherMovePattern.Weather weather) {
         //note this has to be done at the end of every turnm
         System.out.println("weather hail removed");
     }
 
-    public void addEffect(Nature.StatModifier statModifier, int times) {
+    public void addEffectToSelf(Nature.StatModifier statModifier, int times) {
+
+    }
+    public void addEffectToOpponent(){
+
+    }
+    public void addDamageToSelf(float damage){
+
+    }
+    public void addDamageToOpponent(float damage){
+
     }
 }

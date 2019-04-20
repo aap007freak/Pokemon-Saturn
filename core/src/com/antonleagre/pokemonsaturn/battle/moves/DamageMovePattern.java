@@ -1,16 +1,14 @@
 package com.antonleagre.pokemonsaturn.battle.moves;
 
 import com.antonleagre.pokemonsaturn.battle.Battle;
-import com.antonleagre.pokemonsaturn.battle.Pokemon;
 
-public class StandardMove extends Move {
+public class DamageMovePattern implements MovePattern{
 
-    private float power;
+    private float damage;
 
-    public StandardMove(Category category, Pokemon.Type type, String name, int maxPP) {
-        super(category, type, name, maxPP);
+    public DamageMovePattern(float damage) {
+        this.damage = damage;
     }
-
 
     @Override
     public void beginBattle() {
@@ -19,7 +17,7 @@ public class StandardMove extends Move {
 
     @Override
     public void trigger(Battle battle) {
-
+        battle.addDamageToOpponent(damage);
     }
 
     @Override

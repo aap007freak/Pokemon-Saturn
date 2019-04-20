@@ -1,33 +1,22 @@
 package com.antonleagre.pokemonsaturn.battle.moves;
 
-import com.antonleagre.pokemonsaturn.battle.Pokemon;
-
 /**
- * todo Make this an abstract class maybe
+ * A move is the skill Pokemon primarily use in battle. In battle, a Pokemon uses a move each turn.
+ *
+ * Every move has a BaseMoves object that determine the basic (final) properties and functionality of the move.
+ * Changeable things (like PP or usability) will be defined here.
  */
-public abstract class Move implements MoveType {
+public class Move {
 
-    public enum Category{
-        PHYSICAL,
-        SPECIAL,
-        STATUS
-    }
-
-    private Category category;
-    private Pokemon.Type type;
-
-    private String name;
-    private String description;
-
-    private int maxPP;
+    private BaseMove baseMove;
     private int pp;
 
-    public Move(Category category, Pokemon.Type type, String name, int maxPP) {
-        this.category = category;
-        this.type = type;
-        this.name = name;
-        this.maxPP = maxPP;
+    private boolean usable;
 
-        this.pp = maxPP;
+    public Move(BaseMove baseMove){
+
+        this.baseMove = baseMove;
+        this.pp = baseMove.getMaxPP();
     }
+
 }

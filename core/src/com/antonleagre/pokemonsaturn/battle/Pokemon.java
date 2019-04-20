@@ -1,6 +1,6 @@
 package com.antonleagre.pokemonsaturn.battle;
 
-import com.antonleagre.pokemonsaturn.battle.moves.Moves;
+import com.antonleagre.pokemonsaturn.battle.moves.BaseMove;
 import com.antonleagre.pokemonsaturn.battle.pokemon.BaseStats;
 import com.antonleagre.pokemonsaturn.battle.pokemon.EffortValues;
 import com.antonleagre.pokemonsaturn.battle.pokemon.IndividualValues;
@@ -54,10 +54,10 @@ public class Pokemon {
     private float spDefense;
     private float speed;
 
-    private Moves move1;
-    private Moves move2;
-    private Moves move3;
-    private Moves move4;
+    private BaseMove move1;
+    private BaseMove move2;
+    private BaseMove move3;
+    private BaseMove move4;
 
     public Pokemon(int startingLevel, BaseStats base){
         this.baseStats = base;

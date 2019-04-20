@@ -2,45 +2,44 @@ package com.antonleagre.pokemonsaturn.battle.moves;
 
 import com.antonleagre.pokemonsaturn.battle.Pokemon;
 
-public enum Moves {
+public enum BaseMove {
 
-    POUND("Pound", Category.PHYSICAL, 40, 1f, Pokemon.Type.NORMAL),
+    POUND("Pound", Category.PHYSICAL, 35, 1f, Pokemon.Type.NORMAL, new DamageMovePattern(40)),
     DOUBLE_SLAP("Double Slap", Category.PHYSICAL, 15, 0.85f, Pokemon.Type.NORMAL),
     KARATE_CHOP("Karate Chop",Category.PHYSICAL, 25, 1f,Pokemon.Type.FIGHTING),
     TESTING_MOVE("TEST", Category.PHYSICAL, 25, 1f, Pokemon.Type.FIGHTING);
 
     public enum Category{
         PHYSICAL,
-        SPECIAL
+        SPECIAL,
+        STATUS
     }
-
 
     private String displayName;
     private Category category;
-    private int power;
+    private int maxPP;
     private float accuracy;
     private Pokemon.Type type;
-    private MoveType moveType;
+    private MovePattern movePattern;
 
-     Moves(String displayName, Category category, int power, float accuracy, Pokemon.Type type) {
+    //this is obsolete
+     BaseMove(String displayName, Category category, int maxPP, float accuracy, Pokemon.Type type) {
         this.displayName = displayName;
         this.category = category;
-        this.power = power;
+        this.maxPP = maxPP;
         this.accuracy = accuracy;
         this.type = type;
-        this.moveType = null;
+        this.movePattern = null;
     }
-    Moves(String displayName, Category category, int power, float accuracy, Pokemon.Type type, MoveType specialMove) {
+    BaseMove(String displayName, Category category, int maxPP, float accuracy, Pokemon.Type type, MovePattern specialMove) {
         this.displayName = displayName;
         this.category = category;
-        this.power = power;
+        this.maxPP = maxPP;
         this.accuracy = accuracy;
         this.type = type;
-        this.moveType = specialMove;
+        this.movePattern = specialMove;
     }
-    Moves(String name, MoveType specialMove) {
-        this.moveType = specialMove;
-    }
+
 
     public String getDisplayName() {
         return displayName;
@@ -50,8 +49,8 @@ public enum Moves {
         return category;
     }
 
-    public int getPower() {
-        return power;
+    public int getMaxPP() {
+        return maxPP;
     }
 
     public float getAccuracy() {

@@ -3,7 +3,7 @@ package com.antonleagre.pokemonsaturn.battle.moves;
 import com.antonleagre.pokemonsaturn.battle.Battle;
 import com.antonleagre.pokemonsaturn.battle.Pokemon;
 
-public class StatusWeatherMove extends StatusMove {
+public class StatusWeatherMovePattern extends StatusMovePattern {
 
     public enum Weather{
         CLEAR_SKIES,
@@ -22,8 +22,7 @@ public class StatusWeatherMove extends StatusMove {
 
 
 
-    public StatusWeatherMove(Pokemon.Type type, String name, Weather weatherToEffect, int numOfTurns, int maxPP) {
-        super(type, name, maxPP);
+    public StatusWeatherMovePattern(Pokemon.Type type, String name, Weather weatherToEffect, int numOfTurns, int maxPP) {
         this.weather = weatherToEffect;
         this.numOfTurns = numOfTurns;
     }
