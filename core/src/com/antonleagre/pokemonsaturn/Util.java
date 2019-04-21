@@ -60,27 +60,12 @@ public class Util {
 
             if(collisionObject instanceof PolylineMapObject){
                 float[] vertices = ((PolylineMapObject) collisionObject).getPolyline().getTransformedVertices();
-                System.out.println(vertices.length / 2 - 1);
                 for(int i = 0; i < vertices.length / 2 - 1; i++){ //
                     if(i == 0){
                         CollisionLine line = new CollisionLine(vertices[0],vertices[1],vertices[2],vertices[3]);
-                        if(line.getStartX() != line.getEndX()){
-                           line.setOrientation(CollisionLine.orientations.HORIZONTAL);
-                            System.out.println("HORIZONDTAL");
-                        }else{
-                            line.setOrientation(CollisionLine.orientations.VERTICAL);
-                            System.out.println("VERTICAL");
-                        }
                         collidables.add(line);
                     }else{
                         CollisionLine line = new CollisionLine(vertices[i + 1],vertices[i + 2],vertices[i + 3],vertices[i + 4]);
-                        if(line.getStartX() != line.getEndX()){
-                            line.setOrientation(CollisionLine.orientations.HORIZONTAL);
-                            System.out.println("HORIZONDTAL");
-                        }else{
-                            line.setOrientation(CollisionLine.orientations.VERTICAL);
-                            System.out.println("VERTICAL");
-                        }
                         collidables.add(line);
                     }
 

@@ -13,36 +13,60 @@ public class CollisionLine implements Collidable {
         VERTICAL
     }
 
+    //all in screen coordinates
     private float startX, startY, endX, endY;
 
     private Rectangle previousRectangle;
 
     private orientations orientation;
 
+
     public CollisionLine(float startX, float startY, float endX, float endY){
-        this.startX = startX;
-        this.startY = startY;
-        this.endX = endX;
-        this.endY = endY;
+        if(startX > endX){
+            this.startX = endX;
+            this.endX = startX;
+        }else{
+            this.startX = startX;
+            this.endX = endX;
+        }
+        if(startY > endY){
+            this.startY = endY;
+            this.endY = startY;
+        }else{
+            this.startY = startY;
+            this.endY = endY;
+        }
+
+        if(this.getStartX() != this.getEndX()){
+            this.orientation = CollisionLine.orientations.HORIZONTAL;
+        }else{
+            this.orientation = CollisionLine.orientations.VERTICAL;
+        }
     }
 
+    //ydown
     @Override
-    public boolean collides(Rectangle newProposedPosition, Rectangle currentPosition) {
-        // TODO: 12/30/2017 work this funtion out, how do we check if a player collides with a line?
-        if (orientation == orientations.HORIZONTAL && startY <= newProposedPosition.getY() &&  newProposedPosition.getX() <= endY){
-            if( startY <= currentPosition.getY() &&  currentPosition.getY() <= endY){
-                return true;
-            }else{
-                return false;
+    public boolean collides(Rectangle proposedPosition, Rectangle currentPosition) {
+
+        if(orientation == orientations.VERTICAL){
+            System.out.println("LINE LOC1: " + startX + ", " +  startY);
+            System.out.println("LINE LOC2: " + endX + ", " +  endY);
+            System.out.println("PLAYER LOC: " + proposedPosition.x + ", " + proposedPosition.y);
+            if(startY <= proposedPosition.y && proposedPosition.y < endY){
+                System.out.println("were god captioa nja");
             }
-        }if(orientation == orientations.VERTICAL && startY <= newProposedPosition.getY() &&  newProposedPosition.getY() <= endX){
-            if( startY <= currentPosition.getX() &&  currentPosition.getX() <= endX){
-                return true;
-            }else{
-                return false;
+        }
+        if(orientation == orientations.HORIZONTAL){
+            if(startX <=currentPosition.x && currentPosition.x < endX ){
+                if(currentPosition.y == getStartY()){
+                    //the player is above the line, he can't
+                    return proposedPosition.y == getStartY() - 16;
+                }else if(currentPosition.y == getStartY() - 16){
+                    return proposedPosition.y == getStartY();
+                }
+
+                //todo vertical + performance checking
             }
-        }else{
-            return false;
         }
         /**
          * if((startX <= newCollisionRectangle.getX() && newCollisionRectangle.getX() <= endX) && (startY <= newCollisionRectangle.getY() && newCollisionRectangle.getY() <= endY)){
@@ -51,16 +75,14 @@ public class CollisionLine implements Collidable {
          *         }
           */
 
+        return false;
+
     }
 
     @Override
     public void render(ShapeRenderer srr, SpriteBatch sb) {
         srr.setColor(Color.BLUE);
         srr.line(startX ,startY ,endX, endY);
-    }
-
-    public void setOrientation(orientations orientation) {
-        this.orientation = orientation;
     }
 
     public float getStartX() {
@@ -77,5 +99,10 @@ public class CollisionLine implements Collidable {
 
     public float getEndY() {
         return endY;
+    }
+
+    @Override
+    public String toString() {
+        return "Line Start: (" + startX + ", " + startY + ") . Line End: (" + endX + ", " + endY + ")";
     }
 }
