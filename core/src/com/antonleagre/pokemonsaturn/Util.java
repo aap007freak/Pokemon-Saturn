@@ -1,13 +1,13 @@
 package com.antonleagre.pokemonsaturn;
 
-import com.antonleagre.pokemonsaturn.controllers.MapSegmentController;
-import com.antonleagre.pokemonsaturn.models.maps.tiles.SpecialTile;
-import com.antonleagre.pokemonsaturn.models.maps.tiles.TriggerTile;
-import com.antonleagre.pokemonsaturn.models.AITrainer;
-import com.antonleagre.pokemonsaturn.models.Person;
-import com.antonleagre.pokemonsaturn.models.collision.Collidable;
-import com.antonleagre.pokemonsaturn.models.collision.CollisionLine;
-import com.antonleagre.pokemonsaturn.models.collision.CollisionRectangle;
+import com.antonleagre.pokemonsaturn.engine.AITrainer;
+import com.antonleagre.pokemonsaturn.engine.Person;
+import com.antonleagre.pokemonsaturn.engine.collision.Collidable;
+import com.antonleagre.pokemonsaturn.engine.collision.CollisionLine;
+import com.antonleagre.pokemonsaturn.engine.collision.CollisionRectangle;
+import com.antonleagre.pokemonsaturn.engine.controllers.MapSegmentController;
+import com.antonleagre.pokemonsaturn.engine.maps.tiles.SpecialTile;
+import com.antonleagre.pokemonsaturn.engine.maps.tiles.TriggerTile;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

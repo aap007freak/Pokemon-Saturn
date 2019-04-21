@@ -1,8 +1,8 @@
 package com.antonleagre.pokemonsaturn;
 
-import com.antonleagre.pokemonsaturn.screens.BattleScreen;
-import com.antonleagre.pokemonsaturn.screens.MenuScreen;
-import com.antonleagre.pokemonsaturn.screens.PlayScreen;
+import com.antonleagre.pokemonsaturn.engine.screens.BattleScreen;
+import com.antonleagre.pokemonsaturn.engine.screens.MenuScreen;
+import com.antonleagre.pokemonsaturn.engine.screens.PlayScreen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
