@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="2018.11.29" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="53">
+<map version="1.2" tiledversion="2018.11.29" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="59">
  <tileset firstgid="1" name="fewBuildingsandGrass" tilewidth="16" tileheight="16" tilecount="494" columns="26">
   <image source="tilesets/fewBuildingsandGrass.png" width="425" height="315"/>
  </tileset>
@@ -22,6 +22,12 @@
   <object id="38" x="416" y="176" width="80" height="96"/>
   <object id="52" x="336" y="336">
    <polyline points="0,0 -96,0"/>
+  </object>
+  <object id="55" x="304" y="384">
+   <polyline points="0,0 0,112"/>
+  </object>
+  <object id="58" x="224" y="544">
+   <polyline points="0,0 -128,0"/>
   </object>
  </objectgroup>
  <objectgroup id="7" name="specTiles">

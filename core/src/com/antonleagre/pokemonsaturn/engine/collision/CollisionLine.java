@@ -16,8 +16,6 @@ public class CollisionLine implements Collidable {
     //all in screen coordinates
     private float startX, startY, endX, endY;
 
-    private Rectangle previousRectangle;
-
     private orientations orientation;
 
 
@@ -36,47 +34,35 @@ public class CollisionLine implements Collidable {
             this.startY = startY;
             this.endY = endY;
         }
-
-        if(this.getStartX() != this.getEndX()){
+        if(this.startX != this.endX){
             this.orientation = CollisionLine.orientations.HORIZONTAL;
         }else{
             this.orientation = CollisionLine.orientations.VERTICAL;
         }
     }
-
-    //ydown
     @Override
     public boolean collides(Rectangle proposedPosition, Rectangle currentPosition) {
-
         if(orientation == orientations.VERTICAL){
-            System.out.println("LINE LOC1: " + startX + ", " +  startY);
-            System.out.println("LINE LOC2: " + endX + ", " +  endY);
-            System.out.println("PLAYER LOC: " + proposedPosition.x + ", " + proposedPosition.y);
-            if(startY <= proposedPosition.y && proposedPosition.y < endY){
-                System.out.println("were god captioa nja");
+            if(startY <= currentPosition.y && currentPosition.y < endY){
+                if(currentPosition.x == startX){ //the player to the right
+
+                    return proposedPosition.x == startX - 16;
+                }else if(currentPosition.x == startX - 16){
+                    return proposedPosition.x == startX;
+                }
             }
         }
         if(orientation == orientations.HORIZONTAL){
             if(startX <=currentPosition.x && currentPosition.x < endX ){
-                if(currentPosition.y == getStartY()){
+                if(currentPosition.y == startY){
                     //the player is above the line, he can't
-                    return proposedPosition.y == getStartY() - 16;
-                }else if(currentPosition.y == getStartY() - 16){
-                    return proposedPosition.y == getStartY();
+                    return proposedPosition.y == startY - 16;
+                }else if(currentPosition.y == startY - 16){
+                    return proposedPosition.y == startY;
                 }
-
-                //todo vertical + performance checking
             }
         }
-        /**
-         * if((startX <= newCollisionRectangle.getX() && newCollisionRectangle.getX() <= endX) && (startY <= newCollisionRectangle.getY() && newCollisionRectangle.getY() <= endY)){
-         *             System.out.println("Aw, we collided");
-         *             //if(orientation == orientations.VERTICAL && newCollisionRectangle.getY() != Rectangle.getY()) return true; if(orientation == orientations.HORIZONTAL && newCollisionRectangle.getY() != Rectangle.getX())
-         *         }
-          */
-
         return false;
-
     }
 
     @Override
