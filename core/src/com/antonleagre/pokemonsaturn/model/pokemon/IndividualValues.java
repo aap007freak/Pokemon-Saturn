@@ -58,9 +58,6 @@ public class IndividualValues {
                 "Special Attack: " + specialAttackIV + "; Special Defense: " + specialDefenseIV + "; Speed: " + speedIV;
     }
 
-    public static IndividualValues generateIVs(long seed){
-        return null;
-    }
     public static IndividualValues generateIVs(){
        //ivs range from 0-31
         Random r = new Random();
@@ -73,6 +70,5 @@ public class IndividualValues {
                 r.nextInt(31)
         );
     }
-
 
 }

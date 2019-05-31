@@ -31,7 +31,7 @@ public class MenuScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         main.batch.begin();
-        font.draw(main.batch, "Click to start the game", Main.V_WIDTH / 2, Main.V_HEIGHT / 2);
+        font.draw(main.batch, "Click to start the game", Gdx.graphics.getWidth()/ 2, Gdx.graphics.getHeight()/ 2);
         main.batch.end();
     }
 

@@ -1,15 +1,13 @@
 package com.antonleagre.pokemonsaturn.model;
 
+import com.antonleagre.pokemonsaturn.model.moves.BaseMove;
 import com.antonleagre.pokemonsaturn.model.moves.Move;
 import com.antonleagre.pokemonsaturn.model.pokemon.BaseStats;
 import com.antonleagre.pokemonsaturn.model.pokemon.EffortValues;
 import com.antonleagre.pokemonsaturn.model.pokemon.IndividualValues;
 import com.antonleagre.pokemonsaturn.model.pokemon.Nature;
+import com.google.gson.Gson;
 
-
-/*
-       This class is enum paradise but hey
- */
 public class Pokemon {
 
     public enum Type {
@@ -68,7 +66,7 @@ public class Pokemon {
 
         this.nature = Nature.generateNature();
         this.iVs = IndividualValues.generateIVs();
-        this.eVs = EffortValues.generateEffortValues(EffortValues.EVYieldByPokemonDefeated.valueOf(baseStats.name())); //todo check errors
+        this.eVs = EffortValues.generateEffortValues();
 
         setStats();
     }
@@ -152,36 +150,38 @@ public class Pokemon {
         return move1;
     }
 
-    public void setMove1(Move move1) {
-        this.move1 = move1;
+    public void setMove1(BaseMove move1) {
+        this.move1 = new Move();
     }
 
     public Move getMove2() {
         return move2;
     }
 
-    public void setMove2(Move move2) {
-        this.move2 = move2;
+    public void setMove2(BaseMove move2) {
+        this.move2 = new Move();
     }
 
     public Move getMove3() {
         return move3;
     }
 
-    public void setMove3(Move move3) {
-        this.move3 = move3;
+    public void setMove3(BaseMove move3) {
+        this.move3 = new Move();
     }
 
     public Move getMove4() {
         return move4;
     }
 
-    public void setMove4(Move move4) {
-        this.move4 = move4;
+    public void setMove4(BaseMove move4) {
+        this.move4 = new Move();
     }
 
     public static void main(String[] args) {
-        System.out.println(new Pokemon(20, BaseStats.GARCHOMP));
+        Pokemon pok = new Pokemon(20, BaseStats.GARCHOMP);
+        System.out.println(pok);
+        System.out.println(new Gson().toJson(pok));
     }
 
     @Override

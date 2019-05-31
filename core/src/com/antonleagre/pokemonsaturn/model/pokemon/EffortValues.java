@@ -18,8 +18,6 @@ public class EffortValues {
     private int specialDefenseEV;
     private int speedEV;
 
-    private EVYieldByPokemonDefeated eVYield;
-
     public enum EVYieldByPokemonDefeated {
         MARILL(2,0,0,0,0,0),
         BULBASAUR(0,0,0,1,0,0),
@@ -40,16 +38,6 @@ public class EffortValues {
             this.specialDefenseEVYield = specialDefenseEVYield;
             this.speedEVYield = speedEVYield;
         }
-    }
-
-    public EffortValues(int startingHpEV, int startingAttackEV, int startingDefenseEV, int startingSpecialAttackEV, int startingSpecialDefenseEV, int startingSpeedEV, EVYieldByPokemonDefeated pokemon) {
-        this.hpEV = startingHpEV;
-        this.attackEV = startingAttackEV;
-        this.defenseEV = startingDefenseEV;
-        this.specialAttackEV = startingSpecialAttackEV;
-        this.specialDefenseEV = startingSpecialDefenseEV;
-        this.speedEV = startingSpeedEV;
-        this.eVYield = pokemon;
     }
 
     public int getHpEV() {
@@ -76,14 +64,18 @@ public class EffortValues {
         return speedEV;
     }
 
+    public EffortValues(){
+
+    }
+
+
     @Override
     public String toString() {
         return "HP: " + hpEV + "; Attack: " + attackEV + "; Defense: " + defenseEV + "\n" +
-                "Special Attack: " + specialAttackEV + "; Special Defense: " + specialDefenseEV + "; Speed: " + speedEV + "\n" +
-                "EV's will be added according to template: " + eVYield.name();
+                "Special Attack: " + specialAttackEV + "; Special Defense: " + specialDefenseEV + "; Speed: " + speedEV;
     }
 
-    public static EffortValues generateEffortValues(EVYieldByPokemonDefeated pokemon){
-        return new EffortValues(0,0,0,0,0,0, pokemon);
+    public static EffortValues generateEffortValues(){
+        return new EffortValues();
     }
 }

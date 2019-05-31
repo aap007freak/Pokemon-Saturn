@@ -1,6 +1,7 @@
 package com.antonleagre.pokemonsaturn.model.pokemon;
 
 import com.antonleagre.pokemonsaturn.model.Pokemon;
+import com.google.gson.Gson;
 
 public enum BaseStats {
 
@@ -77,6 +78,10 @@ public enum BaseStats {
     @Override
     public String toString() {
         return name().substring(0,1) + name().substring(1).toLowerCase();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Gson().toJson(GARCHOMP));
     }
 }
 

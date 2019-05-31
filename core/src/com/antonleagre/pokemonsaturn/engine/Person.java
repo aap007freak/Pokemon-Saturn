@@ -4,9 +4,9 @@ import com.antonleagre.pokemonsaturn.Main;
 import com.antonleagre.pokemonsaturn.Util;
 import com.antonleagre.pokemonsaturn.engine.collision.CollisionRectangle;
 import com.antonleagre.pokemonsaturn.engine.screens.PlayScreen;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Interpolation;
@@ -26,7 +26,6 @@ public class Person {
 
     //the position in tile coordinates
     private Vector2 position;
-    private Texture texture;
 
     private CollisionRectangle rectangle;
 
@@ -59,9 +58,8 @@ public class Person {
     private facing facing;
     private states state;
 
-    public Person(Vector2 position, Texture texture) {
+    public Person(Vector2 position, String textureAtlasName, TextureAtlas atlas) {
         this.position = position;
-        this.texture = texture;
         this.rectangle = new CollisionRectangle(position.x * Main.TILE_SIZE, position.y * Main.TILE_SIZE, Main.TILE_SIZE, Main.TILE_SIZE);
 
         facing = DOWN;
@@ -70,7 +68,7 @@ public class Person {
         startPosition = new Vector2(position);
         walkingDrawPosition = new Vector2();
 
-        allAnimationFrames = Util.parseCharacterTextureRegions(texture);
+        allAnimationFrames = Util.parseCharacterTextureRegions(atlas, textureAtlasName);
         standing = allAnimationFrames.get("standing");
         walkingTileDownwards = new Animation(animationSpeed,allAnimationFrames.get("down"), Animation.PlayMode.NORMAL);
         walkingTileUpwards = new Animation(animationSpeed,allAnimationFrames.get("up"), Animation.PlayMode.NORMAL);
@@ -127,6 +125,8 @@ public class Person {
             }
         }
 
+        postRender(srr, sb);
+
     }
 
     /**
@@ -134,14 +134,12 @@ public class Person {
      * @param srr
      * @param sb
      */
-    public void postRender(ShapeRenderer srr, SpriteBatch sb){
+    private void postRender(ShapeRenderer srr, SpriteBatch sb){
         if(PlayScreen.debug) rectangle.render(srr, sb);
     }
 
 
-    public void dispose(){
-        texture.dispose();
-    }
+    public void dispose(){}
 
     /**
      * Called by the MovementController or another controller
@@ -149,9 +147,7 @@ public class Person {
      * @param dy
      */
     public void move(float dx, float dy){
-
         startPosition = position.cpy();
-
         position.x += dx;
         position.y += dy;
         rectangle.setPosition(position.x * Main.TILE_SIZE, position.y * Main.TILE_SIZE);

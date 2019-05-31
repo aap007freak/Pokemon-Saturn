@@ -2,6 +2,8 @@ package com.antonleagre.pokemonsaturn.model.pokemon;
 
 import java.util.Random;
 
+import static com.antonleagre.pokemonsaturn.model.pokemon.Nature.Stat.*;
+
 /**
  * Each Pokemon has an assigned nature on generation that boosts one stat by 10% and decreases a stat by 10%
  * The nature of a Pokemon doesn't change when evolving.
@@ -9,92 +11,76 @@ import java.util.Random;
 public enum Nature{
 
     HARDY,
-    LONELY(StatModifier.ATTACK, StatModifier.DEFENSE),
-    BRAVE(StatModifier.ATTACK, StatModifier.SPEED),
-    ADAMANT(StatModifier.ATTACK, StatModifier.SPECIAL_ATTACK),
-    NAUGHTY(StatModifier.ATTACK, StatModifier.SPECIAL_DEFENSE),
-    BOLD(StatModifier.DEFENSE, StatModifier.ATTACK),
+    LONELY(ATTACK, DEFENSE),
+    BRAVE(ATTACK, SPEED),
+    ADAMANT(ATTACK, SPECIAL_ATTACK),
+    NAUGHTY(ATTACK, SPECIAL_DEFENSE),
+    BOLD(DEFENSE, ATTACK),
     DOCILE,
-    RELAXED(StatModifier.DEFENSE, StatModifier.SPEED),
-    IMPISH(StatModifier.DEFENSE, StatModifier.SPECIAL_ATTACK),
-    LAX(StatModifier.DEFENSE, StatModifier.SPECIAL_DEFENSE),
-    TIMID(StatModifier.SPEED, StatModifier.ATTACK),
-    HASTY(StatModifier.SPEED, StatModifier.SPECIAL_DEFENSE),
+    RELAXED(DEFENSE, SPEED),
+    IMPISH(DEFENSE, SPECIAL_ATTACK),
+    LAX(DEFENSE, SPECIAL_DEFENSE),
+    TIMID(SPEED, ATTACK),
+    HASTY(SPEED, SPECIAL_DEFENSE),
     SERIOUS,
-    JOLLY(StatModifier.SPEED, StatModifier.SPECIAL_ATTACK),
-    NAIVE(StatModifier.SPEED, StatModifier.SPECIAL_DEFENSE),
-    MODEST(StatModifier.SPECIAL_ATTACK, StatModifier.ATTACK),
-    MILD(StatModifier.SPECIAL_ATTACK, StatModifier.DEFENSE),
-    QUIET(StatModifier.SPECIAL_ATTACK, StatModifier.SPEED),
+    JOLLY(SPEED, SPECIAL_ATTACK),
+    NAIVE(SPEED, SPECIAL_DEFENSE),
+    MODEST(SPECIAL_ATTACK, ATTACK),
+    MILD(SPECIAL_ATTACK, DEFENSE),
+    QUIET(SPECIAL_ATTACK, SPEED),
     BASHFUL,
-    RASH(StatModifier.SPECIAL_ATTACK, StatModifier.SPECIAL_DEFENSE),
-    CALM(StatModifier.SPECIAL_DEFENSE, StatModifier.ATTACK),
-    GENTLE(StatModifier.SPECIAL_DEFENSE, StatModifier.DEFENSE),
-    SASSY(StatModifier.SPECIAL_DEFENSE, StatModifier.SPEED),
-    CAREFUL(StatModifier.SPECIAL_DEFENSE, StatModifier.SPECIAL_ATTACK),
+    RASH(SPECIAL_ATTACK, SPECIAL_DEFENSE),
+    CALM(SPECIAL_DEFENSE, ATTACK),
+    GENTLE(SPECIAL_DEFENSE, DEFENSE),
+    SASSY(SPECIAL_DEFENSE, SPEED),
+    CAREFUL(SPECIAL_DEFENSE, SPECIAL_ATTACK),
     QUIRKY;
 
-    public enum StatModifier{
-        ATTACK, DEFENSE, SPECIAL_ATTACK, SPECIAL_DEFENSE, SPEED, NONE
+    public float getAttackModifier() {
+        return get(ATTACK);
+    }
+    public float getDefenseModifier() {
+        return get(DEFENSE);
+    }
+    public float getSpecialAttackModifier(){
+        return get(SPECIAL_ATTACK);
+    }
+    public float getSpecialDefenseModifier(){
+        return get(SPECIAL_DEFENSE);
+    }
+    public float getSpeedModifier(){
+        return get(SPEED);
     }
 
-    private StatModifier boostedStat;
-    private StatModifier decreasedStat;
+    private float get(Stat attack) {
+        if (boostedStat == attack){
+            return 1.1f;
+        }else if(decreasedStat == attack){
+            return 0.9f;
+        }else{
+            return 1.0f;
+        }
+    }
 
-    Nature(StatModifier boostedStat, StatModifier decreasedStat) {
+    enum Stat{
+        ATTACK,
+        DEFENSE,
+        SPECIAL_ATTACK,
+        SPECIAL_DEFENSE,
+        SPEED,
+        NONE
+    }
+    private Stat boostedStat;
+    private Stat decreasedStat;
+
+    Nature(Stat boostedStat, Stat decreasedStat) {
         this.boostedStat = boostedStat;
         this.decreasedStat = decreasedStat;
     }
     Nature(){
         //some natures dont have effects at all
-        this.boostedStat = StatModifier.NONE;
-        this.decreasedStat = StatModifier.NONE;
-    }
-
-    public float getAttackModifier(){
-        if (boostedStat == StatModifier.ATTACK){
-            return 1.1f;
-        }else if(decreasedStat == StatModifier.ATTACK){
-            return 0.9f;
-        }else{
-            return 1.0f;
-        }
-    }
-    public float getSpecialAttackModifier(){
-        if (boostedStat == StatModifier.SPECIAL_ATTACK){
-            return 1.1f;
-        }else if(decreasedStat == StatModifier.SPECIAL_ATTACK){
-            return 0.9f;
-        }else{
-            return 1.0f;
-        }
-    }
-    public float getDefenseModifier(){
-        if (boostedStat == StatModifier.DEFENSE){
-            return 1.1f;
-        }else if (decreasedStat == StatModifier.DEFENSE){
-            return 0.9f;
-        }else{
-            return 1.0f;
-        }
-    }
-    public float getSpecialDefenseModifier(){
-        if (boostedStat == StatModifier.SPECIAL_DEFENSE){
-            return 1.1f;
-        }else if (decreasedStat == StatModifier.SPECIAL_DEFENSE){
-            return 0.9f;
-        }else{
-            return 1.0f;
-        }
-    }
-    public float getSpeedModifier(){
-        if (boostedStat == StatModifier.SPEED){
-            return 1.1f;
-        }else if (decreasedStat == StatModifier.SPEED){
-            return 0.9f;
-        }else{
-            return 1.0f;
-        }
+        this.boostedStat = NONE;
+        this.decreasedStat = NONE;
     }
 
     @Override

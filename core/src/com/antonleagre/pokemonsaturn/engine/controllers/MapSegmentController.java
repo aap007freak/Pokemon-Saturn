@@ -47,10 +47,12 @@ public class MapSegmentController {
         renderer.setView(mapCam);
     }
 
-    public void render(ShapeRenderer srr, SpriteBatch sb){
+    public void render(){
         renderer.render();
+
     }
-    public void postRender(ShapeRenderer srr, SpriteBatch sb){
+
+    public void renderDebugLines(ShapeRenderer srr, SpriteBatch sb){
         if(PlayScreen.debug){
             for(Collidable r : currentMap.getCollidables()){
                 r.render(srr, sb);

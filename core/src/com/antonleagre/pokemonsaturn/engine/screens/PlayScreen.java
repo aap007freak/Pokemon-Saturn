@@ -4,71 +4,60 @@ import com.antonleagre.pokemonsaturn.Main;
 import com.antonleagre.pokemonsaturn.Util;
 import com.antonleagre.pokemonsaturn.engine.Player;
 import com.antonleagre.pokemonsaturn.engine.controllers.MapSegmentController;
-import com.antonleagre.pokemonsaturn.model.Battle;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class PlayScreen  implements Screen{
 
     public static boolean debug = false;
 
-    private Texture playerTexture;
     private Main main;
-    private StretchViewport viewPort;
+
+    private Viewport viewPort;
     private OrthographicCamera camera;
 
+    private Texture playerTexture;
     private Player player;
 
     private MapSegmentController mapSegmentController;
 
     private ShapeRenderer debugRenderer;
 
-    private Battle testBattle;
+//    private Battle testBattle;
 
     public PlayScreen(Main main){
         this.main = main;
 
         camera = new OrthographicCamera();
-        viewPort = new StretchViewport(Main.V_WIDTH / 2, Main.V_HEIGHT / 2, camera);
-        camera.setToOrtho(false, viewPort.getWorldWidth(), viewPort.getWorldHeight());
+        viewPort = new FitViewport(Main.V_WIDTH, Main.V_HEIGHT, camera);
 
-        playerTexture = new Texture("prof.png");
-        player = new Player(new Vector2(1,1), playerTexture);
+        player = new Player(new Vector2(1,1), "tRival", main.assetManager.get("trainersyes.atlas", TextureAtlas.class));
 
         mapSegmentController = new MapSegmentController(player, main);
 
         debugRenderer = new ShapeRenderer();
 
-        testBattle = new Battle();
+//        testBattle = new Battle();
     }
 
     @Override
     public void show() {
-        System.out.println("NOW IN PLAYSCREEN");
-
         mapSegmentController.changeMap("newbarktown");
-
     }
 
     private void update(float delta) {
-        //temp
-        if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            main.setScreen(main.battleScreen);
-        }
+
         player.update(delta);
         mapSegmentController.update(delta);
         Util.lockToTarget(camera, player);
-
-        if(Gdx.input.isKeyJustPressed(Input.Keys.M)){
-            testBattle.move();
-        }
     }
     @Override
     public void render(float delta) {
@@ -79,17 +68,23 @@ public class PlayScreen  implements Screen{
 
         main.batch.setProjectionMatrix(camera.combined);
         debugRenderer.setProjectionMatrix(camera.combined);
+
         //batch doesnt have to open for a map render call
-        mapSegmentController.render(debugRenderer, main.batch);
+        mapSegmentController.render();
 
-         main.batch.begin();
-       player.render(debugRenderer, main.batch);
-        main.batch.end();
-
+        main.batch.begin();
         debugRenderer.begin(ShapeRenderer.ShapeType.Line);
-        mapSegmentController.postRender(debugRenderer, main.batch);
-        player.postRender(debugRenderer, main.batch);
+
+        player.render(debugRenderer, main.batch);
+        mapSegmentController.renderDebugLines(debugRenderer, main.batch);
+
+        main.batch.end();
         debugRenderer.end();
+
+
+       // mapSegmentController.renderDebugLines(debugRenderer, main.batch);
+        //player.renderDebugLines(debugRenderer, main.batch);
+
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.antonleagre.pokemonsaturn;
 
-import com.antonleagre.pokemonsaturn.engine.AITrainer;
 import com.antonleagre.pokemonsaturn.engine.Person;
 import com.antonleagre.pokemonsaturn.engine.collision.Collidable;
 import com.antonleagre.pokemonsaturn.engine.collision.CollisionLine;
@@ -9,14 +8,12 @@ import com.antonleagre.pokemonsaturn.engine.controllers.MapSegmentController;
 import com.antonleagre.pokemonsaturn.engine.maps.tiles.SpecialTile;
 import com.antonleagre.pokemonsaturn.engine.maps.tiles.TriggerTile;
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.PolylineMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
@@ -115,6 +112,7 @@ public class Util {
         return tiles;
     }
 
+    /*
     public static ArrayList<AITrainer> parseTrainerLayer(MapLayer layer){
         ArrayList<AITrainer> trainers = new ArrayList<>();
         for(MapObject object : layer.getObjects()){
@@ -125,6 +123,8 @@ public class Util {
 
         return trainers;
     }
+     */
+
 
 
     /*
@@ -132,32 +132,49 @@ public class Util {
 
      */
 
-    public static HashMap<String, Array<TextureRegion>> parseCharacterTextureRegions(Texture texture){
+    public static HashMap<String, Array<TextureRegion>> parseCharacterTextureRegions(TextureAtlas atlas, String name){
+        //Todo: error checking (if name is spelt wrong fe) (also does this textureatlas stuff create another texture?)
         HashMap<String, Array<TextureRegion>> fullHashmap = new HashMap<>();
-
-        TextureRegion[][] regions = TextureRegion.split(texture, 32, 32);
+        TextureRegionParser trp = new TextureRegionParser(name, atlas);
 
         Array<TextureRegion> standing = new Array<>();
-        standing.addAll(regions[0][0], regions[1][2], regions[2][0], regions[0][1]); //up down left and right
+        standing.addAll(trp.get(1), trp.get(6), trp.get(7), trp.get(2)); //up down left and right
         fullHashmap.put("standing", standing);
 
 
         Array<TextureRegion> walkingLeft = new Array<>();
-        walkingLeft.addAll(regions[1][0], regions[2][0], regions[3][0]); //first row and then column
+        walkingLeft.addAll( trp.get(4), trp.get(7),trp.get(10));
         fullHashmap.put("left", walkingLeft);
 
         Array<TextureRegion> walkingRight = new Array<>();
-        walkingRight.addAll(regions[0][1], regions[1][1], regions[2][1]);  //...
+        walkingRight.addAll( trp.get(5), trp.get(2), trp.get(8));  //...
         fullHashmap.put("right", walkingRight);
 
         Array<TextureRegion> walkingUp= new Array<>();
-        walkingUp.addAll(regions[0][0], regions[3][1], regions[0][2]);
+        walkingUp.addAll( trp.get(3), trp.get(1), trp.get(11));
         fullHashmap.put("up", walkingUp);
 
         Array<TextureRegion> walkingDown = new Array<>();
-        walkingDown.addAll(regions[1][2], regions[2][2], regions[3][2]);
+        walkingDown.addAll(trp.get(9),trp.get(6) ,trp.get(12));
         fullHashmap.put("down", walkingDown);
 
         return fullHashmap;
+    }
+
+    //helper class
+    private static class TextureRegionParser{
+
+        private String name;
+        private TextureAtlas atlas;
+
+        public TextureRegionParser(String name, TextureAtlas atlas) {
+            this.name = name;
+            this.atlas = atlas;
+        }
+
+        public TextureRegion get(int num){
+            return atlas.findRegion(name + num);
+
+        }
     }
 }

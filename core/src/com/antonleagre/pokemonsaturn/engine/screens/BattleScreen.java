@@ -1,7 +1,6 @@
 package com.antonleagre.pokemonsaturn.engine.screens;
 
 import com.antonleagre.pokemonsaturn.Main;
-import com.antonleagre.pokemonsaturn.model.Battle;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -14,7 +13,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 public class BattleScreen implements Screen {
 
     private Main main;
-    private Battle battle;
+   // private Battle battle;
 
     private Stage stage;
     private Texture texture;
@@ -24,7 +23,7 @@ public class BattleScreen implements Screen {
     public BattleScreen(Main main){
         this.main = main;
         stage = new Stage(new ScreenViewport());
-        battle = new Battle();
+//        battle = new Battle();
 
          texture = new Texture(Gdx.files.internal("battle.png"));
         Image image = new Image(texture);
