@@ -39,7 +39,7 @@ public class PlayScreen  implements Screen{
         camera = new OrthographicCamera();
         viewPort = new FitViewport(Main.V_WIDTH, Main.V_HEIGHT, camera);
 
-        player = new Player(new Vector2(1,1), "tRival", main.assetManager.get("trainersyes.atlas", TextureAtlas.class));
+        player = new Player(new Vector2(1,1), "tMom", main.assetManager.get("trainers.atlas", TextureAtlas.class));
 
         mapSegmentController = new MapSegmentController(player, main);
 

@@ -70,6 +70,8 @@ public enum Nature{
         SPEED,
         NONE
     }
+
+
     private Stat boostedStat;
     private Stat decreasedStat;
 

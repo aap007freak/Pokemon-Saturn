@@ -36,7 +36,7 @@ public class Calculator {
      * to be checked seperately.
      * @param attacking The attacking Pokemon
      * @param defending
-     * @param move
+     * @param
      * @return
      */
     public static float calculateDamage(Pokemon attacking, Pokemon defending, float power){
@@ -46,6 +46,7 @@ public class Calculator {
         ) * modifier;
         //todo this hasn't been checked
     }
+
     /**
      * Calculates the stat of a Pokemon (other than hp) according to its level.
      * The formula is from Bulbapedia
@@ -118,9 +119,6 @@ public class Calculator {
 
         return calculateStatOtherThanHP(baseValue, IV, EV, level, pokemon.getNature().getSpeedModifier());
     }
-
-
-
 
     private static int roundDown(float value){
         return (int) Math.floor(value * 100) / 100;

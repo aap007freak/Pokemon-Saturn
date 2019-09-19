@@ -1,8 +1,11 @@
-package com.antonleagre.pokemonsaturn.model;
+package com.antonleagre.pokemonsaturn.util;
 
 import java.io.File;
 
-public class Renamer {
+/**
+
+ */
+public class TextureSplitter {
     public static void main(String[] args) {
         final File inputDir = new File("C:\\Users\\Anton\\Desktop\\Pokemon Saturn\\art\\Trainer Sprites\\trainersfull32");
         Image[][] images = new Image[32][30];
@@ -12,8 +15,17 @@ public class Renamer {
         }
 
         String[][] names = {
-                {"tProfElm", "tRival", "tSteven", "tMediumCandle", "tMediumNoCandle", "tTwinMale", "tTwinFemale", "tYoungster", "tBugCatcher", "tLass"},
+                {"tProfElm", "tRival", "tSteven", "tMediumCandle", "tMediumNoCandle", "", "tTwinFemale", "tYoungster", "tBugCatcher", "tLass"},
+                {"", "", "", "tAceTrainerMale", "tBirdKeeperGuitarist", "tBeauty", "tAceTrainerFemale", "tPokeFanMale" ,"tPokeFanFemaleTeacher"},
+                {"","","","tSuperNerd","tGentleman","tSwimmerMale","tSwimmerFemale", "tBlackBelt","tFalkner","tBugsy"},
+                {"tWhitney", "tMorty", "tChuck", "tJasmine", "tPryce", "tClair", "tWill", "tKoga", "tBruno", "tKaren"},
+                {"tLance","tMom","tLtSurge","tSabrina","tMisty","tErika","tJanine","tBrock","tBlaine","tBlue"},
+                {"tRed", "tBurglar", "tSage", "tRocketGruntFemale", "tRocketGruntMale", "tAriana", "tArcher","tBoarder","tFireBreather","tBiker"},
+                {"tKimonoGirl","tBill","tCaptain","tPokeManiac","tJuggler","tEusine","tMagnus","","tDJMary",""},
+                {"","","","tKurt","","","","tPetrel","tProton","tFisherman"}
+
                 //todo finish this app for the trainernames
+                //not found: Bird Keeper female: camper: HIKER: picknicker: policeman: psychic: schoolkid: skier male and female
         };
 
 
@@ -23,7 +35,13 @@ public class Renamer {
 
                     String baseName;
                     try{
-                         baseName = names[i/4][j/3];
+                        String arrayName =  names[i/4][j/3];
+                        if (arrayName.equals("")){
+                            baseName = "nonameyet" + i + j;
+                        }else{
+                            baseName =  names[i/4][j/3];
+                        }
+
                     }catch (ArrayIndexOutOfBoundsException e){ //no name specified
                         baseName = "nonameyet" + i + j;
                     }

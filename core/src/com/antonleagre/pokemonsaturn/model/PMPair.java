@@ -8,12 +8,14 @@ public class PMPair {
     private Move move;
     private Pokemon target;
 
-    public PMPair(Pokemon user) {
+    public PMPair(Pokemon user, Move move, Pokemon target) {
         this.user = user;
+        this.move = move;
+        this.target = target;
     }
 
-    public Pokemon getUser() {
-        return user;
+    public void use(){
+        move.use(this);
     }
 
     public Move getMove() {
@@ -22,5 +24,14 @@ public class PMPair {
 
     public Pokemon getTarget() {
         return target;
+    }
+
+    public Pokemon getUser() {
+        return user;
+    }
+
+    @Override
+    public String toString() {
+        return user.getName() + getMove().getBase().getDisplayName();
     }
 }

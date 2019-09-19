@@ -10,27 +10,6 @@ import com.google.gson.Gson;
 
 public class Pokemon {
 
-    public enum Type {
-        NORMAL,
-        FIGHTING,
-        FLYING,
-        POISON,
-        GROUND,
-        ROCK,
-        BUG,
-        GHOST,
-        STEEL,
-        FIRE,
-        WATER,
-        GRASS,
-        ELECTRIC,
-        PSYCHIC,
-        ICE,
-        DRAGON,
-        DARK,
-        FAIRY
-    }
-
     //the base stats of that kind of pokemon
     private BaseStats baseStats;
 
@@ -39,7 +18,7 @@ public class Pokemon {
     private IndividualValues iVs;
 
     private final String name;
-    private String nickName = "";
+    private String nickName;
 
     //stats
     private EffortValues eVs;
@@ -57,28 +36,23 @@ public class Pokemon {
     private Move move3;
     private Move move4;
 
+    /**
+     * Will create a pokemon  with no moves
+     * All fields are generated as they would be in the game (e.g. Nature, EV's...)
+     * @param startingLevel
+     * @param base
+     */
     public Pokemon(int startingLevel, BaseStats base){
         this.baseStats = base;
         this.level = startingLevel;
 
         //capitalize basestats name
-        this.name = baseStats.name().substring(0,1) + baseStats.name().substring(1).toLowerCase();
+        this.name = baseStats.name();
 
         this.nature = Nature.generateNature();
         this.iVs = IndividualValues.generateIVs();
         this.eVs = EffortValues.generateEffortValues();
 
-        setStats();
-    }
-
-
-
-    public void levelUp(){
-        level++;
-        setStats();
-    }
-
-    private void setStats(){
         this.hp = Calculator.calculateHPStat(this);
         this.attack = Calculator.calculateAttackStat(this);
         this.defense = Calculator.calculateDefenseStat(this);
@@ -103,20 +77,20 @@ public class Pokemon {
         return eVs;
     }
 
-    public float getHp() {
-        return hp;
-    }
-
     public int getLevel() {
         return level;
     }
 
     public String getName() {
-        if(nickName.equals("")){
+        if(nickName == null){
             return name;
         }else{
             return nickName;
         }
+    }
+
+    public float getHp() {
+        return hp;
     }
 
     public float getAttack() {
@@ -150,64 +124,56 @@ public class Pokemon {
         return move1;
     }
 
-    public void setMove1(BaseMove move1) {
-        this.move1 = new Move();
+    public void setMove1(Move move1) {
+        this.move1 = move1;
     }
 
     public Move getMove2() {
         return move2;
     }
 
-    public void setMove2(BaseMove move2) {
-        this.move2 = new Move();
+    public void setMove2(Move move2) {
+        this.move2 = move2;
     }
 
     public Move getMove3() {
         return move3;
     }
 
-    public void setMove3(BaseMove move3) {
-        this.move3 = new Move();
+    public void setMove3(Move move3) {
+        this.move3 = move3;
     }
 
     public Move getMove4() {
         return move4;
     }
 
-    public void setMove4(BaseMove move4) {
-        this.move4 = new Move();
-    }
-
-    public static void main(String[] args) {
-        Pokemon pok = new Pokemon(20, BaseStats.GARCHOMP);
-        System.out.println(pok);
-        System.out.println(new Gson().toJson(pok));
+    public void setMove4(Move move4) {
+        this.move4 = move4;
     }
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("-----POKEMON-").append(getName()).append("-START-----");
-        builder.append("\n");
-        builder.append("Nature: ").append(nature);
-        builder.append("\n");
-        builder.append("IV's: ").append(iVs);
-        builder.append("\n");
-        builder.append("EV's: ").append(eVs);
-        builder.append("\n");
-        builder.append("Stats: HP: ").append(hp);
-        builder.append("\n");
-        builder.append("       Attack: ").append(attack);
-        builder.append("\n");
-        builder.append("       Defense: ").append(defense);
-        builder.append("\n");
-        builder.append("       Special Attack: ").append(spAttack);
-        builder.append("\n");
-        builder.append("       Special Defense: ").append(spDefense);
-        builder.append("\n");
-        builder.append("       Speed: ").append(speed);
-        builder.append("\n");
-        builder.append("-----POKEMON-").append(getName()).append("-END-------");
-        return builder.toString();
+        return "-----POKEMON-" + getName() + "-START-----" +
+                "\n" +
+                "Nature: " + nature +
+                "\n" +
+                "IV's: " + iVs +
+                "\n" +
+                "EV's: " + eVs +
+                "\n" +
+                "Stats: HP: " + hp +
+                "\n" +
+                "       Attack: " + attack +
+                "\n" +
+                "       Defense: " + defense +
+                "\n" +
+                "       Special Attack: " + spAttack +
+                "\n" +
+                "       Special Defense: " + spDefense +
+                "\n" +
+                "       Speed: " + speed +
+                "\n" +
+                "-----POKEMON-" + getName() + "-END-------";
     }
 }
