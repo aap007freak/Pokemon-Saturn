@@ -52,7 +52,6 @@ public class MapSegment {
         allCollidableObjects.addAll(collidables);
         allCollidableObjects.addAll(specialTiles);
 
-
         player.getMovementController().setObstacles(allCollidableObjects);
 
     }

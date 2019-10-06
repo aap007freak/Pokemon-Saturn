@@ -41,6 +41,7 @@ public class Main extends Game{
 
 	private void loadAssets() {
 		assetManager.load("trainers.atlas", TextureAtlas.class);
+		assetManager.load("pokemonOverworlds.atlas", TextureAtlas.class);
 		assetManager.finishLoading();
 	}
 

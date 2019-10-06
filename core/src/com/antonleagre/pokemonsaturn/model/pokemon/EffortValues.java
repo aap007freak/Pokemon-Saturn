@@ -64,11 +64,6 @@ public class EffortValues {
         return speedEV;
     }
 
-    public EffortValues(){
-
-    }
-
-
     @Override
     public String toString() {
         return "HP: " + hpEV + "; Attack: " + attackEV + "; Defense: " + defenseEV + "\n" +
@@ -78,4 +73,5 @@ public class EffortValues {
     public static EffortValues generateEffortValues(){
         return new EffortValues();
     }
+
 }

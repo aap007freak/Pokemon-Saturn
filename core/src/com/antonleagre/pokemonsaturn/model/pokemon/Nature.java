@@ -71,7 +71,6 @@ public enum Nature{
         NONE
     }
 
-
     private Stat boostedStat;
     private Stat decreasedStat;
 

@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -24,7 +25,7 @@ public class PlayScreen  implements Screen{
     private Viewport viewPort;
     private OrthographicCamera camera;
 
-    private Texture playerTexture;
+    private TextureRegion pokemonTexture;
     private Player player;
 
     private MapSegmentController mapSegmentController;
@@ -45,7 +46,8 @@ public class PlayScreen  implements Screen{
 
         debugRenderer = new ShapeRenderer();
 
-//        testBattle = new Battle();
+        pokemonTexture = main.assetManager.get("pokemonOverworlds.atlas", TextureAtlas.class).findRegion("poPidgeot1");
+
     }
 
     @Override
@@ -74,7 +76,7 @@ public class PlayScreen  implements Screen{
 
         main.batch.begin();
         debugRenderer.begin(ShapeRenderer.ShapeType.Line);
-
+        main.batch.draw(pokemonTexture, 0, 0);
         player.render(debugRenderer, main.batch);
         mapSegmentController.renderDebugLines(debugRenderer, main.batch);
 
@@ -111,7 +113,6 @@ public class PlayScreen  implements Screen{
     public void dispose() {
         mapSegmentController.dispose();
         player.dispose();
-        playerTexture.dispose();
         debugRenderer.dispose();
     }
 }

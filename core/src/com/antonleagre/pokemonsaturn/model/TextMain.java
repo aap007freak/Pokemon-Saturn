@@ -12,11 +12,11 @@ public class TextMain {
         Pokemon pikachu = new Pokemon(5, BaseStats.PIKACHU);
         Pokemon marill = new Pokemon(5, BaseStats.MARILL);
 
-        //in normal scenerios this is already set and we get the move chosen from the user
+        //in normal scenerios this is already set;
         pikachu.setMove1(new Move(pikachu, BaseMove.POUND)); //pikachu's own pound move
         marill.setMove1(new Move(marill, BaseMove.POUND)); //pikachu's own pound move
 
-
+        //setting pikachu to use move1 and maril to use move1
         PMPair myPMP = new PMPair(pikachu, pikachu.getMove1(), marill);
         PMPair enemyPMP = new PMPair(marill, marill.getMove1(), pikachu);
 

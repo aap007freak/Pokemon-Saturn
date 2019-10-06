@@ -1,5 +1,7 @@
 package com.antonleagre.pokemonsaturn.model.pokemon;
 
+import java.util.Optional;
+
 public enum Type {
     NORMAL,
     FIGHTING,
@@ -19,4 +21,8 @@ public enum Type {
     DRAGON,
     DARK,
     FAIRY;
+
+    public static Optional<Type> getWeaknesses(Type type){
+        return null;
+    }
 }

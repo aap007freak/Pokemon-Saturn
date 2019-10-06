@@ -1,5 +1,6 @@
 package com.antonleagre.pokemonsaturn.model.moves;
 
+import com.antonleagre.pokemonsaturn.model.moves.patterns.DamageMovePattern;
 import com.antonleagre.pokemonsaturn.model.pokemon.Type;
 
 public enum BaseMove {

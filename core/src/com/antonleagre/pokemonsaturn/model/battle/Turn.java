@@ -9,9 +9,8 @@ import java.util.List;
 /**
  * A Turn in a battle is essentialy a sequence of PMPairs, together with external modifiers
  */
-
-
 public class Turn {
+
 
     private List<PMPair> pms;
 

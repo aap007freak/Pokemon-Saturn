@@ -25,15 +25,6 @@ public class BattleScreen implements Screen {
         stage = new Stage(new ScreenViewport());
 //        battle = new Battle();
 
-         texture = new Texture(Gdx.files.internal("battle.png"));
-        Image image = new Image(texture);
-        image.setPosition(Gdx.graphics.getWidth() / 3 - image.getWidth() / 2, Gdx.graphics.getHeight() * 2 / 3 - image.getHeight());
-        texture = new Texture(Gdx.files.internal("textboxes.png"));
-        textbox = TextureRegion.split(texture, 254, 47)[0][0];
-        Image textboximage = new Image(textbox);
-        textboximage.scaleBy(1.5f);
-        stage.addActor(textboximage);
-        stage.addActor(image);
     }
 
     @Override
