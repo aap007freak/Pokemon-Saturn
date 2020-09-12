@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public class Main extends Game{
 
-	//World Coordinates, these are the coordinates of the DSi top screen
+	//World Coordinates, these are the pixels of the DSi top screen
 	public static final int V_WIDTH = 256;
 	public static final int V_HEIGHT = 192;
 

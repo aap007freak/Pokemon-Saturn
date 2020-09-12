@@ -23,7 +23,6 @@ public class Person {
     private final float animationSpeed = 1/10f; //ten frames a second
     private final float animationTotalDuration = animationSpeed * 3;
 
-
     //the position in tile coordinates
     private Vector2 position;
 
@@ -31,10 +30,10 @@ public class Person {
 
     private HashMap<String, Array<TextureRegion>> allAnimationFrames;
 
-    private Animation walkingTileUpwards;
-    private Animation walkingTileDownwards;
-    private Animation walkingTileLeft;
-    private Animation walkingTileRight;
+    private Animation<TextureRegion> walkingTileUpwards;
+    private Animation<TextureRegion> walkingTileDownwards;
+    private Animation<TextureRegion> walkingTileLeft;
+    private Animation<TextureRegion> walkingTileRight;
 
     private Array<TextureRegion> standing;
 
@@ -111,6 +110,7 @@ public class Person {
         else if(state == WALKING){
             switch (facing){
                 case UP:
+
                     sb.draw(walkingTileUpwards.getKeyFrame(stateTimer), walkingDrawPosition.x * Main.TILE_SIZE - Main.TILE_SIZE / 2, walkingDrawPosition.y * Main.TILE_SIZE);
                     break;
                 case DOWN:
