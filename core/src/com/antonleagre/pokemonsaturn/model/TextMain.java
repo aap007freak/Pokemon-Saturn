@@ -3,14 +3,15 @@ package com.antonleagre.pokemonsaturn.model;
 import com.antonleagre.pokemonsaturn.model.battle.Turn;
 import com.antonleagre.pokemonsaturn.model.moves.BaseMove;
 import com.antonleagre.pokemonsaturn.model.moves.Move;
+import com.antonleagre.pokemonsaturn.model.pokemon.BasePokemon;
 import com.antonleagre.pokemonsaturn.model.pokemon.BaseStats;
 
 public class TextMain {
 
     public static void main(String[] args) {
 
-        Pokemon pikachu = new Pokemon(5, BaseStats.PIKACHU);
-        Pokemon marill = new Pokemon(5, BaseStats.MARILL);
+        Pokemon pikachu = new Pokemon(5, BasePokemon.PIKACHU);
+        Pokemon marill = new Pokemon(5, BasePokemon.MARILL);
 
         //in normal scenerios this is already set;
         pikachu.setMove1(new Move(pikachu, BaseMove.POUND)); //pikachu's own pound move

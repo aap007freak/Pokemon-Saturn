@@ -2,16 +2,13 @@ package com.antonleagre.pokemonsaturn.model;
 
 import com.antonleagre.pokemonsaturn.model.moves.BaseMove;
 import com.antonleagre.pokemonsaturn.model.moves.Move;
-import com.antonleagre.pokemonsaturn.model.pokemon.BaseStats;
-import com.antonleagre.pokemonsaturn.model.pokemon.EffortValues;
-import com.antonleagre.pokemonsaturn.model.pokemon.IndividualValues;
-import com.antonleagre.pokemonsaturn.model.pokemon.Nature;
+import com.antonleagre.pokemonsaturn.model.pokemon.*;
 import com.google.gson.Gson;
 
 public class Pokemon {
 
     //the base stats of that kind of pokemon
-    private BaseStats baseStats;
+    private BasePokemon baseStats;
 
     //pokemon specific things
     private Nature nature;
@@ -42,7 +39,7 @@ public class Pokemon {
      * @param startingLevel
      * @param base
      */
-    public Pokemon(int startingLevel, BaseStats base){
+    public Pokemon(int startingLevel, BasePokemon base){
         this.baseStats = base;
         this.level = startingLevel;
 
@@ -61,7 +58,7 @@ public class Pokemon {
         this.speed = Calculator.calculateSpeedStat(this);
     }
 
-    public BaseStats getBaseStats() {
+    public BasePokemon getBaseStats() {
         return baseStats;
     }
 

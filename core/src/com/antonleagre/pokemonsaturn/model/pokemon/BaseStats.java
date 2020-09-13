@@ -89,7 +89,8 @@ public enum BaseStats {
     GOLEM(Type.ROCK, Type.GROUND, 80f, 49f, 65f, 55f, 65f, 45),
     PONYTA(Type.FIRE, 50f, 49f, 65f, 65f, 65f, 90),
     RAPIDASH(Type.FIRE, 65f, 49f, 65f, 80f, 80f, 105),
-    SLOWPOKE(Type.WATER, Type.PSYCHIC, 90f, 49f, 65f, 40f, 40f, 15),
+
+            SLOWPOKE(Type.WATER, Type.PSYCHIC, 90f, 49f, 65f, 40f, 40f, 15),
     SLOWBRO(Type.WATER, Type.PSYCHIC, 95f, 49f, 65f, 100f, 80f, 30),
     MAGNEMITE(Type.ELECTRIC, Type.STEEL, 25f, 49f, 65f, 95f, 55f, 45),
     MAGNETON(Type.ELECTRIC, Type.STEEL, 50f, 49f, 65f, 120f, 70f, 70),
@@ -335,3 +336,4 @@ public enum BaseStats {
 
 }
 
+    
