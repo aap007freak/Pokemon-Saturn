@@ -66,7 +66,7 @@ public class Calculator {
      * @return the Actual HP stat that the pokemon has (according to Level, EV...)
      */
     public static float calculateHPStat(Pokemon pokemon){
-        float baseValue = pokemon.getBaseStats().getHp();
+        float baseValue = pokemon.getBaseStats().getBaseHP();
         float IV = pokemon.getiVs().getHpIV();
         float EV = pokemon.geteVs().getHpEV();
         int level = pokemon.getLevel();
@@ -77,7 +77,7 @@ public class Calculator {
     }
 
     public static float calculateAttackStat(Pokemon pokemon){
-        float baseValue = pokemon.getBaseStats().getAttack();
+        float baseValue = pokemon.getBaseStats().getBaseAttack();
         float IV = pokemon.getiVs().getAttackIV();
         float EV = pokemon.geteVs().getAttackEV();
         int level = pokemon.getLevel();
@@ -86,7 +86,7 @@ public class Calculator {
     }
 
     public static float calculateSpecialAttackStat(Pokemon pokemon){
-        float baseValue = pokemon.getBaseStats().getSpattack();
+        float baseValue = pokemon.getBaseStats().getBaseSpAttack();
         float IV = pokemon.getiVs().getSpecialAttackIV();
         float EV = pokemon.geteVs().getSpecialAttackEV();
         int level = pokemon.getLevel();
@@ -94,7 +94,7 @@ public class Calculator {
         return calculateStatOtherThanHP(baseValue, IV, EV, level, pokemon.getNature().getSpecialAttackModifier());
     }
     public static float calculateDefenseStat(Pokemon pokemon){
-        float baseValue = pokemon.getBaseStats().getDefense();
+        float baseValue = pokemon.getBaseStats().getBaseDefense();
         float IV = pokemon.getiVs().getDefenseIV();
         float EV = pokemon.geteVs().getDefenseEV();
         int level = pokemon.getLevel();
@@ -103,7 +103,7 @@ public class Calculator {
     }
 
     public static float calculateSpecialDefenseStat(Pokemon pokemon){
-        float baseValue = pokemon.getBaseStats().getSpDefense();
+        float baseValue = pokemon.getBaseStats().getBaseSpDefense();
         float IV = pokemon.getiVs().getSpecialDefenseIV();
         float EV = pokemon.geteVs().getSpecialDefenseEV();
         int level = pokemon.getLevel();
@@ -112,7 +112,7 @@ public class Calculator {
     }
 
     public static float calculateSpeedStat(Pokemon pokemon){
-        float baseValue = pokemon.getBaseStats().getSpeed();
+        float baseValue = pokemon.getBaseStats().getBaseSpeed();
         float IV = pokemon.getiVs().getSpeedIV();
         float EV = pokemon.geteVs().getSpeedEV();
         int level = pokemon.getLevel();

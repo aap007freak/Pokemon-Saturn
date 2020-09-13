@@ -1,5 +1,6 @@
 package com.antonleagre.pokemonsaturn.model.pokemon;
 
+// TODO: 13/09/2020 flavour text has pokemon names capitalized
 public enum BasePokemon {
     BULBASAUR("Bulbasaur", 1, 231, 45f, 49f, 49f, 65f,65f, 45f, 0.875f, Type.GRASS, Type.POISON ,"Seed Pokémon", "2'04", 15.2, 45.0, 5120, 1059860, ExpGrowth.MEDIUM_SLOW, 70, "Green", 0, EggGroup.MONSTER, EggGroup.PLANT, "The seed on its back is filled with nutrients. The seed grows steadily larger as its body grows.", "It carries a seed on its back right from birth. As it grows older, the seed also grows larger."),
     IVYSAUR("Ivysaur", 2, 232, 60f, 62f, 63f, 80f,80f, 60f, 0.875f, Type.GRASS, Type.POISON ,"Seed Pokémon", "3'03", 28.7, 45.0, 5120, 1059860, ExpGrowth.MEDIUM_SLOW, 70, "Green", 0, EggGroup.MONSTER, EggGroup.PLANT, "Exposure to sunlight adds to its strength. Sunlight also makes the bud on its back grow larger.", "If the bud on its back starts to smell sweet, it is evidence that the large flower will soon bloom."),
@@ -261,7 +262,7 @@ public enum BasePokemon {
     private final float baseDefense;
     private final float baseSpAttack;
     private final float baseSpDefense;
-    private final float speed;
+    private final float baseSpeed;
     private final float maleToFemaleRatio; //can be null
     private final Type type1;
     private final Type type2; //if one type -> same as type 1
@@ -281,7 +282,7 @@ public enum BasePokemon {
     private final String ssFlavourText;
 
     BasePokemon(String name, int nationalDexNumber, int johtoDexNumber, float baseHP, float baseAttack, float baseDefense,
-                float baseSpAttack, float baseSpDefense, float speed, float maleToFemaleRatio, Type type1, Type type2,
+                float baseSpAttack, float baseSpDefense, float baseSpeed, float maleToFemaleRatio, Type type1, Type type2,
                 String classification, String height, double weight, double captureRate, int baseEggSteps, int expPointsNeeded,
                 ExpGrowth expGrowth, int baseHappiness, String color, int safarizoneFleeRate, EggGroup eggGroup1,
                 EggGroup eggGroup2, String hgFlavourText, String ssFlavourText) {
@@ -293,7 +294,7 @@ public enum BasePokemon {
         this.baseDefense = baseDefense;
         this.baseSpAttack = baseSpAttack;
         this.baseSpDefense = baseSpDefense;
-        this.speed = speed;
+        this.baseSpeed = baseSpeed;
         this.maleToFemaleRatio = maleToFemaleRatio;
         this.type1 = type1;
         this.type2 = type2;
@@ -314,7 +315,7 @@ public enum BasePokemon {
     }
 
     BasePokemon(String name, int nationalDexNumber, int johtoDexNumber, float baseHP, float baseAttack, float baseDefense,
-                float baseSpAttack, float baseSpDefense, float speed, float maleToFemaleRatio, Type type1,String classification,
+                float baseSpAttack, float baseSpDefense, float baseSpeed, float maleToFemaleRatio, Type type1, String classification,
                 String height, double weight, double captureRate, int baseEggSteps, int expPointsNeeded,
                 ExpGrowth expGrowth, int baseHappiness, String color, int safarizoneFleeRate, EggGroup eggGroup1,
                 EggGroup eggGroup2, String hgFlavourText, String ssFlavourText) {
@@ -326,7 +327,7 @@ public enum BasePokemon {
         this.baseDefense = baseDefense;
         this.baseSpAttack = baseSpAttack;
         this.baseSpDefense = baseSpDefense;
-        this.speed = speed;
+        this.baseSpeed = baseSpeed;
         this.maleToFemaleRatio = maleToFemaleRatio;
         this.type1 = type1;
         this.type2 = type1;
@@ -344,5 +345,109 @@ public enum BasePokemon {
         this.eggGroup2 = eggGroup2;
         this.hgFlavourText = hgFlavourText;
         this.ssFlavourText = ssFlavourText;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getNationalDexNumber() {
+        return nationalDexNumber;
+    }
+
+    public int getJohtoDexNumber() {
+        return johtoDexNumber;
+    }
+
+    public float getBaseHP() {
+        return baseHP;
+    }
+
+    public float getBaseAttack() {
+        return baseAttack;
+    }
+
+    public float getBaseDefense() {
+        return baseDefense;
+    }
+
+    public float getBaseSpAttack() {
+        return baseSpAttack;
+    }
+
+    public float getBaseSpDefense() {
+        return baseSpDefense;
+    }
+
+    public float getBaseSpeed() {
+        return baseSpeed;
+    }
+
+    public float getMaleToFemaleRatio() {
+        return maleToFemaleRatio;
+    }
+
+    public Type getType1() {
+        return type1;
+    }
+
+    public Type getType2() {
+        return type2;
+    }
+
+    public String getClassification() {
+        return classification;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public double getCaptureRate() {
+        return captureRate;
+    }
+
+    public int getBaseEggSteps() {
+        return baseEggSteps;
+    }
+
+    public int getExpPointsNeeded() {
+        return expPointsNeeded;
+    }
+
+    public ExpGrowth getExpGrowth() {
+        return expGrowth;
+    }
+
+    public int getBaseHappiness() {
+        return baseHappiness;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getSafarizoneFleeRate() {
+        return safarizoneFleeRate;
+    }
+
+    public EggGroup getEggGroup1() {
+        return eggGroup1;
+    }
+
+    public EggGroup getEggGroup2() {
+        return eggGroup2;
+    }
+
+    public String getHgFlavourText() {
+        return hgFlavourText;
+    }
+
+    public String getSsFlavourText() {
+        return ssFlavourText;
     }
 }
