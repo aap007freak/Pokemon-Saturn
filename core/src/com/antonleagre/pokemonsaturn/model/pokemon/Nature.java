@@ -71,8 +71,8 @@ public enum Nature{
         NONE
     }
 
-    private Stat boostedStat;
-    private Stat decreasedStat;
+    private final Stat boostedStat;
+    private final Stat decreasedStat;
 
     Nature(Stat boostedStat, Stat decreasedStat) {
         this.boostedStat = boostedStat;

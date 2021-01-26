@@ -1,7 +1,8 @@
 package com.antonleagre.pokemonsaturn.engine.maps;
 
 import com.antonleagre.pokemonsaturn.Util;
-import com.antonleagre.pokemonsaturn.engine.Player;
+import com.antonleagre.pokemonsaturn.engine.entities.NPC;
+import com.antonleagre.pokemonsaturn.engine.entities.Player;
 import com.antonleagre.pokemonsaturn.engine.collision.Collidable;
 import com.antonleagre.pokemonsaturn.engine.controllers.MapSegmentController;
 import com.antonleagre.pokemonsaturn.engine.maps.tiles.SpecialTile;
@@ -12,15 +13,16 @@ import java.util.ArrayList;
 
 public class MapSegment {
 
-    private MapSegmentController controller;
+    private final MapSegmentController controller;
 
-    private String location;
-    private Player player;
+    private final String location;
+    private final Player player;
 
     private TiledMap map;
     
     private ArrayList<Collidable> collidables;
     private ArrayList<SpecialTile> specialTiles;
+    private final ArrayList<NPC> npcs;
 
 
     public MapSegment(MapSegmentController controller, String tmxLcation, Player player){
@@ -29,6 +31,7 @@ public class MapSegment {
         this.player = player;
         collidables = new ArrayList<>();
         specialTiles = new ArrayList<>();
+        npcs = new ArrayList<>();
     }
 
 

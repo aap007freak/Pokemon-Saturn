@@ -1,8 +1,8 @@
 package com.antonleagre.pokemonsaturn.engine.controllers;
 
 import com.antonleagre.pokemonsaturn.Main;
-import com.antonleagre.pokemonsaturn.engine.Person;
-import com.antonleagre.pokemonsaturn.engine.Player;
+import com.antonleagre.pokemonsaturn.engine.entities.Person;
+import com.antonleagre.pokemonsaturn.engine.entities.Player;
 import com.antonleagre.pokemonsaturn.engine.collision.Collidable;
 import com.antonleagre.pokemonsaturn.engine.collision.CollisionRectangle;
 import com.antonleagre.pokemonsaturn.engine.screens.PlayScreen;
@@ -12,7 +12,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
 
-import static com.antonleagre.pokemonsaturn.engine.Person.states.STANDING;
+import static com.antonleagre.pokemonsaturn.engine.entities.Person.states.STANDING;
 
 public class MovementController {
 
@@ -67,4 +67,5 @@ public class MovementController {
     public void setObstacles(ArrayList<Collidable> obstacles) {
         this.obstacles = obstacles;
     }
+
 }

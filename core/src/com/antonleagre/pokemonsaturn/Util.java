@@ -1,6 +1,6 @@
 package com.antonleagre.pokemonsaturn;
 
-import com.antonleagre.pokemonsaturn.engine.Person;
+import com.antonleagre.pokemonsaturn.engine.entities.Person;
 import com.antonleagre.pokemonsaturn.engine.collision.Collidable;
 import com.antonleagre.pokemonsaturn.engine.collision.CollisionLine;
 import com.antonleagre.pokemonsaturn.engine.collision.CollisionRectangle;

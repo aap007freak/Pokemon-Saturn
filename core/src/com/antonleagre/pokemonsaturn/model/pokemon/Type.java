@@ -22,6 +22,8 @@ public enum Type {
     DARK,
     FAIRY;
 
+
+
     public static Optional<Type> getWeaknesses(Type type){
         return null;
     }

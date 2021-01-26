@@ -1,7 +1,7 @@
 package com.antonleagre.pokemonsaturn.engine.controllers;
 
 import com.antonleagre.pokemonsaturn.Main;
-import com.antonleagre.pokemonsaturn.engine.Player;
+import com.antonleagre.pokemonsaturn.engine.entities.Player;
 import com.antonleagre.pokemonsaturn.engine.collision.Collidable;
 import com.antonleagre.pokemonsaturn.engine.maps.MapSegment;
 import com.antonleagre.pokemonsaturn.engine.maps.tiles.SpecialTile;

@@ -2,8 +2,9 @@ package com.antonleagre.pokemonsaturn.engine.screens;
 
 import com.antonleagre.pokemonsaturn.Main;
 import com.antonleagre.pokemonsaturn.Util;
-import com.antonleagre.pokemonsaturn.engine.Player;
+import com.antonleagre.pokemonsaturn.engine.entities.Player;
 import com.antonleagre.pokemonsaturn.engine.controllers.MapSegmentController;
+import com.antonleagre.pokemonsaturn.engine.ui.UIController;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -28,6 +29,7 @@ public class PlayScreen  implements Screen{
     private Player player;
 
     private MapSegmentController mapSegmentController;
+    private UIController uiController;
 
     private ShapeRenderer debugRenderer;
 
@@ -47,6 +49,8 @@ public class PlayScreen  implements Screen{
 
         pokemonTexture = main.assetManager.get("pokemonOverworlds.atlas", TextureAtlas.class).findRegion("poPidgeot1");
 
+        uiController = new UIController(null);
+
     }
 
     @Override
@@ -58,6 +62,7 @@ public class PlayScreen  implements Screen{
 
         player.update(delta);
         mapSegmentController.update(delta);
+        uiController.update(delta);
         Util.lockToTarget(camera, player);
     }
     @Override
@@ -75,12 +80,15 @@ public class PlayScreen  implements Screen{
 
         main.batch.begin();
         debugRenderer.begin(ShapeRenderer.ShapeType.Line);
+
         main.batch.draw(pokemonTexture, 0, 0);
         player.render(debugRenderer, main.batch);
         mapSegmentController.renderDebugLines(debugRenderer, main.batch);
 
         main.batch.end();
         debugRenderer.end();
+
+        uiController.renderUI();
 
 
        // mapSegmentController.renderDebugLines(debugRenderer, main.batch);
@@ -91,6 +99,7 @@ public class PlayScreen  implements Screen{
     @Override
     public void resize(int width, int height) {
         viewPort.update(width, height);
+        uiController.resize(width, height);
     }
 
     @Override
@@ -113,5 +122,6 @@ public class PlayScreen  implements Screen{
         mapSegmentController.dispose();
         player.dispose();
         debugRenderer.dispose();
+        uiController.dispose();
     }
 }

@@ -1,14 +1,19 @@
 package com.antonleagre.pokemonsaturn.util;
 
+import com.antonleagre.pokemonsaturn.model.pokemon.BasePokemon;
+
 import java.io.File;
+
 
 public class PokemonOverworldsTextureRenamer {
 
-    public static void main(String[] args) {
-        final File inputDir = new File("C:\\Users\\Anton\\Desktop\\Pokemon Saturn\\art\\Pokemon Overworlds Sprites\\kantohalfsplit");
+    private static final File inputDir = new File("C:\\Users\\Anton\\Pokemon-Saturn\\art\\gen3owswithoutlastrow");
+    private static final File outputDir = new File("C:\\Users\\Anton\\Pokemon-Saturn\\art\\gen3output");
+    private static final int numRows = 40;
+    private static final int numCollumns = 26;
 
-        int numRows = 28;
-        int numCollumns = 30;
+    public static void main(String[] args) {
+
         if (numRows * numCollumns != inputDir.listFiles().length){
             throw new IllegalArgumentException("The amount of files are not the same as the dimensions specified");
         }
@@ -20,20 +25,31 @@ public class PokemonOverworldsTextureRenamer {
         }
 
         String[][] newNames = {
-                {"poBulbasaur", "poIvysaur", "poVenosaurMale", "poVenosaurfemale", "poCharmander", "poCharmeleon", "poCharizard", "poSquirtle", "poWartortle", "poBlastoise", "poCaterpie", "poMetapod", "poButterfree", "poWeedle", "poKakuna"},
-                {"poBeedrill", "poPidgey", "poPidgeotto", "poPidgeot", "poRattata", "poRaticate", "poSpearow", "pofearow", "poEkans", "poArbok", "poPikachuMale", "poPikachufemale", "poRaichu", "poSandslash", "poSandshrew"}
+            {"Treecko", "Grovyle", "Sceptile", "Torchic", "Combusken", "Blaziken", "Mudkip", "Marshtomp", "Swampert", "Poochyena", "Mightyena", "Zigzagoon", "Linoone"},
+            {"Wurmple", "Silcoon", "Beautifly", "Cascoon", "Dustox", "Lotad", "Lombre", "Ludicolo", "Seedot", "Nuzleaf", "Shiftry", "Taillow", "Swellow"},
+            {"Wingull", "Pelipper", "Ralts", "Kirlia", "Gardevoir", "Surskit", "Masquerain", "Shroomish", "Breloom", "Slakoth", "Vigoroth", "Slaking", "Nincada"},
+            {"Ninjask", "Shedinja", "Whismur", "Loudred", "Exploud", "Makuhita", "Hariyama", "Azurill", "Nosepass", "Skitty", "Delcatty", "Sableye", "Mawile"},
+            {"Aron", "Lairon", "Aggron", "Meditite", "Medicham", "Electrike", "Manectric", "Plusle", "Minun", "Volbeat", "Illumise", "Roselia", "Gulpin"},
+            {"Swalot", "Carvanha", "Sharpedo", "Wailmer", "Wailord", "Wailord2", "Numel", "Camerupt", "Torkoal", "Spoink", "Grumpig", "Spinda", "Trapinch"},
+                    {"Vibrava", "Flygon", "Cacnea", "Cacturne", "Swablu", "Altaria", "Zangoose", "Seviper", "Lunatone", "Solrock", "Barboach", "Whiscash", "Corphish"},
+            { "Crawdaunt", "Baltoy", "Claydol", "Lileep", "Cradily", "Anorith", "Armaldo", "Feebas", "Milotic", "Castform", "Kecleon", "Shuppet", "Banette"},
+            {"Duskull", "Dusclops", "Tropius", "Chimecho", "Absol", "Wynaut", "Snorunt", "Glalie", "Spheal", "Sealeo", "Walrein", "Clamperl", "Huntail"},
+            { "Gorebyss", "Relicanth", "Luvdisc", "Bagon", "Shelgon", "Salamence", "Beldum", "Metang", "Metagross", "Regirock", "Regice", "Registeel", "Latias"}
 
         };
 
-        //todo finish this app for the pokemon overworlds, can also be used for johto
 
-        for (int i = 0; i < images.length; i += 4){
+
+        if (newNames.length != numRows / 4 || newNames[0].length != numCollumns / 2){
+            throw new IllegalArgumentException("The dimensions of the names don't match the dimensions of the image array");
+        }
+
+         for (int i = 0; i < images.length; i += 4){
             for (int j = 0; j < images[i].length; j += 2) {
                 //(i,j) is the first image of the character sprites
 
                 String baseName;
                 try{
-
                     String arrayName =  newNames[i/4][j/2];
                     if (arrayName.equals("")){
                         baseName = "nonameyet" + i + j;
@@ -60,8 +76,6 @@ public class PokemonOverworldsTextureRenamer {
             }
 
         }
-
-
     }
 
 
@@ -78,15 +92,36 @@ public class PokemonOverworldsTextureRenamer {
         public Image(File file, int numRows, int numCollumns){
             this.original = file;
             this.index = Integer.parseInt(this.original.getName().substring(5).replace(".png", ""));
-            this.row = (index - 1) / numCollumns;
-            this.collum = (index - 30*row) - 1;
-
+            this.row = (index - 2) / numCollumns;
+            this.collum = (index) % numCollumns;
         }
 
         public void rename(String newName){
-            newfile = new File(original.getPath().substring(0, 84) + newName + ".png");
+            newfile = new File(original.getParentFile() + "\\" + newName + ".png");
             original.renameTo(newfile);
         }
+    }
+
+    /**
+     *
+     * @param startingNationalDexNumber
+     * @param numPokemonsperRow
+     * @param numPokemons
+     * @return
+     */
+    private static String generateNameString(int startingNationalDexNumber, int numPokemonsperRow, int numPokemons){
+        StringBuilder s = new StringBuilder();
+        BasePokemon[] basePokemons = BasePokemon.values();
+        for (int i = startingNationalDexNumber; i <= (startingNationalDexNumber + numPokemons - 1); i++){
+            if(i % numPokemonsperRow == 0){ //last pokemon of a row
+                s.append("\"").append(basePokemons[i-1].getName()).append("\", ");
+            }else if(i % numPokemonsperRow == 1){ //first pokemon of a row
+                s.append("\"").append(basePokemons[i-1].getName()).append("\", ");
+            }else{
+                s.append("\"").append(basePokemons[i-1].getName()).append("\", ");
+            }
+        }
+        return s.toString();
     }
 
 }

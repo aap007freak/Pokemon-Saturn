@@ -10,7 +10,7 @@ public class TrainerSpritesTextureRenamer {
         final File inputDir = new File("C:\\Users\\Anton\\Desktop\\Pokemon Saturn\\art\\Trainer Sprites\\trainersfull32");
         Image[][] images = new Image[32][30];
         for (File file : inputDir.listFiles()){
-            Image img = new Image(file);
+            Image img = new Image(file, 30);
             images[img.row][img.collum] = img;
         }
 
@@ -73,11 +73,11 @@ public class TrainerSpritesTextureRenamer {
         int collum;
         int row;
 
-        public Image(File file){
+        public Image(File file, int columns){
             this.original = file;
             this.index = Integer.parseInt(this.original.getName().substring(5).replace(".png", ""));
-            this.row = (index - 1) / 30;
-            this.collum = (index - 30*row) - 1;
+            this.row = (index - 1) / columns;
+            this.collum = (index - columns*row) - 1;
 
         }
 

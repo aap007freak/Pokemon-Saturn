@@ -12,12 +12,12 @@ public class IndividualValues {
 
     //todo: IV's determine Hidden Power move
 
-    private int hpIV;
-    private int attackIV;
-    private int defenseIV;
-    private int specialAttackIV;
-    private int specialDefenseIV;
-    private int speedIV;
+    private final int hpIV;
+    private final int attackIV;
+    private final int defenseIV;
+    private final int specialAttackIV;
+    private final int specialDefenseIV;
+    private final int speedIV;
 
     public IndividualValues(int hpIV, int attackIV, int defenseIV, int specialAttackIV, int specialDefenseIV, int speedIV) {
         this.hpIV = hpIV;

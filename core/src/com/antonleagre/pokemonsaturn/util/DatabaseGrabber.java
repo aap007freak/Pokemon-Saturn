@@ -17,20 +17,21 @@ import java.awt.geom.FlatteningPathIterator;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Optional;
 
 public class DatabaseGrabber {
 
     public static final int LAST_POKEDEX_NUM_TO_BE_ADDED = 251;
 
     public static void main(String[] args) {
-        newer(251);
+        newer(252, 386);
     }
 
     /**
      * Gets the data link from the Serebii database, which is the only one that has "outdated" info (i. e. without fairy).
      */
-    public static void newer(int lastPokedexNum){
-        for (int i = 1; i <= lastPokedexNum; i++){
+    public static void newer(int startNum, int lastNum){
+        for (int i = startNum; i <= lastNum; i++){
             try {
                 Element parsed = Jsoup.connect(String.format("https://www.serebii.net/pokedex-dp/%03d.shtml", i)).get();
 
@@ -65,7 +66,10 @@ public class DatabaseGrabber {
                 Elements noTDrows = noTD.select("td"); //this also selects nested stuff, and that's why the code below is a bit weird
                 int nationalIndex = 0;
                 int johtoIndex = 0;
-                if (noTDrows.size() < 6){ //only has national and johto
+                if(noTDrows.size() == 3){ //only national
+                    nationalIndex = Integer.parseInt(noTDrows.get(2).text().substring(1));
+                    johtoIndex = 6969;
+                }else if (noTDrows.size() < 6){ //only has national and johto
                      nationalIndex = Integer.parseInt(noTDrows.get(2).text().substring(1));
                      johtoIndex = Integer.parseInt(noTDrows.get(4).text().substring(1));
                 }else if(noTDrows.size() == 7){ //has national, johto and sinnoh
@@ -74,6 +78,11 @@ public class DatabaseGrabber {
                 }else{
                     // TODO: 13/09/2020 error catching
                     System.out.println("Parsed incorrectly");
+                }
+
+                //the johto one isn't correct for pokemon higher than nr 251.
+                if(i > 251){
+                    johtoIndex = 6969;
                 }
 
                 //female to male ratio
@@ -121,7 +130,7 @@ public class DatabaseGrabber {
 
                 //weight in pounds
                 String weightText = row8data.get(2).text();
-                float weight = Float.parseFloat(weightText.substring(0, weightText.length() - 3));
+                float weight = Float.parseFloat(weightText.substring(0, weightText.length() - 3).replace(",", ""));
 
                 //capture rate
                 float captureRate = Float.parseFloat(row8data.get(3).text());
@@ -207,13 +216,29 @@ public class DatabaseGrabber {
                  */
 
                 /*
-                    18th til 23th rows store:
+                    //18th til 23th rows store:
                     flavour text
+                    this actually changes based on how much games the pokemon is in, so we need to search all rows sadly
                 */
-                Element row22 = rows.get(21); //hg row
-                String hgFlavourText = row22.select("td").get(1).text();
-                Element row23 = rows.get(22); //ss row
-                String ssFlavourText = row23.select("td").get(1).text();
+                String hgFlavourText = "";
+                Optional<Element> hgRow = rows.stream()
+                        .filter(e -> e.select("td.heartgold").size() != 0)
+                        .findFirst();
+                if (hgRow.isPresent()){
+                    hgFlavourText = hgRow.get().select("td").get(1).text();
+                }
+
+                String ssFlavourText = "";
+                Optional<Element> ssRow = rows.stream()
+                        .filter(e -> e.select("td.soulsilver").size() != 0)
+                        .findFirst();
+                if (hgRow.isPresent()){
+                    ssFlavourText = hgRow.get().select("td").get(1).text();
+                }
+
+                if (ssFlavourText.equals("")){
+                    ssFlavourText = hgFlavourText;
+                }
 
                 //basestats are at the bottom
                 Collections.reverse(rows);

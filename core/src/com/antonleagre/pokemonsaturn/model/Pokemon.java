@@ -8,25 +8,25 @@ import com.google.gson.Gson;
 public class Pokemon {
 
     //the base stats of that kind of pokemon
-    private BasePokemon baseStats;
+    private final BasePokemon baseStats;
 
     //pokemon specific things
-    private Nature nature;
-    private IndividualValues iVs;
+    private final Nature nature;
+    private final IndividualValues iVs;
 
     private final String name;
     private String nickName;
 
     //stats
-    private EffortValues eVs;
-    private int level;
+    private final EffortValues eVs;
+    private final int level;
 
     private float hp;
-    private float attack;
-    private float defense;
-    private float spAttack;
-    private float spDefense;
-    private float speed;
+    private final float attack;
+    private final float defense;
+    private final float spAttack;
+    private final float spDefense;
+    private final float speed;
 
     private Move move1;
     private Move move2;
@@ -44,7 +44,7 @@ public class Pokemon {
         this.level = startingLevel;
 
         //capitalize basestats name
-        this.name = baseStats.name();
+        this.name = baseStats.toString();
 
         this.nature = Nature.generateNature();
         this.iVs = IndividualValues.generateIVs();
