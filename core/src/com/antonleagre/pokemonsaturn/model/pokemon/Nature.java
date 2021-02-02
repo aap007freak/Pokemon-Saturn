@@ -52,10 +52,10 @@ public enum Nature{
         return get(SPEED);
     }
 
-    private float get(Stat attack) {
-        if (boostedStat == attack){
+    private float get(Stat stat) {
+        if (boostedStat == stat){
             return 1.1f;
-        }else if(decreasedStat == attack){
+        }else if(decreasedStat == stat){
             return 0.9f;
         }else{
             return 1.0f;
@@ -86,7 +86,7 @@ public enum Nature{
 
     @Override
     public String toString() {
-        return name().substring(0,1) + name().substring(1).toLowerCase();
+        return name().charAt(0) + name().substring(1).toLowerCase();
     }
 
     public static Nature generateNature(){

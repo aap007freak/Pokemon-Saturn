@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * Individual Values (IV's) are the Pokemon equivalent of genes.
- * They determine (with Natures, Basestats...) the stats of a Pokemon
+ * They determine (together with Natures, Basestats...) the stats of a Pokemon
  *
  * from Gen 3 onwards IV's range from 0 - 31
  */
@@ -58,6 +58,11 @@ public class IndividualValues {
                 "Special Attack: " + specialAttackIV + "; Special Defense: " + specialDefenseIV + "; Speed: " + speedIV;
     }
 
+    /**
+     * Generates IV's based on a Seedless Random() Object.
+     * All IV's will range from 0 - 31 inclusive
+     * @return generated IV's
+     */
     public static IndividualValues generateIVs(){
        //ivs range from 0-31
         Random r = new Random();

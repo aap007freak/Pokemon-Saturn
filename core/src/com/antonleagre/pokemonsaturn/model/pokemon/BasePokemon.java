@@ -1,8 +1,13 @@
 package com.antonleagre.pokemonsaturn.model.pokemon;
 
 import java.util.Optional;
+import java.util.Set;
 
 // TODO: 13/09/2020 flavour text has pokemon names capitalized
+
+/**
+ * This Enum is a database-like file that holds all <b>unchanging</b> information about a {@link com.antonleagre.pokemonsaturn.model.Pokemon Pokemon}.
+ */
 public enum BasePokemon {
     BULBASAUR("Bulbasaur", 1, 231, 45f, 49f, 49f, 65f,65f, 45f, 0.875f, Type.GRASS, Type.POISON ,"Seed Pokémon", "2'04", 15.2, 45.0, 5120, 1059860, ExpGrowth.MEDIUM_SLOW, 70, "Green", 0, EggGroup.MONSTER, EggGroup.PLANT, "The seed on its back is filled with nutrients. The seed grows steadily larger as its body grows.", "It carries a seed on its back right from birth. As it grows older, the seed also grows larger."),
     IVYSAUR("Ivysaur", 2, 232, 60f, 62f, 63f, 80f,80f, 60f, 0.875f, Type.GRASS, Type.POISON ,"Seed Pokémon", "3'03", 28.7, 45.0, 5120, 1059860, ExpGrowth.MEDIUM_SLOW, 70, "Green", 0, EggGroup.MONSTER, EggGroup.PLANT, "Exposure to sunlight adds to its strength. Sunlight also makes the bud on its back grow larger.", "If the bud on its back starts to smell sweet, it is evidence that the large flower will soon bloom."),
@@ -526,7 +531,36 @@ public enum BasePokemon {
     private final String hgFlavourText;
     private final String ssFlavourText;
 
-
+    /**
+     * Constructs A BasePokemon with 2 Types.
+     *
+     * @param name The In-game name
+     * @param nationalDexNumber National Dex Number. In general all entries in the Enum should be in order
+     * @param johtoDexNumber Johto Pokedex Number. Should be 6969 for Pokemon not in the Johto Dex todo Change this mess
+     * @param baseHP base HP stat
+     * @param baseAttack base Attack stat
+     * @param baseDefense base Defense stat
+     * @param baseSpAttack base Special Attack stat
+     * @param baseSpDefense base Special Defense stat
+     * @param baseSpeed base Speed stat
+     * @param maleToFemaleRatio male to female ratio - may be null
+     * @param type1 Type 1
+     * @param type2 Type 2
+     * @param classification A description of the Pokemon
+     * @param height Height (in feet and inches)
+     * @param weight In Pounds
+     * @param captureRate Capture Rate
+     * @param baseEggSteps Amount of steps needed to hatch
+     * @param expPointsNeeded Exp. Points needed for level 100
+     * @param expGrowth see {@link ExpGrowth}
+     * @param baseHappiness Base Hapiness
+     * @param color String that contains color
+     * @param safarizoneFleeRate Safari Zone flee rate, is 0 for Pokemon not in the Safari Zone
+     * @param eggGroup1 Egg Group 1. See {@link EggGroup}
+     * @param eggGroup2 Egg Group 2. See {@link EggGroup}
+     * @param hgFlavourText Flavour Text - Dex Info in Hearthgold
+     * @param ssFlavourText Flavour Text - Dex Info in Soulsilver
+     */
     BasePokemon(String name, int nationalDexNumber, int johtoDexNumber, float baseHP, float baseAttack, float baseDefense,
                 float baseSpAttack, float baseSpDefense, float baseSpeed, float maleToFemaleRatio, Type type1, Type type2,
                 String classification, String height, double weight, double captureRate, int baseEggSteps, int expPointsNeeded,
@@ -560,6 +594,35 @@ public enum BasePokemon {
         this.ssFlavourText = ssFlavourText;
     }
 
+    /**
+     * Constructs A BasePokemon with 1 Type.
+     *
+     * @param name The In-game name
+     * @param nationalDexNumber National Dex Number. In general all entries in the Enum should be in order
+     * @param johtoDexNumber Johto Pokedex Number. Should be 6969 for Pokemon not in the Johto Dex todo Change this mess
+     * @param baseHP base HP stat
+     * @param baseAttack base Attack stat
+     * @param baseDefense base Defense stat
+     * @param baseSpAttack base Special Attack stat
+     * @param baseSpDefense base Special Defense stat
+     * @param baseSpeed base Speed stat
+     * @param maleToFemaleRatio male to female ratio - may be null
+     * @param type1 Type 1
+     * @param classification A description of the Pokemon
+     * @param height Height (in feet and inches)
+     * @param weight In Pounds
+     * @param captureRate Capture Rate
+     * @param baseEggSteps Amount of steps needed to hatch
+     * @param expPointsNeeded Exp. Points needed for level 100
+     * @param expGrowth see {@link ExpGrowth}
+     * @param baseHappiness Base Hapiness
+     * @param color String that contains color
+     * @param safarizoneFleeRate Safari Zone flee rate, is 0 for Pokemon not in the Safari Zone
+     * @param eggGroup1 Egg Group 1. See {@link EggGroup}
+     * @param eggGroup2 Egg Group 2. See {@link EggGroup}
+     * @param hgFlavourText Flavour Text - Dex Info in Hearthgold
+     * @param ssFlavourText Flavour Text - Dex Info in Soulsilver
+     */
     BasePokemon(String name, int nationalDexNumber, int johtoDexNumber, float baseHP, float baseAttack, float baseDefense,
                 float baseSpAttack, float baseSpDefense, float baseSpeed, float maleToFemaleRatio, Type type1, String classification,
                 String height, double weight, double captureRate, int baseEggSteps, int expPointsNeeded,
@@ -593,17 +656,22 @@ public enum BasePokemon {
         this.ssFlavourText = ssFlavourText;
     }
 
+    /**
+     * @return In-game Name, may contain spaces and other non-alpha characters
+     */
     public String getIngameName() {
         return name;
     }
 
+    /**
+     * @return  National Dex Number
+     */
     public int getNationalDexNumber() {
         return nationalDexNumber;
     }
 
     /**
-     *
-     * @return Optional for number in Johto pokedex (Sinnoh and Hoenn pokemon don't have a johto  number)
+     * @return Optional for number in Johto pokedex (Sinnoh and Hoenn pokemon don't have a johto number)
      */
     public Optional<Integer> getJohtoDexNumber() {
         if(johtoDexNumber == 0){
@@ -613,99 +681,169 @@ public enum BasePokemon {
         }
     }
 
+    /**
+     * @return Base HP stat
+     */
     public float getBaseHP() {
         return baseHP;
     }
 
+    /**
+     * @return Base Attack stat
+     */
     public float getBaseAttack() {
         return baseAttack;
     }
 
+    /**
+     * @return Base Defense stat
+     */
     public float getBaseDefense() {
         return baseDefense;
     }
 
+    /**
+     * @return Base Special Attack stat
+     */
     public float getBaseSpAttack() {
         return baseSpAttack;
     }
 
+    /**
+     * @return Base Special Defense stat
+     */
     public float getBaseSpDefense() {
         return baseSpDefense;
     }
 
+    /**
+     * @return Base Speed stat
+     */
     public float getBaseSpeed() {
         return baseSpeed;
     }
 
     /**
-     *
-     * @return male to female ratio of this pokemon.
+     * @return Male to female ratio of this pokemon.
      * Returns null if the pokemon is genderless.
+     * Returns 1 if the pokemon only has a male variant.
+     * Returns 0 if the pokemon only has a female variant.
      */
     public float getMaleToFemaleRatio() {
         return maleToFemaleRatio;
     }
 
+    /**
+     * @return {@link Type} 1
+     */
     public Type getType1() {
         return type1;
     }
 
+    /**
+     * @return {@link Type} 2
+     * If A pokemon only has 1 type, will return the same value as {@link #getType1()}
+     */
     public Type getType2() {
         return type2;
     }
 
+    /**
+     * @return A short description. E.g. "Seed Pokémon"
+     */
     public String getClassification() {
         return classification;
     }
 
+    /**
+     * @return Height in Feet and Inches. E.g. "10'06"
+     */
     public String getHeight() {
         return height;
     }
 
+    /**
+     * @return Weight in Pounds
+     */
     public double getWeight() {
         return weight;
     }
 
+    /**
+     * @return Capture Rate
+     */
     public double getCaptureRate() {
         return captureRate;
     }
 
+    /**
+     * @return Base Egg steps needed to hatch
+     */
     public int getBaseEggSteps() {
         return baseEggSteps;
     }
 
+    /**
+     * @return Exp. Points needed to reach level 100.
+     */
     public int getExpPointsNeeded() {
         return expPointsNeeded;
     }
 
+    /**
+     * @return The Exp. Growth. See {@link ExpGrowth}
+     */
     public ExpGrowth getExpGrowth() {
         return expGrowth;
     }
 
+    /**
+     * @return Base Happiness
+     */
     public int getBaseHappiness() {
         return baseHappiness;
     }
 
+    /**
+     * @return String containing Color
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * @return Safari zone Flee Rate
+     * Returns 0 if the Pokemon doesn't appear in the Safari Zone
+     */
     public int getSafarizoneFleeRate() {
         return safarizoneFleeRate;
     }
 
+    /**
+     * @return EggGroup 1. See {@link EggGroup}
+     */
     public EggGroup getEggGroup1() {
         return eggGroup1;
     }
 
+    /**
+     * @return EggGroup 2. See {@link EggGroup}
+     * Returns the same value as {@link #getEggGroup1()} if the Pokemon only has one Egggroup
+     */
     public EggGroup getEggGroup2() {
         return eggGroup2;
     }
 
+    /**
+     * @return Flavour Text - Dex Info in Hearthgold
+     */
     public String getHgFlavourText() {
         return hgFlavourText;
     }
 
+    /**
+     * @return Flavour Text - Dex Info in Soulsilver
+     */
     public String getSsFlavourText() {
         return ssFlavourText;
     }
