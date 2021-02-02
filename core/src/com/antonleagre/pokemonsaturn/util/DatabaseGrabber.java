@@ -24,7 +24,7 @@ public class DatabaseGrabber {
     public static final int LAST_POKEDEX_NUM_TO_BE_ADDED = 251;
 
     public static void main(String[] args) {
-        newer(252, 386);
+        newer(387, 493);
     }
 
     /**

@@ -17,7 +17,4 @@ public enum EggGroup {
     DRAGON,
     NO_EGGS,
     GENDER_UNKNOWN //apparently pokemon in this egg group are put in other groups, but you can still recognize them bc they're genderless
-
-
-
 }

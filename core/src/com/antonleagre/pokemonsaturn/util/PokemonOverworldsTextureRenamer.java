@@ -114,11 +114,11 @@ public class PokemonOverworldsTextureRenamer {
         BasePokemon[] basePokemons = BasePokemon.values();
         for (int i = startingNationalDexNumber; i <= (startingNationalDexNumber + numPokemons - 1); i++){
             if(i % numPokemonsperRow == 0){ //last pokemon of a row
-                s.append("\"").append(basePokemons[i-1].getName()).append("\", ");
+                s.append("\"").append(basePokemons[i-1].getIngameName()).append("\", ");
             }else if(i % numPokemonsperRow == 1){ //first pokemon of a row
-                s.append("\"").append(basePokemons[i-1].getName()).append("\", ");
+                s.append("\"").append(basePokemons[i-1].getIngameName()).append("\", ");
             }else{
-                s.append("\"").append(basePokemons[i-1].getName()).append("\", ");
+                s.append("\"").append(basePokemons[i-1].getIngameName()).append("\", ");
             }
         }
         return s.toString();

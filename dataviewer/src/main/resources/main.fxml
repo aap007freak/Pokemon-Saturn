@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="980.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.antonleagre.pokemonsaturn.dataviewer.Controller">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="980.0" prefWidth="1000.0">
+         <children>
+            <HBox prefHeight="75.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label text="Search By Pokemon">
+                     <padding>
+                        <Insets left="100.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="searchPkmnField" prefWidth="300.0" />
+                  <Label text="Search By National Dex ID:" />
+                  <PasswordField fx:id="searchIDField" prefHeight="25.0" prefWidth="100.0" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <Button mnemonicParsing="false" onAction="#goClicked" text="Go!">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <Label text="General Info" />
+            <ScrollPane fx:id="mainPane" prefHeight="900.0">
+               <content>
+                  <VBox alignment="TOP_CENTER">
+                     <children>
+                        <HBox prefHeight="200.0" prefWidth="1000.0" spacing="50.0">
+                           <children>
+                              <ImageView fx:id="mainView" fitHeight="200.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../art/battle/gen1/pofabra1.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="TOP_CENTER" prefWidth="300.0">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Label fx:id="nationalDexNumLabel" text="#1">
+                                             <padding>
+                                                <Insets left="20.0" top="20.0" />
+                                             </padding>
+                                             <font>
+                                                <Font size="32.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="inGameNameLabel" text="Bulbasaur">
+                                             <padding>
+                                                <Insets left="20.0" top="20.0" />
+                                             </padding>
+                                             <font>
+                                                <Font size="32.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <Label fx:id="descriptionLabel" text="The ... pokemon">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="369.0" spacing="20.0">
+                                 <children>
+                                    <ComboBox fx:id="type1CBox" prefWidth="150.0" promptText="Type 1:" />
+                                    <ComboBox fx:id="type2CBox" prefWidth="150.0" promptText="Type 2:" />
+                                    <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                       <children>
+                                          <Label fx:id="hpLabel" prefHeight="18.0" prefWidth="100.0" text="HP: 140">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="attLabel" prefHeight="18.0" prefWidth="100.0" text="ATT: 140">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="defLabel" prefWidth="100.0" text="DEF: 140">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                       <children>
+                                          <Label fx:id="spaLabel" prefHeight="18.0" prefWidth="100.0" text="SPA: 140">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="spdeLabel" prefHeight="18.0" prefWidth="100.0" text="SPDE: 140">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="speedLabel" prefWidth="100.0" text="SPEED: 140">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="20.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <Label text="Aditional Info" />
+                        <HBox prefHeight="200.0" prefWidth="1000.0" spacing="50.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="965.0">
+                                 <children>
+                                    <HBox prefHeight="50.0" prefWidth="965.0">
+                                       <children>
+                                          <Label prefHeight="27.0" prefWidth="141.0" text="HG Flavour Text: ">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="hgFlavourText" text="some text">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="27.0" prefWidth="141.0" text="SS Flavour Text: ">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="ssFlavourText" text="some text">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <Label alignment="TOP_LEFT" text="Sprites" />
+                        <VBox fx:id="spriteVBox" prefHeight="200.0" prefWidth="100.0" spacing="50.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

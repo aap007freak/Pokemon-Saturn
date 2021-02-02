@@ -9,13 +9,13 @@ buildscript {
     }
     dependencies {
         classpath 'org.wisepersist:gwt-gradle-plugin:1.0.9'
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:4.0.0'
         classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.10'
     }
 }
 
+
 allprojects {
-    apply plugin: "eclipse"
     version = '0.1'
     ext {
         appName = "Pokemon_Saturn"
@@ -155,4 +155,28 @@ project(":tests") {
         testImplementation "com.badlogicgames.gdx:gdx:$gdxVersion"
         testImplementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
     }
+}
+
+project(":dataviewer") {
+    apply plugin: "java-library"
+
+    sourceSets.main.java.srcDirs = ["src/"]
+
+    dependencies {
+        implementation project(":core")
+
+        implementation "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+
+        implementation group: 'org.controlsfx', name: 'controlsfx', version: '8.0.5'
+        implementation 'commons-io:commons-io:2.8.0'
+
+
+
+
+        testImplementation "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
+        testImplementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+        testImplementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    }
+
 }
