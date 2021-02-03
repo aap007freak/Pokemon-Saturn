@@ -35,7 +35,7 @@ public class PokemonFrontsFileSplitter {
         frame.setLayout(new FlowLayout());
         frame.setSize(500,500);
         try{
-            final File source = new File("C:\\Users\\Anton\\Desktop\\Pokemon-Saturn\\art\\132568.png"); // gdx files internal did weird stuff cause it's not the standard gradle config; has to do with gradle not setting the input correctly
+            final File source = new File("C:\\Users\\Anton\\Desktop\\Pokemon-Saturn\\art\\132566.png"); // gdx files internal did weird stuff cause it's not the standard gradle config; has to do with gradle not setting the input correctly
             final BufferedImage img = ImageIO.read(source);
             final JLabel imgLabel = new JLabel();
             final JTextField nameField = new JTextField();
@@ -47,8 +47,8 @@ public class PokemonFrontsFileSplitter {
             frame.show();
             //ten collumns eightteen rows
 
-            final int[] pokemonIndex = {387};
-            final int[] regionNum = {0};
+            final int[] pokemonIndex = {199};
+            final int[] regionNum = {59};
 
             nameField.setText("pof" + BasePokemon.values()[pokemonIndex[0]].toString().toLowerCase());
             final BufferedImage[] subImage = {img.getSubimage(0, 0, 324, 195)};
@@ -124,7 +124,7 @@ public class PokemonFrontsFileSplitter {
             e.printStackTrace();
         }
 
-        renameWrongFemalesETC();
+        //renameWrongFemalesETC();
     }
 
     private static void renameWrongFemalesETC(){
@@ -166,10 +166,31 @@ public class PokemonFrontsFileSplitter {
 
     }
 
-    public static void main(String[] args) {
-        //splitFile();
-        renameWrongFemalesETC();
+    private static void renameUnowns() throws Exception{
+        File gen2dir = new File("C:\\Users\\Anton\\Desktop\\Pokemon-Saturn\\art\\battle\\gen2");
+        for(File file: gen2dir.listFiles()){
+            if (file.getName().startsWith("pofunown")){
+                if (file.getName().contains("9")){
+                    Files.copy(Paths.get("C:\\Users\\Anton\\Desktop\\Pokemon-Saturn\\art\\battle\\gen2\\pofunown_n9.png"),
+                            file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                }
+                if (file.getName().contains("10")){
+                    Files.copy(Paths.get("C:\\Users\\Anton\\Desktop\\Pokemon-Saturn\\art\\battle\\gen2\\pofunown_n10.png"),
+                            file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                }
+                if (file.getName().contains("11")){
+                    Files.copy(Paths.get("C:\\Users\\Anton\\Desktop\\Pokemon-Saturn\\art\\battle\\gen2\\pofunown_n11.png"),
+                            file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                }
+            }
+        }
+
     }
 
+    public static void main(String[] args) {
+        splitFile();
+        //renameWrongFemalesETC();
+
+    }
 
 }

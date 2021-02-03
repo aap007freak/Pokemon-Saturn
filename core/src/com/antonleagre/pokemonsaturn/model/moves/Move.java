@@ -1,6 +1,6 @@
 package com.antonleagre.pokemonsaturn.model.moves;
 
-import com.antonleagre.pokemonsaturn.model.PMPair;
+import com.antonleagre.pokemonsaturn.model.battle.PMPair;
 import com.antonleagre.pokemonsaturn.model.Pokemon;
 
 public class Move {
@@ -21,7 +21,7 @@ public class Move {
 
     public boolean use(PMPair pmPair){ //pmPair contains info about target and such
         if (hardDisabled) return false;
-        move.getFunctionality().trigger(pmPair);
+        //move.getFunctionality().trigger(pmPair, );
         return true;
     }
 
@@ -30,4 +30,7 @@ public class Move {
         return move;
     }
 
+    public int getPPleft() {
+        return pPleft;
+    }
 }

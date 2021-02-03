@@ -181,7 +181,7 @@
                                           <Insets />
                                        </VBox.margin>
                                     </HBox>
-                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                    <HBox prefHeight="50.0" prefWidth="965.0">
                                        <children>
                                           <Label prefHeight="27.0" prefWidth="141.0" text="SS Flavour Text: ">
                                              <font>
@@ -189,6 +189,20 @@
                                              </font>
                                           </Label>
                                           <Label fx:id="ssFlavourText" text="some text">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="50.0" prefWidth="965.0">
+                                       <children>
+                                          <Label prefHeight="27.0" prefWidth="170.0" text="Male to female ratio:">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="hgFlavourText1" text="some text">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>

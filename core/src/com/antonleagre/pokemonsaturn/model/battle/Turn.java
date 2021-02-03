@@ -1,7 +1,5 @@
 package com.antonleagre.pokemonsaturn.model.battle;
 
-import com.antonleagre.pokemonsaturn.model.PMPair;
-
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -11,13 +9,12 @@ import java.util.List;
  */
 public class Turn {
 
-
-    private List<PMPair> pms;
+    private final List<PMPair> pms;
 
     public Turn(PMPair... pmPairs) {
         this.pms = Arrays.asList(pmPairs);
         //sort the pms
-        pms.sort(new Sorter().reversed());
+        pms.sort(new MoveSorter().reversed());
     }
 
     public void next(){
@@ -30,7 +27,7 @@ public class Turn {
      * implemented: speed, priority
      * todo: items and environmental changes
      */
-    private class Sorter implements Comparator<PMPair>{
+    private class MoveSorter implements Comparator<PMPair>{
         //instead of using a customized sorter I could use Comparator.thenComparing() i guess
         @Override
         public int compare(PMPair p1, PMPair p2) {
@@ -40,10 +37,7 @@ public class Turn {
                 return priorityCompare;
             }
 
-            int speedCompare = (int) (p1.getUser().getSpeed() - p2.getUser().getSpeed());
-            if (speedCompare != 0) return speedCompare;
-
-            return 0;
+            return (int) (p1.getUser().getSpeed() - p2.getUser().getSpeed());
         }
     }
 

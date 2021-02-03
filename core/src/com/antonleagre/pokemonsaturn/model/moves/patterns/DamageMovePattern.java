@@ -1,6 +1,7 @@
 package com.antonleagre.pokemonsaturn.model.moves.patterns;
 
-import com.antonleagre.pokemonsaturn.model.PMPair;
+import com.antonleagre.pokemonsaturn.model.battle.PMPair;
+import com.antonleagre.pokemonsaturn.model.battle.Battle;
 import com.antonleagre.pokemonsaturn.model.moves.MovePattern;
 
 public class DamageMovePattern implements MovePattern {
@@ -11,12 +12,15 @@ public class DamageMovePattern implements MovePattern {
         this.power = power;
     }
 
-
     @Override
-    public void trigger(PMPair pm) {
-        System.out.println("A move was used LOL, it's power was " + power);
+    public boolean trigger(PMPair pm, Battle battle) {
+        return false;
     }
 
+    @Override
+    public boolean end() {
+        return false;
+    }
 
 
 }

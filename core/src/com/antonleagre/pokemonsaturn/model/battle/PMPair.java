@@ -1,14 +1,15 @@
-package com.antonleagre.pokemonsaturn.model;
+package com.antonleagre.pokemonsaturn.model.battle;
 
+import com.antonleagre.pokemonsaturn.model.Pokemon;
 import com.antonleagre.pokemonsaturn.model.moves.Move;
 
 public class PMPair {
 
-    private Pokemon user;
+    private BattlePokemon user;
     private Move move;
-    private Pokemon target;
+    private BattlePokemon target;
 
-    public PMPair(Pokemon user, Move move, Pokemon target) {
+    public PMPair(BattlePokemon user, Move move, BattlePokemon target) {
         this.user = user;
         this.move = move;
         this.target = target;
@@ -22,11 +23,11 @@ public class PMPair {
         return move;
     }
 
-    public Pokemon getTarget() {
+    public BattlePokemon getTarget() {
         return target;
     }
 
-    public Pokemon getUser() {
+    public BattlePokemon getUser() {
         return user;
     }
 

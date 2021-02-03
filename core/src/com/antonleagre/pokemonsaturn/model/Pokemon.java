@@ -44,7 +44,7 @@ public class Pokemon {
         this.level = startingLevel;
 
         //capitalize basestats name
-        this.name = baseStats.toString();
+        this.name = baseStats.getIngameName();
 
         this.nature = Nature.generateNature();
         this.iVs = IndividualValues.generateIVs();

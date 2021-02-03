@@ -1,8 +1,13 @@
 package com.antonleagre.pokemonsaturn.model.moves;
 
-import com.antonleagre.pokemonsaturn.model.PMPair;
+import com.antonleagre.pokemonsaturn.model.battle.PMPair;
+import com.antonleagre.pokemonsaturn.model.battle.Battle;
 
 public interface MovePattern {
 
-    void trigger(PMPair pm);
+    boolean trigger(PMPair pm, Battle battle);
+
+    boolean end();
+
+
 }

@@ -3,53 +3,558 @@ package com.antonleagre.pokemonsaturn.model.moves;
 import com.antonleagre.pokemonsaturn.model.moves.patterns.DamageMovePattern;
 import com.antonleagre.pokemonsaturn.model.pokemon.Type;
 
+/**
+ * This Enum is a database-like file that holds all <b>unchanging</b> information about a {@link Move move}. Including
+ * functionality
+ */
 public enum BaseMove {
 
-    POUND("Pound", Category.PHYSICAL, 35, 1f, Type.NORMAL, new DamageMovePattern(40f)),
-    DOUBLE_SLAP("Double Slap", Category.PHYSICAL, 15, 0.85f, Type.NORMAL, new DamageMovePattern(0f)),
-    KARATE_CHOP("Karate Chop",Category.PHYSICAL, 25, 1f,Type.FIGHTING, new DamageMovePattern(0f)),
-    TESTING_MOVE("TEST", Category.PHYSICAL, 25, 1f, Type.FIGHTING, new DamageMovePattern(0f)),
-    QUICKATTACKPRIORITY("TEST", Category.PHYSICAL, 25, 1f, Type.FIGHTING, new DamageMovePattern(0f), +2);
+    POUND("Pound", Type.NORMAL, Category.PHYSICAL, 35, 40, 100, null),
+    KARATE_CHOP("Karate Chop", Type.FIGHTING, Category.PHYSICAL, 25, 50, 100, null),
+    DOUBLE_SLAP("Double Slap", Type.NORMAL, Category.PHYSICAL, 10, 15, 85, null),
+    COMET_PUNCH("Comet Punch", Type.NORMAL, Category.PHYSICAL, 15, 18, 85, null),
+    MEGA_PUNCH("Mega Punch", Type.NORMAL, Category.PHYSICAL, 20, 80, 85, null),
+    PAY_DAY("Pay Day", Type.NORMAL, Category.PHYSICAL, 20, 40, 100, null),
+    FIRE_PUNCH("Fire Punch", Type.FIRE, Category.PHYSICAL, 15, 75, 100, null),
+    ICE_PUNCH("Ice Punch", Type.ICE, Category.PHYSICAL, 15, 75, 100, null),
+    THUNDER_PUNCH("Thunder Punch", Type.ELECTRIC, Category.PHYSICAL, 15, 75, 100, null),
+    SCRATCH("Scratch", Type.NORMAL, Category.PHYSICAL, 35, 40, 100, null),
+    VISE_GRIP("Vise Grip", Type.NORMAL, Category.PHYSICAL, 30, 55, 100, null),
+    GUILLOTINE("Guillotine", Type.NORMAL, Category.PHYSICAL, 5, null, 30, null),
+    RAZOR_WIND("Razor Wind", Type.NORMAL, Category.SPECIAL, 10, 80, 100, null),
+    SWORDS_DANCE("Swords Dance", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    CUT("Cut", Type.NORMAL, Category.PHYSICAL, 30, 50, 95, null),
+    GUST("Gust", Type.FLYING, Category.SPECIAL, 35, 40, 100, null),
+    WING_ATTACK("Wing Attack", Type.FLYING, Category.PHYSICAL, 35, 60, 100, null),
+    WHIRLWIND("Whirlwind", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    FLY("Fly", Type.FLYING, Category.PHYSICAL, 15, 90, 95, null),
+    BIND("Bind", Type.NORMAL, Category.PHYSICAL, 20, 15, 85, null),
+    SLAM("Slam", Type.NORMAL, Category.PHYSICAL, 20, 80, 75, null),
+    VINE_WHIP("Vine Whip", Type.GRASS, Category.PHYSICAL, 25, 45, 100, null),
+    STOMP("Stomp", Type.NORMAL, Category.PHYSICAL, 20, 65, 100, null),
+    DOUBLE_KICK("Double Kick", Type.FIGHTING, Category.PHYSICAL, 30, 30, 100, null),
+    MEGA_KICK("Mega Kick", Type.NORMAL, Category.PHYSICAL, 5, 120, 75, null),
+    JUMP_KICK("Jump Kick", Type.FIGHTING, Category.PHYSICAL, 10, 100, 95, null),
+    ROLLING_KICK("Rolling Kick", Type.FIGHTING, Category.PHYSICAL, 15, 60, 85, null),
+    SAND_ATTACK("Sand Attack", Type.GROUND, Category.STATUS, 15, null, 100, null),
+    HEADBUTT("Headbutt", Type.NORMAL, Category.PHYSICAL, 15, 70, 100, null),
+    HORN_ATTACK("Horn Attack", Type.NORMAL, Category.PHYSICAL, 25, 65, 100, null),
+    FURY_ATTACK("Fury Attack", Type.NORMAL, Category.PHYSICAL, 20, 15, 85, null),
+    HORN_DRILL("Horn Drill", Type.NORMAL, Category.PHYSICAL, 5, null, 30, null),
+    TACKLE("Tackle", Type.NORMAL, Category.PHYSICAL, 35, 40, 100, null),
+    BODY_SLAM("Body Slam", Type.NORMAL, Category.PHYSICAL, 15, 85, 100, null),
+    WRAP("Wrap", Type.NORMAL, Category.PHYSICAL, 20, 15, 90, null),
+    TAKE_DOWN("Take Down", Type.NORMAL, Category.PHYSICAL, 20, 90, 85, null),
+    THRASH("Thrash", Type.NORMAL, Category.PHYSICAL, 10, 120, 100, null),
+    DOUBLEEDGE("DoubleEdge", Type.NORMAL, Category.PHYSICAL, 15, 120, 100, null),
+    TAIL_WHIP("Tail Whip", Type.NORMAL, Category.STATUS, 30, null, 100, null),
+    POISON_STING("Poison Sting", Type.POISON, Category.PHYSICAL, 35, 15, 100, null),
+    TWINEEDLE("Twineedle", Type.BUG, Category.PHYSICAL, 20, 25, 100, null),
+    PIN_MISSILE("Pin Missile", Type.BUG, Category.PHYSICAL, 20, 25, 95, null),
+    LEER("Leer", Type.NORMAL, Category.STATUS, 30, null, 100, null),
+    BITE("Bite", Type.DARK, Category.PHYSICAL, 25, 60, 100, null),
+    GROWL("Growl", Type.NORMAL, Category.STATUS, 40, null, 100, null),
+    ROAR("Roar", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    SING("Sing", Type.NORMAL, Category.STATUS, 15, null, 55, null),
+    SUPERSONIC("Supersonic", Type.NORMAL, Category.STATUS, 20, null, 55, null),
+    SONIC_BOOM("Sonic Boom", Type.NORMAL, Category.SPECIAL, 20, null, 90, null),
+    DISABLE("Disable", Type.NORMAL, Category.STATUS, 20, null, 100, null),
+    ACID("Acid", Type.POISON, Category.SPECIAL, 30, 40, 100, null),
+    EMBER("Ember", Type.FIRE, Category.SPECIAL, 25, 40, 100, null),
+    FLAMETHROWER("Flamethrower", Type.FIRE, Category.SPECIAL, 15, 90, 100, null),
+    MIST("Mist", Type.ICE, Category.STATUS, 30, null, null, null),
+    WATER_GUN("Water Gun", Type.WATER, Category.SPECIAL, 25, 40, 100, null),
+    HYDRO_PUMP("Hydro Pump", Type.WATER, Category.SPECIAL, 5, 110, 80, null),
+    SURF("Surf", Type.WATER, Category.SPECIAL, 15, 90, 100, null),
+    ICE_BEAM("Ice Beam", Type.ICE, Category.SPECIAL, 10, 90, 100, null),
+    BLIZZARD("Blizzard", Type.ICE, Category.SPECIAL, 5, 110, 70, null),
+    PSYBEAM("Psybeam", Type.PSYCHIC, Category.SPECIAL, 20, 65, 100, null),
+    BUBBLE_BEAM("Bubble Beam", Type.WATER, Category.SPECIAL, 20, 65, 100, null),
+    AURORA_BEAM("Aurora Beam", Type.ICE, Category.SPECIAL, 20, 65, 100, null),
+    HYPER_BEAM("Hyper Beam", Type.NORMAL, Category.SPECIAL, 5, 150, 90, null),
+    PECK("Peck", Type.FLYING, Category.PHYSICAL, 35, 35, 100, null),
+    DRILL_PECK("Drill Peck", Type.FLYING, Category.PHYSICAL, 20, 80, 100, null),
+    SUBMISSION("Submission", Type.FIGHTING, Category.PHYSICAL, 20, 80, 80, null),
+    LOW_KICK("Low Kick", Type.FIGHTING, Category.PHYSICAL, 20, null, 100, null),
+    COUNTER("Counter", Type.FIGHTING, Category.PHYSICAL, 20, null, 100, null),
+    SEISMIC_TOSS("Seismic Toss", Type.FIGHTING, Category.PHYSICAL, 20, null, 100, null),
+    STRENGTH("Strength", Type.NORMAL, Category.PHYSICAL, 15, 80, 100, null),
+    ABSORB("Absorb", Type.GRASS, Category.SPECIAL, 25, 20, 100, null),
+    MEGA_DRAIN("Mega Drain", Type.GRASS, Category.SPECIAL, 15, 40, 100, null),
+    LEECH_SEED("Leech Seed", Type.GRASS, Category.STATUS, 10, null, 90, null),
+    GROWTH("Growth", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    RAZOR_LEAF("Razor Leaf", Type.GRASS, Category.PHYSICAL, 25, 55, 95, null),
+    SOLAR_BEAM("Solar Beam", Type.GRASS, Category.SPECIAL, 10, 120, 100, null),
+    POISON_POWDER("Poison Powder", Type.POISON, Category.STATUS, 35, null, 75, null),
+    STUN_SPORE("Stun Spore", Type.GRASS, Category.STATUS, 30, null, 75, null),
+    SLEEP_POWDER("Sleep Powder", Type.GRASS, Category.STATUS, 15, null, 75, null),
+    PETAL_DANCE("Petal Dance", Type.GRASS, Category.SPECIAL, 10, 120, 100, null),
+    STRING_SHOT("String Shot", Type.BUG, Category.STATUS, 40, null, 95, null),
+    DRAGON_RAGE("Dragon Rage", Type.DRAGON, Category.SPECIAL, 10, null, 100, null),
+    FIRE_SPIN("Fire Spin", Type.FIRE, Category.SPECIAL, 15, 35, 85, null),
+    THUNDER_SHOCK("Thunder Shock", Type.ELECTRIC, Category.SPECIAL, 30, 40, 100, null),
+    THUNDERBOLT("Thunderbolt", Type.ELECTRIC, Category.SPECIAL, 15, 90, 100, null),
+    THUNDER_WAVE("Thunder Wave", Type.ELECTRIC, Category.STATUS, 20, null, 90, null),
+    THUNDER("Thunder", Type.ELECTRIC, Category.SPECIAL, 10, 110, 70, null),
+    ROCK_THROW("Rock Throw", Type.ROCK, Category.PHYSICAL, 15, 50, 90, null),
+    EARTHQUAKE("Earthquake", Type.GROUND, Category.PHYSICAL, 10, 100, 100, null),
+    FISSURE("Fissure", Type.GROUND, Category.PHYSICAL, 5, null, 30, null),
+    DIG("Dig", Type.GROUND, Category.PHYSICAL, 10, 80, 100, null),
+    TOXIC("Toxic", Type.POISON, Category.STATUS, 10, null, 90, null),
+    CONFUSION("Confusion", Type.PSYCHIC, Category.SPECIAL, 25, 50, 100, null),
+    PSYCHIC("Psychic", Type.PSYCHIC, Category.SPECIAL, 10, 90, 100, null),
+    HYPNOSIS("Hypnosis", Type.PSYCHIC, Category.STATUS, 20, null, 60, null),
+    MEDITATE("Meditate", Type.PSYCHIC, Category.STATUS, 40, null, null, null),
+    AGILITY("Agility", Type.PSYCHIC, Category.STATUS, 30, null, null, null),
+    QUICK_ATTACK("Quick Attack", Type.NORMAL, Category.PHYSICAL, 30, 40, 100, null),
+    RAGE("Rage", Type.NORMAL, Category.PHYSICAL, 20, 20, 100, null),
+    TELEPORT("Teleport", Type.PSYCHIC, Category.STATUS, 20, null, null, null),
+    NIGHT_SHADE("Night Shade", Type.GHOST, Category.SPECIAL, 15, null, 100, null),
+    MIMIC("Mimic", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    SCREECH("Screech", Type.NORMAL, Category.STATUS, 40, null, 85, null),
+    DOUBLE_TEAM("Double Team", Type.NORMAL, Category.STATUS, 15, null, null, null),
+    RECOVER("Recover", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    HARDEN("Harden", Type.NORMAL, Category.STATUS, 30, null, null, null),
+    MINIMIZE("Minimize", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    SMOKESCREEN("Smokescreen", Type.NORMAL, Category.STATUS, 20, null, 100, null),
+    CONFUSE_RAY("Confuse Ray", Type.GHOST, Category.STATUS, 10, null, 100, null),
+    WITHDRAW("Withdraw", Type.WATER, Category.STATUS, 40, null, null, null),
+    DEFENSE_CURL("Defense Curl", Type.NORMAL, Category.STATUS, 40, null, null, null),
+    BARRIER("Barrier", Type.PSYCHIC, Category.STATUS, 20, null, null, null),
+    LIGHT_SCREEN("Light Screen", Type.PSYCHIC, Category.STATUS, 30, null, null, null),
+    HAZE("Haze", Type.ICE, Category.STATUS, 30, null, null, null),
+    REFLECT("Reflect", Type.PSYCHIC, Category.STATUS, 20, null, null, null),
+    FOCUS_ENERGY("Focus Energy", Type.NORMAL, Category.STATUS, 30, null, null, null),
+    BIDE("Bide", Type.NORMAL, Category.PHYSICAL, 10, null, null, null),
+    METRONOME("Metronome", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    MIRROR_MOVE("Mirror Move", Type.FLYING, Category.STATUS, 20, null, null, null),
+    SELFDESTRUCT("SelfDestruct", Type.NORMAL, Category.PHYSICAL, 5, 200, 100, null),
+    EGG_BOMB("Egg Bomb", Type.NORMAL, Category.PHYSICAL, 10, 100, 75, null),
+    LICK("Lick", Type.GHOST, Category.PHYSICAL, 30, 30, 100, null),
+    SMOG("Smog", Type.POISON, Category.SPECIAL, 20, 30, 70, null),
+    SLUDGE("Sludge", Type.POISON, Category.SPECIAL, 20, 65, 100, null),
+    BONE_CLUB("Bone Club", Type.GROUND, Category.PHYSICAL, 20, 65, 85, null),
+    FIRE_BLAST("Fire Blast", Type.FIRE, Category.SPECIAL, 5, 110, 85, null),
+    WATERFALL("Waterfall", Type.WATER, Category.PHYSICAL, 15, 80, 100, null),
+    CLAMP("Clamp", Type.WATER, Category.PHYSICAL, 15, 35, 85, null),
+    SWIFT("Swift", Type.NORMAL, Category.SPECIAL, 20, 60, null, null),
+    SKULL_BASH("Skull Bash", Type.NORMAL, Category.PHYSICAL, 10, 130, 100, null),
+    SPIKE_CANNON("Spike Cannon", Type.NORMAL, Category.PHYSICAL, 15, 20, 100, null),
+    CONSTRICT("Constrict", Type.NORMAL, Category.PHYSICAL, 35, 10, 100, null),
+    AMNESIA("Amnesia", Type.PSYCHIC, Category.STATUS, 20, null, null, null),
+    KINESIS("Kinesis", Type.PSYCHIC, Category.STATUS, 15, null, 80, null),
+    SOFTBOILED("SoftBoiled", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    HIGH_JUMP_KICK("High Jump Kick", Type.FIGHTING, Category.PHYSICAL, 10, 130, 90, null),
+    GLARE("Glare", Type.NORMAL, Category.STATUS, 30, null, 100, null),
+    DREAM_EATER("Dream Eater", Type.PSYCHIC, Category.SPECIAL, 15, 100, 100, null),
+    POISON_GAS("Poison Gas", Type.POISON, Category.STATUS, 40, null, 90, null),
+    BARRAGE("Barrage", Type.NORMAL, Category.PHYSICAL, 20, 15, 85, null),
+    LEECH_LIFE("Leech Life", Type.BUG, Category.PHYSICAL, 10, 80, 100, null),
+    LOVELY_KISS("Lovely Kiss", Type.NORMAL, Category.STATUS, 10, null, 75, null),
+    SKY_ATTACK("Sky Attack", Type.FLYING, Category.PHYSICAL, 5, 140, 90, null),
+    TRANSFORM("Transform", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    BUBBLE("Bubble", Type.WATER, Category.SPECIAL, 30, 40, 100, null),
+    DIZZY_PUNCH("Dizzy Punch", Type.NORMAL, Category.PHYSICAL, 10, 70, 100, null),
+    SPORE("Spore", Type.GRASS, Category.STATUS, 15, null, 100, null),
+    FLASH("Flash", Type.NORMAL, Category.STATUS, 20, null, 100, null),
+    PSYWAVE("Psywave", Type.PSYCHIC, Category.SPECIAL, 15, null, 100, null),
+    SPLASH("Splash", Type.NORMAL, Category.STATUS, 40, null, null, null),
+    ACID_ARMOR("Acid Armor", Type.POISON, Category.STATUS, 20, null, null, null),
+    CRABHAMMER("Crabhammer", Type.WATER, Category.PHYSICAL, 10, 100, 90, null),
+    EXPLOSION("Explosion", Type.NORMAL, Category.PHYSICAL, 5, 250, 100, null),
+    FURY_SWIPES("Fury Swipes", Type.NORMAL, Category.PHYSICAL, 15, 18, 80, null),
+    BONEMERANG("Bonemerang", Type.GROUND, Category.PHYSICAL, 10, 50, 90, null),
+    REST("Rest", Type.PSYCHIC, Category.STATUS, 10, null, null, null),
+    ROCK_SLIDE("Rock Slide", Type.ROCK, Category.PHYSICAL, 10, 75, 90, null),
+    HYPER_FANG("Hyper Fang", Type.NORMAL, Category.PHYSICAL, 15, 80, 90, null),
+    SHARPEN("Sharpen", Type.NORMAL, Category.STATUS, 30, null, null, null),
+    CONVERSION("Conversion", Type.NORMAL, Category.STATUS, 30, null, null, null),
+    TRI_ATTACK("Tri Attack", Type.NORMAL, Category.SPECIAL, 10, 80, 100, null),
+    SUPER_FANG("Super Fang", Type.NORMAL, Category.PHYSICAL, 10, null, 90, null),
+    SLASH("Slash", Type.NORMAL, Category.PHYSICAL, 20, 70, 100, null),
+    SUBSTITUTE("Substitute", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    STRUGGLE("Struggle", Type.NORMAL, Category.PHYSICAL, 1, 50, null, null),
+    SKETCH("Sketch", Type.NORMAL, Category.STATUS, 1, null, null, null),
+    TRIPLE_KICK("Triple Kick", Type.FIGHTING, Category.PHYSICAL, 10, 10, 90, null),
+    THIEF("Thief", Type.DARK, Category.PHYSICAL, 25, 60, 100, null),
+    SPIDER_WEB("Spider Web", Type.BUG, Category.STATUS, 10, null, null, null),
+    MIND_READER("Mind Reader", Type.NORMAL, Category.STATUS, 5, null, null, null),
+    NIGHTMARE("Nightmare", Type.GHOST, Category.STATUS, 15, null, 100, null),
+    FLAME_WHEEL("Flame Wheel", Type.FIRE, Category.PHYSICAL, 25, 60, 100, null),
+    SNORE("Snore", Type.NORMAL, Category.SPECIAL, 15, 50, 100, null),
+    CURSE("Curse", Type.GHOST, Category.STATUS, 10, null, null, null),
+    FLAIL("Flail", Type.NORMAL, Category.PHYSICAL, 15, null, 100, null),
+    CONVERSION_("Conversion ", Type.NORMAL, Category.STATUS, 30, null, null, null),
+    AEROBLAST("Aeroblast", Type.FLYING, Category.SPECIAL, 5, 100, 95, null),
+    COTTON_SPORE("Cotton Spore", Type.GRASS, Category.STATUS, 40, null, 100, null),
+    REVERSAL("Reversal", Type.FIGHTING, Category.PHYSICAL, 15, null, 100, null),
+    SPITE("Spite", Type.GHOST, Category.STATUS, 10, null, 100, null),
+    POWDER_SNOW("Powder Snow", Type.ICE, Category.SPECIAL, 25, 40, 100, null),
+    PROTECT("Protect", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    MACH_PUNCH("Mach Punch", Type.FIGHTING, Category.PHYSICAL, 30, 40, 100, null),
+    SCARY_FACE("Scary Face", Type.NORMAL, Category.STATUS, 10, null, 100, null),
+    FEINT_ATTACK("Feint Attack", Type.DARK, Category.PHYSICAL, 20, 60, null, null),
+    SWEET_KISS("Sweet Kiss", Type.FAIRY, Category.STATUS, 10, null, 75, null),
+    BELLY_DRUM("Belly Drum", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    SLUDGE_BOMB("Sludge Bomb", Type.POISON, Category.SPECIAL, 10, 90, 100, null),
+    MUDSLAP("MudSlap", Type.GROUND, Category.SPECIAL, 10, 20, 100, null),
+    OCTAZOOKA("Octazooka", Type.WATER, Category.SPECIAL, 10, 65, 85, null),
+    SPIKES("Spikes", Type.GROUND, Category.STATUS, 20, null, null, null),
+    ZAP_CANNON("Zap Cannon", Type.ELECTRIC, Category.SPECIAL, 5, 120, 50, null),
+    FORESIGHT("Foresight", Type.NORMAL, Category.STATUS, 40, null, null, null),
+    DESTINY_BOND("Destiny Bond", Type.GHOST, Category.STATUS, 5, null, null, null),
+    PERISH_SONG("Perish Song", Type.NORMAL, Category.STATUS, 5, null, null, null),
+    ICY_WIND("Icy Wind", Type.ICE, Category.SPECIAL, 15, 55, 95, null),
+    DETECT("Detect", Type.FIGHTING, Category.STATUS, 5, null, null, null),
+    BONE_RUSH("Bone Rush", Type.GROUND, Category.PHYSICAL, 10, 25, 90, null),
+    LOCKON("LockOn", Type.NORMAL, Category.STATUS, 5, null, null, null),
+    OUTRAGE("Outrage", Type.DRAGON, Category.PHYSICAL, 10, 120, 100, null),
+    SANDSTORM("Sandstorm", Type.ROCK, Category.STATUS, 10, null, null, null),
+    GIGA_DRAIN("Giga Drain", Type.GRASS, Category.SPECIAL, 10, 75, 100, null),
+    ENDURE("Endure", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    CHARM("Charm", Type.FAIRY, Category.STATUS, 20, null, 100, null),
+    ROLLOUT("Rollout", Type.ROCK, Category.PHYSICAL, 20, 30, 90, null),
+    FALSE_SWIPE("False Swipe", Type.NORMAL, Category.PHYSICAL, 40, 40, 100, null),
+    SWAGGER("Swagger", Type.NORMAL, Category.STATUS, 15, null, 85, null),
+    MILK_DRINK("Milk Drink", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    SPARK("Spark", Type.ELECTRIC, Category.PHYSICAL, 20, 65, 100, null),
+    FURY_CUTTER("Fury Cutter", Type.BUG, Category.PHYSICAL, 20, 40, 95, null),
+    STEEL_WING("Steel Wing", Type.STEEL, Category.PHYSICAL, 25, 70, 90, null),
+    MEAN_LOOK("Mean Look", Type.NORMAL, Category.STATUS, 5, null, null, null),
+    ATTRACT("Attract", Type.NORMAL, Category.STATUS, 15, null, 100, null),
+    SLEEP_TALK("Sleep Talk", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    HEAL_BELL("Heal Bell", Type.NORMAL, Category.STATUS, 5, null, null, null),
+    RETURN("Return", Type.NORMAL, Category.PHYSICAL, 20, null, 100, null),
+    PRESENT("Present", Type.NORMAL, Category.PHYSICAL, 15, null, 90, null),
+    FRUSTRATION("Frustration", Type.NORMAL, Category.PHYSICAL, 20, null, 100, null),
+    SAFEGUARD("Safeguard", Type.NORMAL, Category.STATUS, 25, null, null, null),
+    PAIN_SPLIT("Pain Split", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    SACRED_FIRE("Sacred Fire", Type.FIRE, Category.PHYSICAL, 5, 100, 95, null),
+    MAGNITUDE("Magnitude", Type.GROUND, Category.PHYSICAL, 30, null, 100, null),
+    DYNAMIC_PUNCH("Dynamic Punch", Type.FIGHTING, Category.PHYSICAL, 5, 100, 50, null),
+    MEGAHORN("Megahorn", Type.BUG, Category.PHYSICAL, 10, 120, 85, null),
+    DRAGON_BREATH("Dragon Breath", Type.DRAGON, Category.SPECIAL, 20, 60, 100, null),
+    BATON_PASS("Baton Pass", Type.NORMAL, Category.STATUS, 40, null, null, null),
+    ENCORE("Encore", Type.NORMAL, Category.STATUS, 5, null, 100, null),
+    PURSUIT("Pursuit", Type.DARK, Category.PHYSICAL, 20, 40, 100, null),
+    RAPID_SPIN("Rapid Spin", Type.NORMAL, Category.PHYSICAL, 40, 50, 100, null),
+    SWEET_SCENT("Sweet Scent", Type.NORMAL, Category.STATUS, 20, null, 100, null),
+    IRON_TAIL("Iron Tail", Type.STEEL, Category.PHYSICAL, 15, 100, 75, null),
+    METAL_CLAW("Metal Claw", Type.STEEL, Category.PHYSICAL, 35, 50, 95, null),
+    VITAL_THROW("Vital Throw", Type.FIGHTING, Category.PHYSICAL, 10, 70, null, null),
+    MORNING_SUN("Morning Sun", Type.NORMAL, Category.STATUS, 5, null, null, null),
+    SYNTHESIS("Synthesis", Type.GRASS, Category.STATUS, 5, null, null, null),
+    MOONLIGHT("Moonlight", Type.FAIRY, Category.STATUS, 5, null, null, null),
+    HIDDEN_POWER("Hidden Power", Type.NORMAL, Category.SPECIAL, 15, 60, 100, null),
+    CROSS_CHOP("Cross Chop", Type.FIGHTING, Category.PHYSICAL, 5, 100, 80, null),
+    TWISTER("Twister", Type.DRAGON, Category.SPECIAL, 20, 40, 100, null),
+    RAIN_DANCE("Rain Dance", Type.WATER, Category.STATUS, 5, null, null, null),
+    SUNNY_DAY("Sunny Day", Type.FIRE, Category.STATUS, 5, null, null, null),
+    CRUNCH("Crunch", Type.DARK, Category.PHYSICAL, 15, 80, 100, null),
+    MIRROR_COAT("Mirror Coat", Type.PSYCHIC, Category.SPECIAL, 20, null, 100, null),
+    PSYCH_UP("Psych Up", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    EXTREME_SPEED("Extreme Speed", Type.NORMAL, Category.PHYSICAL, 5, 80, 100, null),
+    ANCIENT_POWER("Ancient Power", Type.ROCK, Category.SPECIAL, 5, 60, 100, null),
+    SHADOW_BALL("Shadow Ball", Type.GHOST, Category.SPECIAL, 15, 80, 100, null),
+    FUTURE_SIGHT("Future Sight", Type.PSYCHIC, Category.SPECIAL, 10, 120, 100, null),
+    ROCK_SMASH("Rock Smash", Type.FIGHTING, Category.PHYSICAL, 15, 40, 100, null),
+    WHIRLPOOL("Whirlpool", Type.WATER, Category.SPECIAL, 15, 35, 85, null),
+    BEAT_UP("Beat Up", Type.DARK, Category.PHYSICAL, 10, null, 100, null),
+    FAKE_OUT("Fake Out", Type.NORMAL, Category.PHYSICAL, 10, 40, 100, null),
+    UPROAR("Uproar", Type.NORMAL, Category.SPECIAL, 10, 90, 100, null),
+    STOCKPILE("Stockpile", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    SPIT_UP("Spit Up", Type.NORMAL, Category.SPECIAL, 10, null, 100, null),
+    SWALLOW("Swallow", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    HEAT_WAVE("Heat Wave", Type.FIRE, Category.SPECIAL, 10, 95, 90, null),
+    HAIL("Hail", Type.ICE, Category.STATUS, 10, null, null, null),
+    TORMENT("Torment", Type.DARK, Category.STATUS, 15, null, 100, null),
+    FLATTER("Flatter", Type.DARK, Category.STATUS, 15, null, 100, null),
+    WILLOWISP("WillOWisp", Type.FIRE, Category.STATUS, 15, null, 85, null),
+    MEMENTO("Memento", Type.DARK, Category.STATUS, 10, null, 100, null),
+    FACADE("Facade", Type.NORMAL, Category.PHYSICAL, 20, 70, 100, null),
+    FOCUS_PUNCH("Focus Punch", Type.FIGHTING, Category.PHYSICAL, 20, 150, 100, null),
+    SMELLING_SALTS("Smelling Salts", Type.NORMAL, Category.PHYSICAL, 10, 70, 100, null),
+    FOLLOW_ME("Follow Me", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    NATURE_POWER("Nature Power", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    CHARGE("Charge", Type.ELECTRIC, Category.STATUS, 20, null, null, null),
+    TAUNT("Taunt", Type.DARK, Category.STATUS, 20, null, 100, null),
+    HELPING_HAND("Helping Hand", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    TRICK("Trick", Type.PSYCHIC, Category.STATUS, 10, null, 100, null),
+    ROLE_PLAY("Role Play", Type.PSYCHIC, Category.STATUS, 10, null, null, null),
+    WISH("Wish", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    ASSIST("Assist", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    INGRAIN("Ingrain", Type.GRASS, Category.STATUS, 20, null, null, null),
+    SUPERPOWER("Superpower", Type.FIGHTING, Category.PHYSICAL, 5, 120, 100, null),
+    MAGIC_COAT("Magic Coat", Type.PSYCHIC, Category.STATUS, 15, null, null, null),
+    RECYCLE("Recycle", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    REVENGE("Revenge", Type.FIGHTING, Category.PHYSICAL, 10, 60, 100, null),
+    BRICK_BREAK("Brick Break", Type.FIGHTING, Category.PHYSICAL, 15, 75, 100, null),
+    YAWN("Yawn", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    KNOCK_OFF("Knock Off", Type.DARK, Category.PHYSICAL, 20, 65, 100, null),
+    ENDEAVOR("Endeavor", Type.NORMAL, Category.PHYSICAL, 5, null, 100, null),
+    ERUPTION("Eruption", Type.FIRE, Category.SPECIAL, 5, 150, 100, null),
+    SKILL_SWAP("Skill Swap", Type.PSYCHIC, Category.STATUS, 10, null, null, null),
+    IMPRISON("Imprison", Type.PSYCHIC, Category.STATUS, 10, null, null, null),
+    REFRESH("Refresh", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    GRUDGE("Grudge", Type.GHOST, Category.STATUS, 5, null, null, null),
+    SNATCH("Snatch", Type.DARK, Category.STATUS, 10, null, null, null),
+    SECRET_POWER("Secret Power", Type.NORMAL, Category.PHYSICAL, 20, 70, 100, null),
+    DIVE("Dive", Type.WATER, Category.PHYSICAL, 10, 80, 100, null),
+    ARM_THRUST("Arm Thrust", Type.FIGHTING, Category.PHYSICAL, 20, 15, 100, null),
+    CAMOUFLAGE("Camouflage", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    TAIL_GLOW("Tail Glow", Type.BUG, Category.STATUS, 20, null, null, null),
+    LUSTER_PURGE("Luster Purge", Type.PSYCHIC, Category.SPECIAL, 5, 70, 100, null),
+    MIST_BALL("Mist Ball", Type.PSYCHIC, Category.SPECIAL, 5, 70, 100, null),
+    FEATHER_DANCE("Feather Dance", Type.FLYING, Category.STATUS, 15, null, 100, null),
+    TEETER_DANCE("Teeter Dance", Type.NORMAL, Category.STATUS, 20, null, 100, null),
+    BLAZE_KICK("Blaze Kick", Type.FIRE, Category.PHYSICAL, 10, 85, 90, null),
+    MUD_SPORT("Mud Sport", Type.GROUND, Category.STATUS, 15, null, null, null),
+    ICE_BALL("Ice Ball", Type.ICE, Category.PHYSICAL, 20, 30, 90, null),
+    NEEDLE_ARM("Needle Arm", Type.GRASS, Category.PHYSICAL, 15, 60, 100, null),
+    SLACK_OFF("Slack Off", Type.NORMAL, Category.STATUS, 10, null, null, null),
+    HYPER_VOICE("Hyper Voice", Type.NORMAL, Category.SPECIAL, 10, 90, 100, null),
+    POISON_FANG("Poison Fang", Type.POISON, Category.PHYSICAL, 15, 50, 100, null),
+    CRUSH_CLAW("Crush Claw", Type.NORMAL, Category.PHYSICAL, 10, 75, 95, null),
+    BLAST_BURN("Blast Burn", Type.FIRE, Category.SPECIAL, 5, 150, 90, null),
+    HYDRO_CANNON("Hydro Cannon", Type.WATER, Category.SPECIAL, 5, 150, 90, null),
+    METEOR_MASH("Meteor Mash", Type.STEEL, Category.PHYSICAL, 10, 90, 90, null),
+    ASTONISH("Astonish", Type.GHOST, Category.PHYSICAL, 15, 30, 100, null),
+    WEATHER_BALL("Weather Ball", Type.NORMAL, Category.SPECIAL, 10, 50, 100, null),
+    AROMATHERAPY("Aromatherapy", Type.GRASS, Category.STATUS, 5, null, null, null),
+    FAKE_TEARS("Fake Tears", Type.DARK, Category.STATUS, 20, null, 100, null),
+    AIR_CUTTER("Air Cutter", Type.FLYING, Category.SPECIAL, 25, 60, 95, null),
+    OVERHEAT("Overheat", Type.FIRE, Category.SPECIAL, 5, 130, 90, null),
+    ODOR_SLEUTH("Odor Sleuth", Type.NORMAL, Category.STATUS, 40, null, null, null),
+    ROCK_TOMB("Rock Tomb", Type.ROCK, Category.PHYSICAL, 15, 60, 95, null),
+    SILVER_WIND("Silver Wind", Type.BUG, Category.SPECIAL, 5, 60, 100, null),
+    METAL_SOUND("Metal Sound", Type.STEEL, Category.STATUS, 40, null, 85, null),
+    GRASS_WHISTLE("Grass Whistle", Type.GRASS, Category.STATUS, 15, null, 55, null),
+    TICKLE("Tickle", Type.NORMAL, Category.STATUS, 20, null, 100, null),
+    COSMIC_POWER("Cosmic Power", Type.PSYCHIC, Category.STATUS, 20, null, null, null),
+    WATER_SPOUT("Water Spout", Type.WATER, Category.SPECIAL, 5, 150, 100, null),
+    SIGNAL_BEAM("Signal Beam", Type.BUG, Category.SPECIAL, 15, 75, 100, null),
+    SHADOW_PUNCH("Shadow Punch", Type.GHOST, Category.PHYSICAL, 20, 60, null, null),
+    EXTRASENSORY("Extrasensory", Type.PSYCHIC, Category.SPECIAL, 20, 80, 100, null),
+    SKY_UPPERCUT("Sky Uppercut", Type.FIGHTING, Category.PHYSICAL, 15, 85, 90, null),
+    SAND_TOMB("Sand Tomb", Type.GROUND, Category.PHYSICAL, 15, 35, 85, null),
+    SHEER_COLD("Sheer Cold", Type.ICE, Category.SPECIAL, 5, null, 30, null),
+    MUDDY_WATER("Muddy Water", Type.WATER, Category.SPECIAL, 10, 90, 85, null),
+    BULLET_SEED("Bullet Seed", Type.GRASS, Category.PHYSICAL, 30, 25, 100, null),
+    AERIAL_ACE("Aerial Ace", Type.FLYING, Category.PHYSICAL, 20, 60, null, null),
+    ICICLE_SPEAR("Icicle Spear", Type.ICE, Category.PHYSICAL, 30, 25, 100, null),
+    IRON_DEFENSE("Iron Defense", Type.STEEL, Category.STATUS, 15, null, null, null),
+    BLOCK("Block", Type.NORMAL, Category.STATUS, 5, null, null, null),
+    HOWL("Howl", Type.NORMAL, Category.STATUS, 40, null, null, null),
+    DRAGON_CLAW("Dragon Claw", Type.DRAGON, Category.PHYSICAL, 15, 80, 100, null),
+    FRENZY_PLANT("Frenzy Plant", Type.GRASS, Category.SPECIAL, 5, 150, 90, null),
+    BULK_UP("Bulk Up", Type.FIGHTING, Category.STATUS, 20, null, null, null),
+    BOUNCE("Bounce", Type.FLYING, Category.PHYSICAL, 5, 85, 85, null),
+    MUD_SHOT("Mud Shot", Type.GROUND, Category.SPECIAL, 15, 55, 95, null),
+    POISON_TAIL("Poison Tail", Type.POISON, Category.PHYSICAL, 25, 50, 100, null),
+    COVET("Covet", Type.NORMAL, Category.PHYSICAL, 25, 60, 100, null),
+    VOLT_TACKLE("Volt Tackle", Type.ELECTRIC, Category.PHYSICAL, 15, 120, 100, null),
+    MAGICAL_LEAF("Magical Leaf", Type.GRASS, Category.SPECIAL, 20, 60, null, null),
+    WATER_SPORT("Water Sport", Type.WATER, Category.STATUS, 15, null, null, null),
+    CALM_MIND("Calm Mind", Type.PSYCHIC, Category.STATUS, 20, null, null, null),
+    LEAF_BLADE("Leaf Blade", Type.GRASS, Category.PHYSICAL, 15, 90, 100, null),
+    DRAGON_DANCE("Dragon Dance", Type.DRAGON, Category.STATUS, 20, null, null, null),
+    ROCK_BLAST("Rock Blast", Type.ROCK, Category.PHYSICAL, 10, 25, 90, null),
+    SHOCK_WAVE("Shock Wave", Type.ELECTRIC, Category.SPECIAL, 20, 60, null, null),
+    WATER_PULSE("Water Pulse", Type.WATER, Category.SPECIAL, 20, 60, 100, null),
+    DOOM_DESIRE("Doom Desire", Type.STEEL, Category.SPECIAL, 5, 140, 100, null),
+    PSYCHO_BOOST("Psycho Boost", Type.PSYCHIC, Category.SPECIAL, 5, 140, 90, null),
+    ROOST("Roost", Type.FLYING, Category.STATUS, 10, null, null, null),
+    GRAVITY("Gravity", Type.PSYCHIC, Category.STATUS, 5, null, null, null),
+    MIRACLE_EYE("Miracle Eye", Type.PSYCHIC, Category.STATUS, 40, null, null, null),
+    WAKEUP_SLAP("WakeUp Slap", Type.FIGHTING, Category.PHYSICAL, 10, 70, 100, null),
+    HAMMER_ARM("Hammer Arm", Type.FIGHTING, Category.PHYSICAL, 10, 100, 90, null),
+    GYRO_BALL("Gyro Ball", Type.STEEL, Category.PHYSICAL, 5, null, 100, null),
+    HEALING_WISH("Healing Wish", Type.PSYCHIC, Category.STATUS, 10, null, null, null),
+    BRINE("Brine", Type.WATER, Category.SPECIAL, 10, 65, 100, null),
+    NATURAL_GIFT("Natural Gift", Type.NORMAL, Category.PHYSICAL, 15, null, 100, null),
+    FEINT("Feint", Type.NORMAL, Category.PHYSICAL, 10, 30, 100, null),
+    PLUCK("Pluck", Type.FLYING, Category.PHYSICAL, 20, 60, 100, null),
+    TAILWIND("Tailwind", Type.FLYING, Category.STATUS, 15, null, null, null),
+    ACUPRESSURE("Acupressure", Type.NORMAL, Category.STATUS, 30, null, null, null),
+    METAL_BURST("Metal Burst", Type.STEEL, Category.PHYSICAL, 10, null, 100, null),
+    UTURN("Uturn", Type.BUG, Category.PHYSICAL, 20, 70, 100, null),
+    CLOSE_COMBAT("Close Combat", Type.FIGHTING, Category.PHYSICAL, 5, 120, 100, null),
+    PAYBACK("Payback", Type.DARK, Category.PHYSICAL, 10, 50, 100, null),
+    ASSURANCE("Assurance", Type.DARK, Category.PHYSICAL, 10, 60, 100, null),
+    EMBARGO("Embargo", Type.DARK, Category.STATUS, 15, null, 100, null),
+    FLING("Fling", Type.DARK, Category.PHYSICAL, 10, null, 100, null),
+    PSYCHO_SHIFT("Psycho Shift", Type.PSYCHIC, Category.STATUS, 10, null, 100, null),
+    TRUMP_CARD("Trump Card", Type.NORMAL, Category.SPECIAL, 5, null, null, null),
+    HEAL_BLOCK("Heal Block", Type.PSYCHIC, Category.STATUS, 15, null, 100, null),
+    WRING_OUT("Wring Out", Type.NORMAL, Category.SPECIAL, 5, null, 100, null),
+    POWER_TRICK("Power Trick", Type.PSYCHIC, Category.STATUS, 10, null, null, null),
+    GASTRO_ACID("Gastro Acid", Type.POISON, Category.STATUS, 10, null, 100, null),
+    LUCKY_CHANT("Lucky Chant", Type.NORMAL, Category.STATUS, 30, null, null, null),
+    ME_FIRST("Me First", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    COPYCAT("Copycat", Type.NORMAL, Category.STATUS, 20, null, null, null),
+    POWER_SWAP("Power Swap", Type.PSYCHIC, Category.STATUS, 10, null, null, null),
+    GUARD_SWAP("Guard Swap", Type.PSYCHIC, Category.STATUS, 10, null, null, null),
+    PUNISHMENT("Punishment", Type.DARK, Category.PHYSICAL, 5, null, 100, null),
+    LAST_RESORT("Last Resort", Type.NORMAL, Category.PHYSICAL, 5, 140, 100, null),
+    WORRY_SEED("Worry Seed", Type.GRASS, Category.STATUS, 10, null, 100, null),
+    SUCKER_PUNCH("Sucker Punch", Type.DARK, Category.PHYSICAL, 5, 70, 100, null),
+    TOXIC_SPIKES("Toxic Spikes", Type.POISON, Category.STATUS, 20, null, null, null),
+    HEART_SWAP("Heart Swap", Type.PSYCHIC, Category.STATUS, 10, null, null, null),
+    AQUA_RING("Aqua Ring", Type.WATER, Category.STATUS, 20, null, null, null),
+    MAGNET_RISE("Magnet Rise", Type.ELECTRIC, Category.STATUS, 10, null, null, null),
+    FLARE_BLITZ("Flare Blitz", Type.FIRE, Category.PHYSICAL, 15, 120, 100, null),
+    FORCE_PALM("Force Palm", Type.FIGHTING, Category.PHYSICAL, 10, 60, 100, null),
+    AURA_SPHERE("Aura Sphere", Type.FIGHTING, Category.SPECIAL, 20, 80, null, null),
+    ROCK_POLISH("Rock Polish", Type.ROCK, Category.STATUS, 20, null, null, null),
+    POISON_JAB("Poison Jab", Type.POISON, Category.PHYSICAL, 20, 80, 100, null),
+    DARK_PULSE("Dark Pulse", Type.DARK, Category.SPECIAL, 15, 80, 100, null),
+    NIGHT_SLASH("Night Slash", Type.DARK, Category.PHYSICAL, 15, 70, 100, null),
+    AQUA_TAIL("Aqua Tail", Type.WATER, Category.PHYSICAL, 10, 90, 90, null),
+    SEED_BOMB("Seed Bomb", Type.GRASS, Category.PHYSICAL, 15, 80, 100, null),
+    AIR_SLASH("Air Slash", Type.FLYING, Category.SPECIAL, 15, 75, 95, null),
+    XSCISSOR("XScissor", Type.BUG, Category.PHYSICAL, 15, 80, 100, null),
+    BUG_BUZZ("Bug Buzz", Type.BUG, Category.SPECIAL, 10, 90, 100, null),
+    DRAGON_PULSE("Dragon Pulse", Type.DRAGON, Category.SPECIAL, 10, 85, 100, null),
+    DRAGON_RUSH("Dragon Rush", Type.DRAGON, Category.PHYSICAL, 10, 100, 75, null),
+    POWER_GEM("Power Gem", Type.ROCK, Category.SPECIAL, 20, 80, 100, null),
+    DRAIN_PUNCH("Drain Punch", Type.FIGHTING, Category.PHYSICAL, 10, 75, 100, null),
+    VACUUM_WAVE("Vacuum Wave", Type.FIGHTING, Category.SPECIAL, 30, 40, 100, null),
+    FOCUS_BLAST("Focus Blast", Type.FIGHTING, Category.SPECIAL, 5, 120, 70, null),
+    ENERGY_BALL("Energy Ball", Type.GRASS, Category.SPECIAL, 10, 90, 100, null),
+    BRAVE_BIRD("Brave Bird", Type.FLYING, Category.PHYSICAL, 15, 120, 100, null),
+    EARTH_POWER("Earth Power", Type.GROUND, Category.SPECIAL, 10, 90, 100, null),
+    SWITCHEROO("Switcheroo", Type.DARK, Category.STATUS, 10, null, 100, null),
+    GIGA_IMPACT("Giga Impact", Type.NORMAL, Category.PHYSICAL, 5, 150, 90, null),
+    NASTY_PLOT("Nasty Plot", Type.DARK, Category.STATUS, 20, null, null, null),
+    BULLET_PUNCH("Bullet Punch", Type.STEEL, Category.PHYSICAL, 30, 40, 100, null),
+    AVALANCHE("Avalanche", Type.ICE, Category.PHYSICAL, 10, 60, 100, null),
+    ICE_SHARD("Ice Shard", Type.ICE, Category.PHYSICAL, 30, 40, 100, null),
+    SHADOW_CLAW("Shadow Claw", Type.GHOST, Category.PHYSICAL, 15, 70, 100, null),
+    THUNDER_FANG("Thunder Fang", Type.ELECTRIC, Category.PHYSICAL, 15, 65, 95, null),
+    ICE_FANG("Ice Fang", Type.ICE, Category.PHYSICAL, 15, 65, 95, null),
+    FIRE_FANG("Fire Fang", Type.FIRE, Category.PHYSICAL, 15, 65, 95, null),
+    SHADOW_SNEAK("Shadow Sneak", Type.GHOST, Category.PHYSICAL, 30, 40, 100, null),
+    MUD_BOMB("Mud Bomb", Type.GROUND, Category.SPECIAL, 10, 65, 85, null),
+    PSYCHO_CUT("Psycho Cut", Type.PSYCHIC, Category.PHYSICAL, 20, 70, 100, null),
+    ZEN_HEADBUTT("Zen Headbutt", Type.PSYCHIC, Category.PHYSICAL, 15, 80, 90, null),
+    MIRROR_SHOT("Mirror Shot", Type.STEEL, Category.SPECIAL, 10, 65, 85, null),
+    FLASH_CANNON("Flash Cannon", Type.STEEL, Category.SPECIAL, 10, 80, 100, null),
+    ROCK_CLIMB("Rock Climb", Type.NORMAL, Category.PHYSICAL, 20, 90, 85, null),
+    DEFOG("Defog", Type.FLYING, Category.STATUS, 15, null, null, null),
+    TRICK_ROOM("Trick Room", Type.PSYCHIC, Category.STATUS, 5, null, null, null),
+    DRACO_METEOR("Draco Meteor", Type.DRAGON, Category.SPECIAL, 5, 130, 90, null),
+    DISCHARGE("Discharge", Type.ELECTRIC, Category.SPECIAL, 15, 80, 100, null),
+    LAVA_PLUME("Lava Plume", Type.FIRE, Category.SPECIAL, 15, 80, 100, null),
+    LEAF_STORM("Leaf Storm", Type.GRASS, Category.SPECIAL, 5, 130, 90, null),
+    POWER_WHIP("Power Whip", Type.GRASS, Category.PHYSICAL, 10, 120, 85, null),
+    ROCK_WRECKER("Rock Wrecker", Type.ROCK, Category.PHYSICAL, 5, 150, 90, null),
+    CROSS_POISON("Cross Poison", Type.POISON, Category.PHYSICAL, 20, 70, 100, null),
+    GUNK_SHOT("Gunk Shot", Type.POISON, Category.PHYSICAL, 5, 120, 80, null),
+    IRON_HEAD("Iron Head", Type.STEEL, Category.PHYSICAL, 15, 80, 100, null),
+    MAGNET_BOMB("Magnet Bomb", Type.STEEL, Category.PHYSICAL, 20, 60, null, null),
+    STONE_EDGE("Stone Edge", Type.ROCK, Category.PHYSICAL, 5, 100, 80, null),
+    CAPTIVATE("Captivate", Type.NORMAL, Category.STATUS, 20, null, 100, null),
+    STEALTH_ROCK("Stealth Rock", Type.ROCK, Category.STATUS, 20, null, null, null),
+    GRASS_KNOT("Grass Knot", Type.GRASS, Category.SPECIAL, 20, null, 100, null),
+    CHATTER("Chatter", Type.FLYING, Category.SPECIAL, 20, 65, 100, null),
+    JUDGMENT("Judgment", Type.NORMAL, Category.SPECIAL, 10, 100, 100, null),
+    BUG_BITE("Bug Bite", Type.BUG, Category.PHYSICAL, 20, 60, 100, null),
+    CHARGE_BEAM("Charge Beam", Type.ELECTRIC, Category.SPECIAL, 10, 50, 90, null),
+    WOOD_HAMMER("Wood Hammer", Type.GRASS, Category.PHYSICAL, 15, 120, 100, null),
+    AQUA_JET("Aqua Jet", Type.WATER, Category.PHYSICAL, 20, 40, 100, null),
+    ATTACK_ORDER("Attack Order", Type.BUG, Category.PHYSICAL, 15, 90, 100, null),
+    DEFEND_ORDER("Defend Order", Type.BUG, Category.STATUS, 10, null, null, null),
+    HEAL_ORDER("Heal Order", Type.BUG, Category.STATUS, 10, null, null, null),
+    HEAD_SMASH("Head Smash", Type.ROCK, Category.PHYSICAL, 5, 150, 80, null),
+    DOUBLE_HIT("Double Hit", Type.NORMAL, Category.PHYSICAL, 10, 35, 90, null),
+    ROAR_OF_TIME("Roar of Time", Type.DRAGON, Category.SPECIAL, 5, 150, 90, null),
+    SPACIAL_REND("Spacial Rend", Type.DRAGON, Category.SPECIAL, 5, 100, 95, null),
+    LUNAR_DANCE("Lunar Dance", Type.PSYCHIC, Category.STATUS, 10, null, null, null),
+    CRUSH_GRIP("Crush Grip", Type.NORMAL, Category.PHYSICAL, 5, null, 100, null),
+    MAGMA_STORM("Magma Storm", Type.FIRE, Category.SPECIAL, 5, 100, 75, null),
+    DARK_VOID("Dark Void", Type.DARK, Category.STATUS, 10, null, 50, null),
+    SEED_FLARE("Seed Flare", Type.GRASS, Category.SPECIAL, 5, 120, 85, null),
+    OMINOUS_WIND("Ominous Wind", Type.GHOST, Category.SPECIAL, 5, 60, 100, null),
+    SHADOW_FORCE("Shadow Force", Type.GHOST, Category.PHYSICAL, 5, 120, 100, null),
+    HONE_CLAWS("Hone Claws", Type.DARK, Category.STATUS, 15, null, null, null);
 
-
-    public enum Category{
+    /**
+     * All moves can be divided in three categories
+     * <p>Those doing <b>physical</b> damage, that rely on attack and defense calculations</p>
+     * <p>Those doing <b>special</b> damage, that rely on special attack and special defense calculations</p>
+     * <p>Those doing <b>no</b> damage, but do various other things: status moves</p>
+     */
+    enum Category {
         PHYSICAL,
         SPECIAL,
         STATUS
     }
 
-    private String displayName;
-    private Category category;
-    private int maxPP;
-    private float accuracy;
-    private Type type;
-    private MovePattern functionality;
-    private int priority;
+    private final String displayName;
+    private final Type type;
+    private final Category category;
+    private final int maxPP;
+    private final Object basePower;
+    private Object accuracy;
+    private final MovePattern functionality;
+    private final int priority;
 
-    BaseMove(String displayName, Category category, int maxPP, float accuracy, Type type, MovePattern func) {
+    /**
+     * Creates a BaseMove with a specified priority.
+     *
+     * @param displayName   In game name
+     * @param type          @see {@link Type}
+     * @param category      @see {@link Category}
+     * @param maxPP         Maximum PP. Actual PP can be obtained from {@link Move#getPPleft()}
+     * @param basePower     null when the moves does no damage
+     * @param accuracy      null when the move accuracy is calculated differently from the standard calculations
+     * @param functionality @see {@link MovePattern} and various implementations
+     * @param priority
+     */
+    BaseMove(String displayName, Type type, Category category, int maxPP, Object basePower, Object accuracy, MovePattern functionality, int priority) {
         this.displayName = displayName;
+        this.type = type;
         this.category = category;
         this.maxPP = maxPP;
+        this.basePower = basePower;
         this.accuracy = accuracy;
-        this.type = type;
-        this.functionality = func;
-        this.priority = 0;
-    }
-
-    BaseMove(String displayName, Category category, int maxPP, float accuracy, Type type, MovePattern func, int priority) {
-        this.displayName = displayName;
-        this.category = category;
-        this.maxPP = maxPP;
-        this.accuracy = accuracy;
-        this.type = type;
-        this.functionality = func;
+        this.functionality = functionality;
         this.priority = priority;
     }
 
+    /**
+     * Creates a BaseMove with a default priority 0.
+     *
+     * @param displayName   In game name
+     * @param type          @see {@link Type}
+     * @param category      @see {@link Category}
+     * @param maxPP         Maximum PP. Actual PP can be obtained from {@link Move#getPPleft()}
+     * @param basePower     null when the moves does no damage
+     * @param accuracy      null when the move accuracy is calculated differently from the standard calculations
+     * @param functionality @see {@link MovePattern} and various implementations
+     */
+    BaseMove(String displayName, Type type, Category category, int maxPP, Object basePower, Object accuracy, MovePattern functionality) {
+        this.displayName = displayName;
+        this.type = type;
+        this.category = category;
+        this.maxPP = maxPP;
+        this.basePower = basePower;
+        this.accuracy = accuracy;
+        this.functionality = functionality;
+        this.priority = 0;
+    }
 
+    /**
+     * @return In game name of the BaseMove.
+     */
     public String getDisplayName() {
         return displayName;
     }
+
+    public Type getType() {
+        return type;
+    }
+
 
     public Category getCategory() {
         return category;
@@ -59,12 +564,12 @@ public enum BaseMove {
         return maxPP;
     }
 
-    public float getAccuracy() {
-        return accuracy;
+    public float getAccuracy() throws NullPointerException {
+        return (float) accuracy;
     }
 
-    public Type getType() {
-        return type;
+    public float getBasePower() throws NullPointerException {
+        return (float) basePower;
     }
 
     public MovePattern getFunctionality() {
@@ -74,4 +579,5 @@ public enum BaseMove {
     public int getPriority() {
         return priority;
     }
+
 }
