@@ -15,7 +15,7 @@ import java.util.stream.IntStream;
 /**
  * Each Pokemon has one Type or two Types which determine how much damage it will take from certain moves. It also
  * comes up in other aspects of the game and other calculations like STAB @see {@link
- * com.antonleagre.pokemonsaturn.model.Calculator}
+ * com.antonleagre.pokemonsaturn.model.Calculator Calculator}
  */
 public enum Type {
     NORMAL,

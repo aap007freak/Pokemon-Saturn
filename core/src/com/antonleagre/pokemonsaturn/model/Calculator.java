@@ -1,5 +1,10 @@
 package com.antonleagre.pokemonsaturn.model;
 
+import com.antonleagre.pokemonsaturn.model.battle.Battle;
+import com.antonleagre.pokemonsaturn.model.battle.BattlePokemon;
+import com.antonleagre.pokemonsaturn.model.battle.PMPair;
+import com.antonleagre.pokemonsaturn.model.moves.BaseMove;
+
 public class Calculator {
     /**
      * (got this of Bulbapedia)
@@ -28,23 +33,38 @@ public class Calculator {
                 Burn is 0.5 (from Generation III onward) if the attacker is burned, its Ability is not Guts, and the used move is a physical move (other than Facade from Generation VI onward), and 1 otherwise.
                  other is 1 in most cases, and a different multiplier when specific interactions of moves, Abilities or items take effect:
      */
-
-
-
-    /**
-     * Calculates the damage a move will do. Note that it doesn't take into account the accuracy of the move, which needs
-     * to be checked seperately.
-     * @param attacking The attacking Pokemon
-     * @param defending
-     * @param
-     * @return
-     */
-    public static float calculateDamage(Pokemon attacking, Pokemon defending, float power){
+    public static float calculateDamage(BattlePokemon attacking, BattlePokemon defending, BaseMove move, float power){
         float modifier = 1.0f; //todo modifier
+        if(move.getCategory() == BaseMove.Category.PHYSICAL){
+            return roundDown(
+                    (((2 * (float) attacking.getPokemon().getLevel() / 5) + 2 ) * power * (attacking.getAttack() / defending.getDefense()) / 50 ) + 2
+            ) * modifier;
+        }
         return roundDown(
-                (((2 * attacking.getLevel() / 5) + 2 ) * power * (attacking.getAttack() / defending.getDefense()) / 50 ) + 2
+                (((2 * (float) attacking.getPokemon().getLevel() / 5) + 2 ) * power * (attacking.getSpattack() / defending.getSPdefense()) / 50 ) + 2
         ) * modifier;
         //todo this hasn't been checked
+        // TODO: 5/02/2021 crit ratios
+    }
+
+        /**
+     * Calculates accuracy based on <a href=https://bulbapedia.bulbagarden.net/wiki/Stat> this</a> source ( @see accuracy section).
+     * <p>
+     * Note that this function does not apply for moves that calculate their accuracy different than the normal formula, those need to have
+     * different {@link com.antonleagre.pokemonsaturn.model.moves.MovePattern MovePatterns}.
+     * @return Chance of move hitting (0-1)
+     */
+    public static float calculateAccuracy(PMPair pair, Battle battle){
+        float move_accuracy = pair.getMove().getBase().getAccuracy();
+
+        int accuracy_stage = pair.getUser().getBattleAccuracyModifier();
+        int evasion_stage = pair.getTarget().getBattleEvasionModifier();
+        float adjusted_stages = BattlePokemon.accuracyEvasionStageMultipliers[accuracy_stage - evasion_stage];
+
+        float mods = 1; // this should be changed by battle
+
+
+        return move_accuracy * adjusted_stages * mods;
     }
 
     /**

@@ -7,7 +7,7 @@ public interface MovePattern {
 
     boolean trigger(PMPair pm, Battle battle);
 
-    boolean end();
+    void end();
 
 
 }

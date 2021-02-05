@@ -24,8 +24,12 @@ public class BattlePokemon {
     private float battleAccuracy;
     private int battleAccuracyModifier;
 
+    private float battleCritRatio;
+    private int batleCritRatioModifier;
+
     public static final float[] accuracyEvasionStageMultipliers = {33/100f,36/100f, 43/100f, 50/100f, 60/100f, 75/100f, 1f, 133/100f, 166/100f, 200/100f, 250/100f, 266/100f, 300/100f};
     public static final float[] attackDefenseSpecialSpeedMultipliers = {2/8f, 2/7f, 2/6f, 2/5f, 2/4f, 2/3f, 1f, 3/2f, 4/2f, 5/2f, 6/2f, 7/2f, 8/2f};
+    public static final float[] critRatioMultipliers = {1/16f, 1/8f, 1/4f, 1/3f, 1/2f};
 
         public BattlePokemon(Pokemon pokemon) {
         this.pokemon = pokemon;
@@ -40,9 +44,10 @@ public class BattlePokemon {
         this.battleEvasion = 1;
 
         this.battleAttackModifier = this.battleDefenseModifier = this.battleSpattackModifer = this.battleSpdefenseModifier
-                = this.battleSpeedModifier = this.battleAccuracyModifier = this.battleEvasionModifier = 1;
+                = this.battleSpeedModifier = this.battleAccuracyModifier = this.battleEvasionModifier = 0;
 
-
+        this.batleCritRatioModifier = 0;
+        this.battleCritRatio = critRatioMultipliers[this.batleCritRatioModifier];
     }
 
     public float getAttack() {
@@ -73,6 +78,10 @@ public class BattlePokemon {
         return battleAccuracy;
     }
 
+    public float getCritRatio() {
+        return battleCritRatio;
+    }
+
     public int getBattleAttackModifier() {
         return battleAttackModifier;
     }
@@ -99,6 +108,10 @@ public class BattlePokemon {
 
     public int getBattleAccuracyModifier() {
         return battleAccuracyModifier;
+    }
+
+    public int getCritRatioModifier() {
+        return batleCritRatioModifier;
     }
 
     public void setBattleAttackModifier(int battleAttackModifier) {
@@ -164,11 +177,34 @@ public class BattlePokemon {
         }
     }
 
-    public void raiseBattleAttackModifier(int stages) throws IllegalArgumentException{
+    /**
+     * from 0 inclusive to a maximum of +4 inclusive
+     * @param batleCritRatioModifier
+     */
+    public void setBattleCritRatioModifier(int batleCritRatioModifier) {
+        if (0 <= batleCritRatioModifier && batleCritRatioModifier <= 4){
+            this.batleCritRatioModifier = batleCritRatioModifier;
+            this.battleCritRatio = critRatioMultipliers[batleCritRatioModifier];
+        }else{
+            throw new IllegalArgumentException("Crit Ratio Modifier must be between 0 and 4");
+        }
+    }
+
+    public void raiseBattleAttackModifier(int stages){
             setBattleAttackModifier(battleAttackModifier + stages);
     }
 
+    public void raiseCritRatioModifier(int stages){
+        setBattleCritRatioModifier(batleCritRatioModifier + stages);
+    }
 
+    public void lowerCritRatioModifier(int stages){
+        setBattleCritRatioModifier(batleCritRatioModifier - stages);
+    }
+
+    public Pokemon getPokemon() {
+        return pokemon;
+    }
 
     public String getName() {
         return pokemon.getName();

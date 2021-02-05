@@ -1,6 +1,7 @@
 package com.antonleagre.pokemonsaturn.model.moves;
 
 import com.antonleagre.pokemonsaturn.model.moves.patterns.DamageMovePattern;
+import com.antonleagre.pokemonsaturn.model.moves.patterns.PayDayMovePattern;
 import com.antonleagre.pokemonsaturn.model.pokemon.Type;
 
 /**
@@ -9,12 +10,12 @@ import com.antonleagre.pokemonsaturn.model.pokemon.Type;
  */
 public enum BaseMove {
 
-    POUND("Pound", Type.NORMAL, Category.PHYSICAL, 35, 40, 100, null),
+    POUND("Pound", Type.NORMAL, Category.PHYSICAL, 35, 40, 100, new DamageMovePattern()),
     KARATE_CHOP("Karate Chop", Type.FIGHTING, Category.PHYSICAL, 25, 50, 100, null),
     DOUBLE_SLAP("Double Slap", Type.NORMAL, Category.PHYSICAL, 10, 15, 85, null),
     COMET_PUNCH("Comet Punch", Type.NORMAL, Category.PHYSICAL, 15, 18, 85, null),
-    MEGA_PUNCH("Mega Punch", Type.NORMAL, Category.PHYSICAL, 20, 80, 85, null),
-    PAY_DAY("Pay Day", Type.NORMAL, Category.PHYSICAL, 20, 40, 100, null),
+    MEGA_PUNCH("Mega Punch", Type.NORMAL, Category.PHYSICAL, 20, 80, 85, new DamageMovePattern()),
+    PAY_DAY("Pay Day", Type.NORMAL, Category.PHYSICAL, 20, 40, 100, new PayDayMovePattern()),
     FIRE_PUNCH("Fire Punch", Type.FIRE, Category.PHYSICAL, 15, 75, 100, null),
     ICE_PUNCH("Ice Punch", Type.ICE, Category.PHYSICAL, 15, 75, 100, null),
     THUNDER_PUNCH("Thunder Punch", Type.ELECTRIC, Category.PHYSICAL, 15, 75, 100, null),
@@ -484,7 +485,7 @@ public enum BaseMove {
      * <p>Those doing <b>special</b> damage, that rely on special attack and special defense calculations</p>
      * <p>Those doing <b>no</b> damage, but do various other things: status moves</p>
      */
-    enum Category {
+    public enum Category {
         PHYSICAL,
         SPECIAL,
         STATUS
