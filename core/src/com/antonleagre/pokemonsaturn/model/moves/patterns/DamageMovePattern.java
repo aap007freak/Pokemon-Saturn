@@ -34,11 +34,11 @@ public class DamageMovePattern implements MovePattern {
 
     }
 
-    private boolean willHit(float accuracy) {
+    protected boolean willHit(float accuracy) {
         return new Random().nextFloat() <= accuracy;
     }
 
-    private boolean willCrit(float critRatio) {
+    protected boolean willCrit(float critRatio) {
         return new Random().nextFloat() <= critRatio;
 
     }

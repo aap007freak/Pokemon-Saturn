@@ -9,5 +9,9 @@ public class Battle {
 
     }
 
+    public void inflictStatusEffect(BattlePokemon target, StatusEffect effect){
+
+    }
+
 
 }

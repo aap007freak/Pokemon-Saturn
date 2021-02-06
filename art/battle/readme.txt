@@ -35,7 +35,7 @@ De namen volgen de namen layed out in BasePokemon.java, uitzonderingen hieronder
       _m: mower rotom
     giratine has a normal form (no _) and an altered form (_a) origin forme (_o)
     shaymin forms : land form (_l) sky forme (_s)
-    arceus form: _ + first two letters of the type (sometimes three) + _que for unknown form
+    arceus form: _ + first two letters of the affectedStat (sometimes three) + _que for unknown form
 
 
     TODO: check wurmple imgs and wormadan

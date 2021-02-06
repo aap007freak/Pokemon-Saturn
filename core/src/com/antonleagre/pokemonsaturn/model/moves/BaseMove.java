@@ -1,7 +1,7 @@
 package com.antonleagre.pokemonsaturn.model.moves;
 
-import com.antonleagre.pokemonsaturn.model.moves.patterns.DamageMovePattern;
-import com.antonleagre.pokemonsaturn.model.moves.patterns.PayDayMovePattern;
+import com.antonleagre.pokemonsaturn.model.battle.StatusEffect;
+import com.antonleagre.pokemonsaturn.model.moves.patterns.*;
 import com.antonleagre.pokemonsaturn.model.pokemon.Type;
 
 /**
@@ -11,20 +11,20 @@ import com.antonleagre.pokemonsaturn.model.pokemon.Type;
 public enum BaseMove {
 
     POUND("Pound", Type.NORMAL, Category.PHYSICAL, 35, 40, 100, new DamageMovePattern()),
-    KARATE_CHOP("Karate Chop", Type.FIGHTING, Category.PHYSICAL, 25, 50, 100, null),
+    KARATE_CHOP("Karate Chop", Type.FIGHTING, Category.PHYSICAL, 25, 50, 100, new IncreasedCritChanceMovePattern()),
     DOUBLE_SLAP("Double Slap", Type.NORMAL, Category.PHYSICAL, 10, 15, 85, null),
     COMET_PUNCH("Comet Punch", Type.NORMAL, Category.PHYSICAL, 15, 18, 85, null),
     MEGA_PUNCH("Mega Punch", Type.NORMAL, Category.PHYSICAL, 20, 80, 85, new DamageMovePattern()),
     PAY_DAY("Pay Day", Type.NORMAL, Category.PHYSICAL, 20, 40, 100, new PayDayMovePattern()),
-    FIRE_PUNCH("Fire Punch", Type.FIRE, Category.PHYSICAL, 15, 75, 100, null),
-    ICE_PUNCH("Ice Punch", Type.ICE, Category.PHYSICAL, 15, 75, 100, null),
-    THUNDER_PUNCH("Thunder Punch", Type.ELECTRIC, Category.PHYSICAL, 15, 75, 100, null),
-    SCRATCH("Scratch", Type.NORMAL, Category.PHYSICAL, 35, 40, 100, null),
-    VISE_GRIP("Vise Grip", Type.NORMAL, Category.PHYSICAL, 30, 55, 100, null),
-    GUILLOTINE("Guillotine", Type.NORMAL, Category.PHYSICAL, 5, null, 30, null),
-    RAZOR_WIND("Razor Wind", Type.NORMAL, Category.SPECIAL, 10, 80, 100, null),
-    SWORDS_DANCE("Swords Dance", Type.NORMAL, Category.STATUS, 20, null, null, null),
-    CUT("Cut", Type.NORMAL, Category.PHYSICAL, 30, 50, 95, null),
+    FIRE_PUNCH("Fire Punch", Type.FIRE, Category.PHYSICAL, 15, 75, 100, new DamageAndStatusMovePattern(StatusEffect.BURN, 1/10f)),
+    ICE_PUNCH("Ice Punch", Type.ICE, Category.PHYSICAL, 15, 75, 100, new DamageAndStatusMovePattern(StatusEffect.FREEZE, 1/10f)),
+    THUNDER_PUNCH("Thunder Punch", Type.ELECTRIC, Category.PHYSICAL, 15, 75, 100, new DamageAndStatusMovePattern(StatusEffect.PARALYSIS, 1/10f)),
+    SCRATCH("Scratch", Type.NORMAL, Category.PHYSICAL, 35, 40, 100, new DamageMovePattern()),
+    VISE_GRIP("Vise Grip", Type.NORMAL, Category.PHYSICAL, 30, 55, 100, new DamageMovePattern()),
+    GUILLOTINE("Guillotine", Type.NORMAL, Category.PHYSICAL, 5, null, 30, new GuillotineMovePattern()),
+    RAZOR_WIND("Razor Wind", Type.NORMAL, Category.SPECIAL, 10, 80, 100, new RazorWindMovePattern()),
+    SWORDS_DANCE("Swords Dance", Type.NORMAL, Category.STATUS, 30, null, null, new MultiplierMovePattern(2, MultiplierMovePattern.AffectedStat.ATTACK)),
+    CUT("Cut", Type.NORMAL, Category.PHYSICAL, 30, 50, 95, new DamageMovePattern()),
     GUST("Gust", Type.FLYING, Category.SPECIAL, 35, 40, 100, null),
     WING_ATTACK("Wing Attack", Type.FLYING, Category.PHYSICAL, 35, 60, 100, null),
     WHIRLWIND("Whirlwind", Type.NORMAL, Category.STATUS, 20, null, null, null),

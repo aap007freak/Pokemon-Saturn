@@ -3,6 +3,9 @@ package com.antonleagre.pokemonsaturn.model.moves.patterns;
 import com.antonleagre.pokemonsaturn.model.battle.Battle;
 import com.antonleagre.pokemonsaturn.model.battle.PMPair;
 
+/**
+ *
+ */
 public class IncreasedCritChanceMovePattern extends DamageMovePattern{
 
 

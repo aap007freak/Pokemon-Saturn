@@ -50,6 +50,10 @@ public class BattlePokemon {
         this.battleCritRatio = critRatioMultipliers[this.batleCritRatioModifier];
     }
 
+    public float getHP(){
+            return pokemon.getHp();
+    }
+
     public float getAttack() {
         return battleAttack;
     }
@@ -114,7 +118,7 @@ public class BattlePokemon {
         return batleCritRatioModifier;
     }
 
-    public void setBattleAttackModifier(int battleAttackModifier) {
+    public void setBattleAttackModifier(int battleAttackModifier) throws IllegalArgumentException{
         if (-6 <= battleAttackModifier && battleAttackModifier <= 6){
             this.battleAttackModifier = battleAttackModifier;
             this.battleAttack = attackDefenseSpecialSpeedMultipliers[6+battleAttackModifier] * this.battleAttack;
@@ -123,7 +127,7 @@ public class BattlePokemon {
         }
     }
 
-    public void setBattleDefenseModifier(int battleDefenseModifier) {
+    public void setBattleDefenseModifier(int battleDefenseModifier) throws IllegalArgumentException {
         if (-6 <= battleDefenseModifier && battleDefenseModifier <= 6){
             this.battleDefenseModifier = battleDefenseModifier;
             this.battleDefense = attackDefenseSpecialSpeedMultipliers[6+battleDefenseModifier] * this.battleDefense;
@@ -132,7 +136,7 @@ public class BattlePokemon {
         }
     }
 
-    public void setBattleSpattackModifer(int battleSpattackModifer) {
+    public void setBattleSpattackModifer(int battleSpattackModifer) throws IllegalArgumentException {
         if (-6 <= battleSpattackModifer && battleSpattackModifer <= 6){
             this.battleSpattackModifer = battleSpattackModifer;
             this.battleSpattack = attackDefenseSpecialSpeedMultipliers[6+battleSpattackModifer] * this.battleSpattack;
@@ -141,7 +145,7 @@ public class BattlePokemon {
         }
     }
 
-    public void setBattleSpdefenseModifier(int battleSpdefenseModifier) {
+    public void setBattleSpdefenseModifier(int battleSpdefenseModifier) throws IllegalArgumentException {
         if (-6 <= battleSpdefenseModifier && battleSpdefenseModifier <= 6){
             this.battleSpdefenseModifier = battleSpdefenseModifier;
             this.battleSPdefense = attackDefenseSpecialSpeedMultipliers[6+battleSpdefenseModifier] * this.battleSPdefense;
@@ -150,7 +154,7 @@ public class BattlePokemon {
         }
     }
 
-    public void setBattleSpeedModifier(int battleSpeedModifier) {
+    public void setBattleSpeedModifier(int battleSpeedModifier) throws IllegalArgumentException {
         if (-6 <= battleSpeedModifier && battleSpeedModifier <= 6){
             this.battleSpeedModifier = battleSpeedModifier;
             this.battleSpeed = attackDefenseSpecialSpeedMultipliers[6+battleSpeedModifier] * this.battleSpeed;
@@ -168,7 +172,7 @@ public class BattlePokemon {
         }
     }
 
-    public void setBattleEvasionModifier(int battleEvasionModifier) {
+    public void setBattleEvasionModifier(int battleEvasionModifier) throws IllegalArgumentException {
         if (-6 <= battleEvasionModifier && battleEvasionModifier <= 6){
             this.battleEvasionModifier = battleEvasionModifier;
             this.battleEvasion = accuracyEvasionStageMultipliers[6+battleEvasionModifier] * this.battleEvasion;
@@ -181,17 +185,49 @@ public class BattlePokemon {
      * from 0 inclusive to a maximum of +4 inclusive
      * @param batleCritRatioModifier
      */
-    public void setBattleCritRatioModifier(int batleCritRatioModifier) {
-        if (0 <= batleCritRatioModifier && batleCritRatioModifier <= 4){
+    public void setBattleCritRatioModifier(int batleCritRatioModifier) throws IllegalArgumentException {
+        if (0 <= batleCritRatioModifier){
+            if(batleCritRatioModifier > 4){
+                this.battleCritRatio = critRatioMultipliers[3];
+
+            }else{
+                this.battleCritRatio = critRatioMultipliers[batleCritRatioModifier - 1];
+
+            }
             this.batleCritRatioModifier = batleCritRatioModifier;
-            this.battleCritRatio = critRatioMultipliers[batleCritRatioModifier];
         }else{
-            throw new IllegalArgumentException("Crit Ratio Modifier must be between 0 and 4");
+            throw new IllegalArgumentException("Crit Ratio Modifier must be greater than 0");
         }
     }
 
-    public void raiseBattleAttackModifier(int stages){
-            setBattleAttackModifier(battleAttackModifier + stages);
+    // TODO: 6/02/2021 These functions should check if the stages are in an acceptable range,
+    //  but not throw errors if it is above the accepted value. I.e. 5 + 3 = 6
+    public void raiseAttackModifier(int stages){
+        setBattleAttackModifier(battleAttackModifier + stages);
+    }
+
+    public void raiseDefenseModifier(int stages){
+        setBattleDefenseModifier(battleDefenseModifier + stages);
+    }
+
+    public void raiseSpecialAttackModifier(int stages){
+        setBattleSpattackModifer(battleSpattackModifer + stages);
+    }
+
+    public void raiseSpecialDefenseModifier(int stages){
+        setBattleSpdefenseModifier(battleSpdefenseModifier + stages);
+    }
+
+    public void raiseSpeedModifier(int stages){
+
+    }
+
+    public void raiseAccuracyModifier(int stages){
+        setBattleAccuracyModifier(battleAccuracyModifier + stages);
+    }
+
+    public void raiseEvasionModifier(int stages){
+        setBattleEvasionModifier(battleEvasionModifier + stages);
     }
 
     public void raiseCritRatioModifier(int stages){
