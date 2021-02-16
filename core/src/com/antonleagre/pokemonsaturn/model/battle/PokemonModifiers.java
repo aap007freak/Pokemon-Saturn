@@ -1,4 +1,8 @@
 package com.antonleagre.pokemonsaturn.model.battle;
 
-public class Modifiers {
+/**
+ *
+ */
+public enum PokemonModifiers {
+    FLYING
 }

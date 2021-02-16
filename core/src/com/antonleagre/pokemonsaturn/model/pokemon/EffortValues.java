@@ -16,7 +16,6 @@ import java.net.URL;
  * <p>
  * There are also items that influence EV, those will be implemented later
  * <p>
- * todo implement EV Yield
  */
 public class EffortValues {
 

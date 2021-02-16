@@ -9,7 +9,7 @@ import java.util.Random;
 
 
 /**
- * MovePattern that encapsulates all moves that do an amount of damage equal to its basepower (including modifiers and
+ * MovePattern that encapsulates all moves that do an amount of damage equal to its basepower (taking into account modifiers and
  * stat boosts), including a normal accuracy calculation {@see} {@link com.antonleagre.pokemonsaturn.model.Calculator#calculateAccuracy}
  */
 public class DamageMovePattern implements MovePattern {
@@ -40,7 +40,6 @@ public class DamageMovePattern implements MovePattern {
 
     protected boolean willCrit(float critRatio) {
         return new Random().nextFloat() <= critRatio;
-
     }
 
 

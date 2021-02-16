@@ -1,7 +1,6 @@
 package de.tomgrill.gdxtesting.pokemonsaturn.model;
 
 import com.antonleagre.pokemonsaturn.model.pokemon.BasePokemon;
-import com.antonleagre.pokemonsaturn.model.pokemon.BaseStats;
 import com.antonleagre.pokemonsaturn.model.pokemon.EffortValues;
 import com.antonleagre.pokemonsaturn.model.pokemon.Type;
 import de.tomgrill.gdxtesting.GdxTestRunner;
@@ -20,7 +19,7 @@ public class PokemonTest {
     //BasePokemon Tests
     @Test
     public void AllBasePokemonPresent() {
-        assertEquals(BaseStats.values().length, 250);
+        assertEquals(BasePokemon.values().length, 493);
     }
 
     //EV tests

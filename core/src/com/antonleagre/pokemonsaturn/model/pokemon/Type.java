@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
- * Each Pokemon has one Type or two Types which determine how much damage it will take from certain moves. It also
+ * Each Pokemon has one Type (or two) which determine how much damage it will take from certain moves. It also
  * comes up in other aspects of the game and other calculations like STAB @see {@link
  * com.antonleagre.pokemonsaturn.model.Calculator Calculator}
  */
@@ -48,7 +48,7 @@ public enum Type {
      *
      * <p>
      * The Float Array is the same as on <a href="https://bulbapedia.bulbagarden.net/wiki/Type/Type_chart">Bulbapedia</a>
-     * Namely the Attacking type is vertical, the defending type is horizontal
+     * Namely the Attacking type is vertical, the defending type is horizontal, the same order as appearance in the enum.
      */
     public static final float[][] typeEffectivenessChart = {
             {1, 1, 1, 1, 1, 0.5f, 1, 0, 0.5f, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -70,14 +70,14 @@ public enum Type {
             {1, 0.5f, 1, 1, 1, 1, 1, 2, 0.5f, 1, 1, 1, 1, 2, 1, 1, 0.5f}
     }; // TODO: 2/02/2021 This chart obvously has no FAIRY, so checking for FAIRY type will give errors
 
-    //helper method
+    //helper function
     private static int getIndexFromType(Type type) {
         return IntStream.range(0, 17)
                 .filter(i -> type.equals(Type.values()[i]))
                 .findFirst().getAsInt();
     }
 
-    //helper method
+    //helper function
     private static Type getTypeFromIndex(int i) {
         return Type.values()[i];
     }

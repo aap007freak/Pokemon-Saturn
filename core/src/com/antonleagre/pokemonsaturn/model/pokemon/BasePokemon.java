@@ -1,7 +1,6 @@
 package com.antonleagre.pokemonsaturn.model.pokemon;
 
 import java.util.Optional;
-import java.util.Set;
 
 // TODO: 13/09/2020 flavour text has pokemon names capitalized
 
@@ -602,8 +601,7 @@ public enum BasePokemon {
      * @param johtoDexNumber Johto Pokedex Number. Should be 6969 for Pokemon not in the Johto Dex todo Change this mess
      * @param baseHP base HP stat
      * @param baseAttack base Attack stat
-     * @param baseDefense base Defense stat
-     * @param baseSpAttack base Special Attack stat
+     * @param baseDefense base Defens     * @param baseSpAttack base Special Attack state stat
      * @param baseSpDefense base Special Defense stat
      * @param baseSpeed base Speed stat
      * @param maleToFemaleRatio male to female ratio - may be null
