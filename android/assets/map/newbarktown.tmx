@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="2018.11.29" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="59">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="62">
  <tileset firstgid="1" name="fewBuildingsandGrass" tilewidth="16" tileheight="16" tilecount="494" columns="26">
   <image source="tilesets/fewBuildingsandGrass.png" width="425" height="315"/>
  </tileset>
@@ -15,11 +15,15 @@
  </layer>
  <layer id="10" name="houses" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt0dkNgmAQReGhFVsS1CbcKEIRacK1CUVtwrUajwmJz8YHmJ97ku99bsZMKaWUUqo9dSOzGAl66GMQ1X3V7w25eYQxJpgidbhjzs0ZFsixROFwx4qb19hgix32DnccuPmIEieccXG448rNN9zxwBOvBu3oYFbxXIy84rlQdmT23VHUfMu/hfCPT6HsUEoppZRSSqm29QYAeR2d
+   eJzt0csNglAURdH7WrElGNiEohahiDSBvyb8NuG3GjcJiTFx5kDu46xkT8gb3BPMRERERLojCWZp+PzWD9/fttmAm4eU0YjGNHG4Y8bNOc2poAWVDndU3LykFa1pQ1uHO3bcvKcDHelEZ4c7Ltx8pRvd6UHPFu3o0bTJs5SKJs9i2ZHbe0f551t+FcP/qMWyQ0REREREpGteWBMcmA==
+  </data>
+ </layer>
+ <layer id="11" name="housestops" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztzsENACAMxLDrkJT9N4EtQKot5Z8EAGCeVUnfdr0+AQAAAADgFwfHlwEG
   </data>
  </layer>
  <objectgroup id="6" name="colObs">
-  <object id="38" x="416" y="176" width="80" height="96"/>
   <object id="52" x="336" y="336">
    <polyline points="0,0 -96,0"/>
   </object>
@@ -29,6 +33,8 @@
   <object id="58" x="224" y="544">
    <polyline points="0,0 -128,0"/>
   </object>
+  <object id="60" x="425" y="246.75" width="23.5" height="15.25"/>
+  <object id="61" x="416" y="192.25" width="79.5" height="79"/>
  </objectgroup>
  <objectgroup id="7" name="specTiles">
   <object id="32" name="door" x="224" y="416" width="16" height="16">

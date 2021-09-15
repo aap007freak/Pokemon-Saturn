@@ -35,6 +35,9 @@ public class MapSegmentController {
     private MapSegment currentMap;
     private MapSegment oldMap;
 
+    private final int[] bglayers = new int[]{0,1, 2}; // TODO: 6/09/2021 layers shouldnt be hardcoded but customizable
+    private final int[] fglayers = new int[]{3};
+
     public MapSegmentController(Player player, Main main){
         this.player = player;
         mapCam = new OrthographicCamera();
@@ -47,18 +50,22 @@ public class MapSegmentController {
         renderer.setView(mapCam);
     }
 
-    public void render(){
-        renderer.render();
+    public void renderBackground(){
+        renderer.render(bglayers);
+    }
+
+    public void renderForeground(){
+        renderer.render(fglayers);
 
     }
 
     public void renderDebugLines(ShapeRenderer srr, SpriteBatch sb){
         if(PlayScreen.debug){
             for(Collidable r : currentMap.getCollidables()){
-                r.render(srr, sb);
+                r.render(srr);
             }
             for(SpecialTile t : currentMap.getSpecialTiles()){
-                t.render(srr, sb);
+                t.render(srr);
             }
         }
     }

@@ -31,8 +31,8 @@ public abstract class SpecialTile extends CollisionRectangle {
 
 
     @Override
-    public void render(ShapeRenderer renderer, SpriteBatch sb) {
-        super.render(renderer, sb);
+    public void render(ShapeRenderer renderer) {
+        super.render(renderer);
     }
 
 

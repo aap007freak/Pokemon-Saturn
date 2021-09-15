@@ -1,0 +1,19 @@
+{
+  "name": "js",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "bin": {
+    "sim": "src/main/js/main.js"
+  },
+  "scripts": {},
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "@pkmn/randoms": "^0.4.17",
+    "@pkmn/sim": "^0.4.17",
+    "pkg": "^5.3.1",
+    "sleep": "^6.3.0"
+  }
+}

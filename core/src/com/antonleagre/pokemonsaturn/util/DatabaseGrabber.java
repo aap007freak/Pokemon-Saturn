@@ -11,7 +11,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
-import sun.security.pkcs11.wrapper.Constants;
 
 import java.awt.geom.FlatteningPathIterator;
 import java.io.File;

@@ -66,7 +66,7 @@ public class CollisionLine implements Collidable {
     }
 
     @Override
-    public void render(ShapeRenderer srr, SpriteBatch sb) {
+    public void render(ShapeRenderer srr) {
         srr.setColor(Color.BLUE);
         srr.line(startX ,startY ,endX, endY);
     }

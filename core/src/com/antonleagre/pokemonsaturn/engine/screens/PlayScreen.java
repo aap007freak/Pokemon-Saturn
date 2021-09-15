@@ -49,7 +49,7 @@ public class PlayScreen  implements Screen{
 
         pokemonTexture = main.assetManager.get("pokemonOverworlds.atlas", TextureAtlas.class).findRegion("poPidgeot1");
 
-        uiController = new UIController(null);
+        uiController = new UIController(Gdx.files.internal("skin/uiskin.json"));
 
     }
 
@@ -76,16 +76,18 @@ public class PlayScreen  implements Screen{
         debugRenderer.setProjectionMatrix(camera.combined);
 
         //batch doesnt have to open for a map render call
-        mapSegmentController.render();
+        mapSegmentController.renderBackground();
 
         main.batch.begin();
         debugRenderer.begin(ShapeRenderer.ShapeType.Line);
 
         main.batch.draw(pokemonTexture, 0, 0);
         player.render(debugRenderer, main.batch);
-        mapSegmentController.renderDebugLines(debugRenderer, main.batch);
+
 
         main.batch.end();
+        mapSegmentController.renderForeground();
+        mapSegmentController.renderDebugLines(debugRenderer, main.batch);
         debugRenderer.end();
 
         uiController.renderUI();

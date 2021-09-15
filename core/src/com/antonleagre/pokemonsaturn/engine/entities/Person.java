@@ -135,7 +135,7 @@ public class Person {
      * @param sb
      */
     private void postRender(ShapeRenderer srr, SpriteBatch sb){
-        if(PlayScreen.debug) rectangle.render(srr, sb);
+        if(PlayScreen.debug) rectangle.render(srr);
     }
 
 

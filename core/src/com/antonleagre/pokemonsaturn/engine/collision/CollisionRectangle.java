@@ -27,7 +27,7 @@ public class CollisionRectangle extends Rectangle implements Collidable {
 
 
     @Override
-    public void render(ShapeRenderer srr, SpriteBatch sb) {
+    public void render(ShapeRenderer srr) {
         srr.setColor(Color.RED);
         srr.rect(x,y,width, height);
     }

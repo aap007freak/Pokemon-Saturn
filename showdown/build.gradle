@@ -1,0 +1,31 @@
+plugins {
+    id "com.github.node-gradle.node" version "3.1.0"
+}
+
+node {
+    //download = true TODO: true for deployment
+    download= false
+    version = "14.2.0"
+}
+
+
+task noderun(type: NodeTask, dependsOn: 'npmInstall') {
+    script = file('src/main/js/main.js');
+}
+
+tasks.register("buildWebapp", NpxTask) {
+    command = ("ng")
+    args = ["build", "--prod"]
+    dependsOn(tasks.npmInstall)
+
+}
+
+
+tasks.register("packagers", NpxTask) {
+    command = ("nexe")
+    args = ["src/main/js/main.js", "--verbose"]
+    dependsOn(tasks.npmInstall)
+}
+
+
+
