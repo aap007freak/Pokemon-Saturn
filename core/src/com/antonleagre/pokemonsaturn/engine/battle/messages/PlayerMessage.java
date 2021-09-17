@@ -24,7 +24,13 @@ public class PlayerMessage implements FromServer<PlayerMessage> {
 
 
     @Override
+    public String prefix() {
+        return "|player|";
+    }
+
+    @Override
     public PlayerMessage toObject(String message) {
+        // TODO: 16/09/2021 implementation
         return null;
     }
 

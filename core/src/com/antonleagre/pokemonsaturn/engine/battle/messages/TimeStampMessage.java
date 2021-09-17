@@ -19,6 +19,11 @@ public class TimeStampMessage implements FromServer<TimeStampMessage> {
     }
 
     @Override
+    public String prefix() {
+        return "|t:|";
+    }
+
+    @Override
     public TimeStampMessage toObject(String message) {
         return new TimeStampMessage(Integer.parseInt(message.substring(4)));
     }

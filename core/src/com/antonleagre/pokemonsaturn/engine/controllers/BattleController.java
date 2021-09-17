@@ -1,5 +1,6 @@
 package com.antonleagre.pokemonsaturn.engine.controllers;
 
+import com.antonleagre.pokemonsaturn.engine.battle.BattleBlockMessage;
 import com.antonleagre.pokemonsaturn.engine.battle.BattleProcess;
 import com.antonleagre.pokemonsaturn.engine.battle.BattleReader;
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +33,7 @@ public class BattleController {
         }
 
         try {
-            thread.join();
+            thread.join(); //Wait for the node process to stop executing
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -40,9 +41,9 @@ public class BattleController {
     }
 
     private static void printToSOUTForever(@NotNull BattleReader reader) throws IOException {
-        String line;
+        BattleBlockMessage line;
         while (true) {
-            line = reader.readRawBattleBlockMessage();
+            line = reader.readBattleBlockMessage();
             if (line == null) { break; }
             System.out.println(line);
         }

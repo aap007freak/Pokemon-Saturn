@@ -11,6 +11,10 @@ buildscript {
         classpath 'org.wisepersist:gwt-gradle-plugin:1.0.9'
         classpath 'com.android.tools.build:gradle:4.0.0'
         classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.10'
+
+        //for texture packing todo this version should be gdxVersion, add it in properties?
+        classpath "com.badlogicgames.gdx:gdx-tools:1.9.11"
+
     }
 }
 
@@ -24,6 +28,7 @@ allprojects {
         box2DLightsVersion = '1.4'
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
+        texturePackerSettings = [ "../tupac/", "../android/assets/output/", "atlas_name" ]
     }
 
     repositories {
@@ -33,6 +38,18 @@ allprojects {
         google()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+    }
+}
+
+project(":core") {
+    apply plugin: "java-library"
+
+    dependencies {
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        implementation 'com.google.code.gson:gson:2.8.6'
+        implementation 'org.jsoup:jsoup:1.13.1'
+
     }
 }
 
@@ -105,17 +122,6 @@ project(":html") {
     }
 }
 
-project(":core") {
-    apply plugin: "java-library"
-
-    dependencies {
-        api "com.badlogicgames.gdx:gdx:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        implementation 'com.google.code.gson:gson:2.8.6'
-        implementation 'org.jsoup:jsoup:1.13.1'
-
-    }
-}
 
 project(":tests") {
     apply plugin: "java-library"
@@ -179,4 +185,20 @@ project(":dataviewer") {
         testImplementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
     }
 
+}
+
+
+import com.badlogic.gdx.tools.texturepacker.TexturePacker
+import com.badlogic.gdx.tools.texturepacker.TextureUnpacker
+
+// Add a new task that packs the textures for you
+task packTextures {
+    doLast {
+        if (project.ext.has('texturePackerSettings')) {
+            logger.info "Calling TexturePacker: "+ texturePackerSettings
+            //if this fails, it is most likely due to the relative paths not being correct in ext.texturePackerSettings
+            TexturePacker.processIfModified(texturePackerSettings[0], texturePackerSettings[1],texturePackerSettings[2])
+            TextureUnpacker.main
+        }
+    }
 }

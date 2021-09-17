@@ -8,8 +8,6 @@ import java.util.stream.Collectors;
 
 public class BattleReader extends BufferedReader {
 
-    private static final String BLOCK_END = "\n";
-
     public BattleReader(Reader in) {
         super(in);
     }
@@ -19,7 +17,8 @@ public class BattleReader extends BufferedReader {
 
         boolean previous_newline = false;
         while (true){
-            char c = (char) read();
+            char c = (char) read(); // we read charachter per character because the bufferedreader doesn't read
+            // newlines.
 
             raw.append(c);
             if(c == '\n' && previous_newline){
@@ -32,7 +31,9 @@ public class BattleReader extends BufferedReader {
 
     public BattleBlockMessage readBattleBlockMessage() throws IOException {
         String raw = readRawBattleBlockMessage();
-
+        if(raw == null){
+            return null;
+        }
         String[] lines = raw.split("\\R"); //split on any line separator
 
         BattleBlockMessage.BlockType blockType = null;

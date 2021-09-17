@@ -35,7 +35,13 @@ public class GameTypeMessage implements FromServer<GameTypeMessage> {
     }
 
     @Override
+    public String prefix() {
+        return "|gametype|";
+    }
+
+    @Override
     public GameTypeMessage toObject(String message) {
+        // TODO: 16/09/2021 implementation
         return null;
     }
 }

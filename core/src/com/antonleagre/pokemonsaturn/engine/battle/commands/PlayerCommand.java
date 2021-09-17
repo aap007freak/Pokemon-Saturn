@@ -27,9 +27,11 @@ public class PlayerCommand implements ToServer {
     @Override
     public String serverFormat(Gson gson) {
         //check if the options are null
-            String optionstring = null;
-        options == null? optionstring = "{}": optionstring = gson.toJson(options);
-        return ">player " + player.toString() + " " + gson.n;
+            String optionstring = "{}";
+            if (options != null)
+                optionstring = gson.toJson(options);
+
+        return ">player " + player.toString() + " " + optionstring;
     }
 
     public static void main(String[] args) {

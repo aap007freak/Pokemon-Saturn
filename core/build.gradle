@@ -4,7 +4,9 @@ dependencies {
     implementation 'org.jetbrains:annotations:20.1.0'
 }
 
-sourceCompatibility = 11
+sourceCompatibility = 1.8
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 sourceSets.main.java.srcDirs = [ "src/" ]
+
+tasks.processResources.dependsOn(':packTextures')
